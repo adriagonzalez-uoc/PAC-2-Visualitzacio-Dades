@@ -72,9 +72,10 @@ Aquest document proporciona una explicació detallada de les tres tècniques de 
 
 **URL de la visualització publicada:** [Enllaç a la Word Cloud](https://github.com/adriagonzalez-uoc/PAC-2-Visualitzacio-Dades/blob/main/word-cloud/topsogns/visualizations/spain_top1_2000_2025_wordcloud.png)
 
-**Visualització:**
+**Visualitzacions:**
 
 ![Word Cloud - Cançons número 1 a Espanya (2000-2025)](word-cloud/topsogns/visualizations/spain_top1_2000_2025_wordcloud.png)
+![Word Cloud - Artistes número 1 a Espanya (2000-2025)](word-cloud/topsogns/visualizations/spain_top1_2000_2025_artists_wordcloud.png)
 
 ### Comentari sobre la visualització
 
