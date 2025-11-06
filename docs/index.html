@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bd46b9b22464c4a136de8a2d4631f681 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+     bottom: 50px; left: 50px; width: 200px; height: auto; 
+     background-color: white; z-index:9999; font-size:14px;
+     border:2px solid grey; border-radius:5px; padding: 10px">
+     <h4>Political Parties</h4>
+     <p><span style="color: #E3000F;">■</span> PSC-CP</p>
+     <p><span style="color: #FFB81C;">■</span> ERC-AM</p>
+     <p><span style="color: #6B2C91;">■</span> JUNTS</p>
+     <p><span style="color: #FF6600;">■</span> Cs</p>
+     <p><span style="color: #1E84CE;">■</span> PP</p>
+     <p><span style="color: #CCCCCC;">■</span> Others</p>
+     <p><small>Circle size = Total votes</small></p>
+</div>
+    
+            <div class="folium-map" id="map_bd46b9b22464c4a136de8a2d4631f681" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bd46b9b22464c4a136de8a2d4631f681 = L.map(
+                "map_bd46b9b22464c4a136de8a2d4631f681",
+                {
+                    center: [41.5912, 1.5209],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2ced1b809e9a3014b988493399f9f78c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_2ced1b809e9a3014b988493399f9f78c.addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var marker_fc0136d38eddbd2d00f3b867123873ad = L.marker(
+                [41.3825802, 2.177073],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_536f978312240154a30bb7962c65c9d4 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAYAAADj79JYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAACOZJREFUeJztnQlsHFcZx/9vD992Jo5vr2PHORoTnMR+deOGuA5JFErSUAqIUkIpEpdQg7lTVINaKnE0RQElVk9RCKWpeiAVigqpCw24tAnOlxC2TeJc9trj1Ourayex19c+9MwYRVGOXe/s7Ozs/qQn2+vZmdVv3755x/e+ZUIIJDAOm4HXSpAQbjyJGm4wCeEGkxBuMAnhBpMQbjAOxBBENBfAHADO7C/cC+c7JyYBjAHocwnfBGIAUwonolwA6wHcCKAcwAKtSNnTCIfjBICl2p9TKlM6AJwEcEr7eRjAQZfwBWAiTCGciGTTtg7ArQA2AFgOgIVwCjuAhVr56CWP96tMeRXAnwDscwnfMOJZOBHlA/gigC8DKIvAJXIAfF4rEypT/gLgEZfwtSCehBPRSgDfB/AJ2R4bdFl5nS2yqEx5G8DDAP7oEj5hWeFEVALgpwA+G2KToTc3A3gZwHGVKT90Cd/vLSWciJIAfBdAI4A0mIcKAC9p7fy9LuGTN97Y7ocTkexd/BPAj00m+1I2AXCrTPlSTAsnoo9r3TPZvTM7GQCeUpnyssoU+XvsNClEJLtpOwB8G7HH7QD2q0zZ7BI+r+lrOBHJN3FvjMqegQN4W2XKEphZOBHJrtfzAD6N2GcBgLdUpsgejfmEaz2Rl7S+tVWYB+A1lSly5Gu6Gv5rAB+D9cgA8IrKFDkqNodwIvqGNpixKvPlQEllSkrUhRPRGgA/h/Wp1T7F0RNORIUAXoz2JJiBfEZlylejWcMfB1CA+OJnKlPyDBeujSKteJO8HgqAnTBSOBHJm8cvEb9sVZkiF0oMq+HfBFCK+OZRlSmOiAsnIjnjtz3U51mQxQDuMqKGfw6AXD1PAGxXmRLSQspsunNfT5gGTmcuOdpcuGl02Kl8eDfwt4gIJyK5sv7BeBU+yexjB3PWtB7IrcuZsCWt0B7+GiIlHEBYnf5Y5bwjs/f1wk3HTmZVLBPMJkfWl3L7tspd+U3uBq+uwrWpVxk3Ejd0pc0/vq9oy2B/cl4NGFt7lcOkl80Anta7hq8GkAWLEwCbOpJd86+W/PUZfntqZZBPWxsJ4Zau3aP2VN8bBRv/7VZWLhbMHuqiQ32wB4Yi/NIQMsvgTSk4s69oS/e5VNeN12g2rsf8bZW7ypvcDWd1Ea4NdnRb9Yg2AhDvKivojfyN7KIjoxqMyZjEcJFvlj7CASyKcqSULowz58WW/HV0OHtVyZTNoXfoRn0w7XiwwnVfvTaS95Oy1X1Ft53pSF+4EozdEqHLzIROx6/w0/8bDfqHnHNl++yK8OVcegqXEzWxNBo8dNlo0AgKtlXusje5G6b0EJ6N2BoNfigKL8GmLU4M6CE8LcZHg0aRqZdwo4Lmg6at7Kazr49tGR+zp5qpuyqFQw/hpks5kdO4tTb1xFRr82H/UHFnn73Y07s4xT8hN2NFk3G9hMvteabCxpB9R4X9I2vL0+kHBzPyjlWV59qmps4oAxe6iz29yUVd/TckjU/KNtVIeq93AAsmXwoRPaOt9JgSITDSrKL1yXfZmgCYXXswYJ8MnMzuH/a6OrzpBepAhWMqkB7BlzHR5G6Q8ZW61PAumBjGkLaxBPV1heL4Q4fA2nxsKRizTTntS/sK58oi34AJx8SUO6fXN+hq752T995ghT0gko2s3ZYRPkOqAxU/WSUmj/SL/TuOsFXjAZb6/38y5pxMclT2uHIgC4TwJ41NHMnt8Q2XtHvn5fT6KpiY3u85W+JPuIQxOKpzsfZ3G4Rn51EMHPCyalwJxlLGU5KqusvyIAuEGE4ZHW/LPzc44mr3Fs4dOL+YhTZ/pKvw04gxHDaUbq8Spe3D4s0HW9my8xPs2pEGjGX505JrPIsKIQuEGEy74D9Z0D0wXtLuLckaGpEB+teiLZjXFdRNU0JE8h2MdrdrVgQE+va0sVOvdLDVYZykJ+P8yNmirv6Aq723LP2i//K5kzub3A0v6ClcRsl+CjFMvx+tjQdZcd8oKwr3XCwQ6MryXfQUdfbZXJ6+RSmj49VN7oZuPYVvA7AbMY4QuPBqJ+jp46xOgOm1A+SUp7EqqBnVUC64HxaAMWRsLkX9M+vF8YVZQqb60IM/B3tg0MI55+9oeUgsQZoTy3bcLMruqwr83WETMslNOMit40ER6kcqqFCAWIExOFflo/7ZDeIczxVHZ3ma9wD8NVLCf2PGeZVwcdqw4P5qsfzh2kBLmkMMhfj0X3kaqyYjIpxz7tWy61gOxsAWK6j77Xrhv7VEHAjyaVL0U6FcZzZ36UdhYWwM+V9ZJmofuyVwYF6K6LnO4c97Gqs6Qzp/qC+Ic94M4E1YnPw01D5ZL1LvXhJome5MXhmZVSgkZtsPvR9xAGOYc0c56vasE/8pzRSXB/m86GmschsinHMuk3QZlrYo2mQmYcXO1aL4W8sD++1MyPyIF2ebLSOckZZMqTSCOIExJNcVYe2zG4RnxTxxn6exSjVUOOe8Ix63nyTZ8f4DNUJuCJ4VQc+lXA0iek5uiUZ8MCrTSXHOj832BHpM3shtKO2wPgLAPeHI1kU451ymF70zDtrzBzjncoo6LMJuUmYgoo0y0yUAPRdmzcJezvlWU2UE4py/prXlVptradby45ovyRjnXKYXvWd6b5I1eAHAbZxzv2nT6HHO92q5/6KeOjpMZNfvLs75dcPXotKGXw4RyR0Bf4jBYP4AgB9xzh+KxMkjJlxCRDKj/XMxtAOuE8DdnPN/xGTuWc75kLZLVy5An4e5kU3h8kjKjngNv0Lu8F8A+CTMhZyi+B7nXCa5jDiGCb8sI8WDAOoQXfq0hMS7OefhLiKbV/gMRFQD4DtacFE4QZShIsP2ngDwGOdcTrMaStSEz0BEpdqXbsgMccEmEwiVIS0J8R7O+VuIIlEXfgX501+MAeAmbVfYbJADlUNaZn5ZmvUcvFhG+FUyfy4D8AEAN2jZjmUKkRStGZJ7ImUkQY8WH9Iz86VJeg9Y4kK4FUl8+Z3BJIQbTEK4wSSEG0xCuMEkhBtMQrjBJITDWP4LhUPrvGIf9VsAAAAASUVORK5CYII=\" style=\"width:120px; height:120px;\"\u003e",
+  "iconSize": [120, 120],
+  "iconAnchor": [60.0, 60.0],
+  "className": "empty",
+});
+        
+    
+        var popup_b6be9f3905d6486ab35aad37afe443d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_11b03597fbace947257780d11aa98974 = $(`<div id="html_11b03597fbace947257780d11aa98974" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Barcelona</h3>             <p><strong>Total Votes:</strong> 751,808</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 138,885 (18.5%)</li><li>JUNTS: 79,280 (10.5%)</li><li>PP: 37,786 (5.0%)</li><li>Others: 495,857 (66.0%)</li>             </ul>         </div>         </div>`)[0];
+                popup_b6be9f3905d6486ab35aad37afe443d7.setContent(html_11b03597fbace947257780d11aa98974);
+            
+        
+
+        marker_fc0136d38eddbd2d00f3b867123873ad.bindPopup(popup_b6be9f3905d6486ab35aad37afe443d7)
+        ;
+
+        
+    
+    
+            marker_fc0136d38eddbd2d00f3b867123873ad.bindTooltip(
+                `<div>
+                     Barcelona (751,808 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc0136d38eddbd2d00f3b867123873ad.setIcon(div_icon_536f978312240154a30bb7962c65c9d4);
+            
+    
+            var marker_c70e94657026502127c45b4307ff5a5d = L.marker(
+                [41.3598601, 2.0997927],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_3e497ecee2021846d2cc77f69997a8a8 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAvCAYAAABzJ5OsAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABXlJREFUeJztmXtsFFUUxr9zt9vdttCdAqVQZkFcKg3QYiKagkJRhIoFU0WDGjCGhy9eQRBNSAjBGCVAoqDGRuQfwRdGBQlJg2AtihZ7ebhAKG/oVALS7UKhdLs7e81dF7O02+7so61N/CU3O3PnzplvZ87cueccEkKgu8LQjWHoxjB0Y5ISZYhzPgxAMYA8ALkABqPZ68oa80g2gAYAJwAcAXAYwA5VuC92qXjOuQ3AfAAzgoJvh1ETgB7B1h9AYfCIXyNlD4DNAD5Thdsby/UpltmGc54KYAmAxQAy2hzo82lZBUVqBHMnAbymCve2Dvd5zvloAH8AWNWucOPkAPhOI2WXRop8Oh0jnnP+MoAKAA4knocBHNBIKUi4eM65dJMPE/mSh6EfgD0aKZOQKPGcc+nba9E5pAD4WiMlP27xnPNxANagc+kJYKdGipxmYxPPOc8E8DkAEzqfAQBK47nzbwJo9993MFM0Uh6LWjznXE5hs9H1rNdISY72zq/o4JnFKIMAlBgWv247twmBx/HfYa5h8eudrGROOTXuOIefbngDi6muZoJGinwChtymuN5DmZuOs8KZu9mIeRVU82Mtyj16YB3SFVDwC2xI/L2hOxcbyb7BycY/s4vlLN1HpyovodznxwV0LgUtO1q9kIPeOpgG4I62LJy5RkNWH6QhcntEL3H0KYe4MrwXchkhCx1LfsuOcLNJK99qiyMuGn7ERSAI/319cWiaQzQ40pFHBAWJJyuieIvwpHiQfCPoUqZ/f4mk34VFgFjlZdxdeZmQRKJ5XDb2lwwWvgHJQn6hE4U1ovgTNaNln3SdVuhgfn+gka6TSW7rgX1iQg9sm/w6Mb+usYF6pUmvs9n3U09kioaEPAlrRPEAPG2dbYKfyRY4T4REbi2CMSHgq6gr/KFg8oVJviZLVf17nlvhXzw0GZltzrSWYxwh0Lj59LNV2RM8Ay0Wb1rqRLMDDDri53Rk8aXiGoDzsVgXAq4Nx+adFfYenhyHJrMJoCRS0yabq9Ap4v/BiSjRBat9+/Ayt+a1+2ZM3zk29Fj6c5ZW/hoDTqPif47GarNuPrmSr2B/Nmb3Xrbo0z6M3W7XZKOR5ruYzNvEwzaj4r8yavGGN/Xw8qpVfeubM/o/MbX8aJ/eV2UQ0YqMBdbLiJ1jqnCfMCa+VJyTgXAki3VNGZXLq1YNvamn2vpnXfnlocKqMW2NNQ9h97B0ciE2voh2Pf9ue9bONwzcu/LAilE+YbYypmuvzt8i03xtQkQptjmWqN8lANcBfBCd+FLxPYCycIcO1eWXr3EuGSvATIDQX5r1jSslpTk9korUCUk5MUyba1XhdsUSw84L/TgIAf/u2gcrNlbPHn+rb+SIk3uH5Z6LmKaQkImy04rNv0ch/FR7mYv2xZeK08G0nhTu2Xp2WuW350tkKiSA1eI5Omvm9geiEIP0mRaZ5zSCvGlPqsLd2NYAIzHqO15/0tBN1c+PdNbnyTxlEHF96aLNPUwmEVWca0qn/ORcVt183D80wtAFqnDLdHgcGbNSIRb/tu5FZ33eldDuyRP3HerX12V4+RyKMt/6V4Qhb6jCvTEh6b73nQvlYm0KgK1yv0/v+l+Li/ZF5S6hmB1sFLNRXZhDfgAvqMK9OqGJ1uAfmG42e5csXbjlTsQBEVltcy0tA/saAI+qwv2xYTsxlTLL7HLR9Um4uNIoQhcXa6dez4Q/EPB8BOB1Vbhl+aeDC2pFNccA3A9goizLALgZrQkykZI2ybxO1rBU4X4lWuEBGwkpIpfZZW3qaelWMi4HEC78uwqgOtj2AvgSRTVy+R0ziRHfkjJ7RrBQoASf7ikU1VxK9GXo//J9F8HQjWFdLSAe/gaKS9GZtWqT4AAAAABJRU5ErkJggg==\" style=\"width:62px; height:62px;\"\u003e",
+  "iconSize": [62, 62],
+  "iconAnchor": [31.0, 31.0],
+  "className": "empty",
+});
+        
+    
+        var popup_6b84ff2cfe8acbbc0ba93d78cbaca8b2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3ad8c8130d2a0241cc83e7b191d07771 = $(`<div id="html_3ad8c8130d2a0241cc83e7b191d07771" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Hospitalet de Llobregat</h3>             <p><strong>Total Votes:</strong> 100,363</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 43,696 (43.5%)</li><li>ERC-AM: 16,342 (16.3%)</li><li>JUNTS: 3,486 (3.5%)</li><li>Cs: 11,899 (11.9%)</li><li>PP: 5,199 (5.2%)</li><li>Others: 19,741 (19.7%)</li>             </ul>         </div>         </div>`)[0];
+                popup_6b84ff2cfe8acbbc0ba93d78cbaca8b2.setContent(html_3ad8c8130d2a0241cc83e7b191d07771);
+            
+        
+
+        marker_c70e94657026502127c45b4307ff5a5d.bindPopup(popup_6b84ff2cfe8acbbc0ba93d78cbaca8b2)
+        ;
+
+        
+    
+    
+            marker_c70e94657026502127c45b4307ff5a5d.bindTooltip(
+                `<div>
+                     Hospitalet de Llobregat (100,363 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c70e94657026502127c45b4307ff5a5d.setIcon(div_icon_3e497ecee2021846d2cc77f69997a8a8);
+            
+    
+            var marker_5003379bf105b06f72f020747b69c7c8 = L.marker(
+                [41.4493539, 2.248254],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_09ca8d24447990946e8651ca5baa737e = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAvCAYAAABzJ5OsAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABDRJREFUeJzVmW1oW1UYgJ/3Nm3Trp0R6oK1Lu0KHV0/aLgb1LmJ+sP5jfjLD3CIP0SGKPg1jFMEi8LEP4qgOHHIHMj8I4joMEw2WqkcY7/E2bVbXNyGW207trRJk1y5coXZJc1Ncm9qnj+Be8895+HknPec8x4xDINKRaOC0ahgNCoYj1MVKaU2AfcA3UAnsIHk0ox/653NwEXgN+BXsyjwZYsx92epbUopE1YpdQ3wNPCIJfxfUqmYv39HS5ZPM8AxYB9woMWYS5dNXim1BngWeA64NmfB3PJXchx4vcWYO4jbY14pdRMwCryxorh9NgKfxcT3TUx817smr5TaBXz/z3h2njuASEx8Wx2XV0o9D7wHVOMefsD8B7Y5Jq+UegbYS3loAL6Oic8cnqXJK6VuBd6hvDQAh2LiaypaXillTshPV2kxawY+XqlAPqm3gXyhzk3ui4nv4YLllVLtwE5Wn9di4qsqtOdDQNaPysxGawW3J6+U8gGP8v/hqUJ6/n6ghlXHMGqbUxNNd11OGE/IjXZ3lXezWoiR9q5PjTX2JuZr/OkO0eiy3uwAPrIjv5lyohnJ+val0YbuxEJ1U2aTCH3m47h44z/W9o2F67bPnvC0tR1Y9tlV8kopc/lvddtXPEa8viM52tCVzHh8me5FrbZruGbzVLhu28Sgd4t20hPwL0rtBkR6rE+8VhDJLQ+0uRVlpMaYb+hMjGudGiNN3WuO1N+cHPRukSlP67lF8Zqi5kEmF+uWP8gm3+ik8FJd1fnxvp6xoZ7+hRF/T+NUdeu6BalrR6S6iC1DXvkUDjF9uWr6wZcP9yNyuwPV1dsJlUsONEQqw+k9w1oQEadC7owd+TOltmIYZN78SWYX0uLkEDybV17X9TkgVkorkQscjVyQXpzllN0VdqzYFhJpJt+KSD/Oc9SufLiY2g2D5J5hMVIZqcV5jtiV/8J0KbT28B8MnpiXDpxnGpiwJa/r+kkrS2CbS0uMvj8ut+AO+6KhoFHIft7My9jCMLi0e0h8BuLGcTEOfJDtRc7GdF3/Djhsp/ZD00TOxGU97jAQDQWvivEm+XrqBSC5UoHzCwwfnNS24w7HrXM0Bcvruj4CmMmmrGQMZnb/IOZGzg0SwOPRUDBn5+Udo7quvwt8nu3dh7/I5GxCrsMdnoyGgkMrFbA7wR4zc+pXPjh1kWPfnnZlMTJ5NRoK7sepFLdSymMloB5KZ4jtDMvaeErW4ixpYFc0FMwaXZZjO7Tpup6yUhAv7f1Zzrogfg6416540ZcLgYFIr5UxdiLKZIBPgBdzhURXrnUCA5HbgFcA81eKiCb7zVAYDQUni2m/JPl/CQxEzHzmA9aFmnlgviHHeP7duov6yszDR0NBc/tdNI7ILycwEDHnQ8A6upkN/AVEo6GgI6c0V+XLhUYFo1HBaKstUAp/AymTWoTSKVKWAAAAAElFTkSuQmCC\" style=\"width:62px; height:62px;\"\u003e",
+  "iconSize": [62, 62],
+  "iconAnchor": [31.0, 31.0],
+  "className": "empty",
+});
+        
+    
+        var popup_8e04657257f407f5bb862c7730ba1372 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c0e711925d31aea427b737f9c6fb04c8 = $(`<div id="html_c0e711925d31aea427b737f9c6fb04c8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Badalona</h3>             <p><strong>Total Votes:</strong> 99,329</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 19,913 (20.0%)</li><li>Cs: 1,772 (1.8%)</li><li>PP: 37,539 (37.8%)</li><li>Others: 40,105 (40.4%)</li>             </ul>         </div>         </div>`)[0];
+                popup_8e04657257f407f5bb862c7730ba1372.setContent(html_c0e711925d31aea427b737f9c6fb04c8);
+            
+        
+
+        marker_5003379bf105b06f72f020747b69c7c8.bindPopup(popup_8e04657257f407f5bb862c7730ba1372)
+        ;
+
+        
+    
+    
+            marker_5003379bf105b06f72f020747b69c7c8.bindTooltip(
+                `<div>
+                     Badalona (99,329 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5003379bf105b06f72f020747b69c7c8.setIcon(div_icon_09ca8d24447990946e8651ca5baa737e);
+            
+    
+            var marker_f4003bcbe57e631457cdf8833bb598ff = L.marker(
+                [41.5421013, 2.1138977],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_877e87e026cd61a82da6817da0233080 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAvCAYAAABzJ5OsAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABS5JREFUeJzVmXlsFGUYxp9vt50WW+gK1VposoCgWCg2lghRATXGgZhgiBiNkEgNSDWAmBA1iolH/IOoQRFi1qSRIykmheCtgNCkENTAhy2lyFEpZQek17J3t7PTec23WRFkj5nd0u3+ks1md77jmXfe73qGERGyFQuyGAuyGAuymJzBaIRzLoJQDmAmgFkA7gdQCjXsKnlgXimAIIAOAIcANIrvMnK70u2XpTNgOeejAayIfuw3FNA0pWSWXBajKgE4BuBTADvKyK0NmXjO+S0A3gKwCsDIuAXji7+W8wDeLCP3DtzsnOeci/Q4IjpMKNw44wHUKcx2QGG2MTdNPOd8aVS4uIHB5hEAvynMdtegi+ecvw/gSwAiZW4WkwD8qjDb3EETzzlfA2AdhobRAPYqzPZg2uI55zKAjzG0SADqFWYT02xq4qNTYV2GFrNSALWJCiQTJWYUcQOZYr7CbGKSMCeecy4WnZXIPOsUZmNmI/8egDxknjsBiHFnTDznvAjAsxg+vGwm8guiI3648ITCbHaj4mM+pgxiATAv1p+xeBjDj6qk4jnnYo8/DsOPqUYin8l5PRH2bBZfbOQYeGsqLeuE7qCGv7v74O3yqX2lPUfVMW08dEdtgeL/TtUDe8LTqQ+FSB23EfGBeLWJ4OkbwMXeENwXfFDbPEw664HtvA/jgmFI5eEz3hrvlvwXg7/MYkSdbx971ztn7v57bDX5KFqRFxroot8DP4Y1//fqNApArCVm6DEi/kL/AM64QuhVAhGB1rMeFLV7UepRmXh0/3VK5J+ktTe/493uXxj4oVKC9lD0Jqn2dHVnQCu4moKMsfycEjazqDoPo5ZKqt5LRwN7wiH/N+Fy3UtGUrU7qfiqqiq3/YM/xHEs9omGqM+uKc0v+OromcDXlSOo/4Z99znfhINNrso5VqvWHqsJxphkLWYzRi3Ow8jnJE330LHgPi3g261O0V10W8rioxy5blEgUscOdDY97/tKW+LfOb2QgsLeiImmWzs2n3wpMiczFnEJEsIYy7Ha2H0jn5ZQuChXJx+agw1hj2+XOnmgi67dzx81Kn4/iB67Xe9pWuzbFar27agoIp/wYhJCBP2LU8s8qp7377RmyppgjFnYKNxb+KSEggW5REG0BhvDPf56daJ2iX42JH65d1t9jXfr68X6lRlmOj/lufvgSXf51fMnE7eTIkxQgKmF8yUUzpfaIDuPG9oerFu/oaNYv3LCTGdhPecvx5/LZ16vwFzkE7DV7H5euAWGIIK2+WRNv0a5+f+/hPS5AuAzc+IddADAPiOtH3dVHGrzTr7By2FsUMz/jyA7PamcYV8TGZGoQP9A7unaM9XxbAod6XE66mfCvHgHNSXya4igbmxdxXSy5sa6HvPgaZz+yGlOdsZd8Y1YGh8C2BnrwpHuGYc7/Pb49lx6afMqZKcIHlIX74gIWALg22v/7tPyWre3LZ6dqCpLfcCuhez8PFkhY2aSg8QjfEp46eInEUIbTrwygmCxJqxnPvJ6NOKGHDrjTpiDtOgTeKPx8uzDl4LjJiarYjLyl4XJBNn5idEK5mw8B+lw0Pr69kVroq9oEmNsxGpRW28aZOdeM3JS8iA3taxu2dSyWuT7o5F9UBySzPMhAFsATIHsXAbZ2TukL9Q2taxuANCwsmLjBAALATwOoALA2Ij46+d5EeFz4owPYDeAnyA7/Rl7oRaPlRUbxeueCePtF6W1q+pE8ngjwmVnwgVvWIgfKizIYizIYiyZFpAO/wD5EwLXhIszVQAAAABJRU5ErkJggg==\" style=\"width:62px; height:62px;\"\u003e",
+  "iconSize": [62, 62],
+  "iconAnchor": [31.0, 31.0],
+  "className": "empty",
+});
+        
+    
+        var popup_0d76d4bc77be762f34d45c3f73a86f9d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c056235c6f603896d735f9e05d95833e = $(`<div id="html_c056235c6f603896d735f9e05d95833e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sabadell</h3>             <p><strong>Total Votes:</strong> 95,989</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 28,808 (30.0%)</li><li>ERC-AM: 19,284 (20.1%)</li><li>JUNTS: 9,005 (9.4%)</li><li>Cs: 9,865 (10.3%)</li><li>PP: 2,811 (2.9%)</li><li>Others: 26,216 (27.3%)</li>             </ul>         </div>         </div>`)[0];
+                popup_0d76d4bc77be762f34d45c3f73a86f9d.setContent(html_c056235c6f603896d735f9e05d95833e);
+            
+        
+
+        marker_f4003bcbe57e631457cdf8833bb598ff.bindPopup(popup_0d76d4bc77be762f34d45c3f73a86f9d)
+        ;
+
+        
+    
+    
+            marker_f4003bcbe57e631457cdf8833bb598ff.bindTooltip(
+                `<div>
+                     Sabadell (95,989 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f4003bcbe57e631457cdf8833bb598ff.setIcon(div_icon_877e87e026cd61a82da6817da0233080);
+            
+    
+            var marker_5f1a95f098d334bb594f9d4c6f49b320 = L.marker(
+                [41.5629623, 2.0100492],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_393fe76f6e15a5566f2549a5fc47188c = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAvCAYAAABzJ5OsAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABOBJREFUeJztmVtsVEUYx39zthe2S7fbQmmhKxRpgVAM1AMWbDGYYjCGB61GYohGoxhQYyJojKKJBn1BqDdCsj55vxu8AAISbkGNMQMFii1Y5eLSUqi0pdqWbnfHTF2TQvdKz3Zp4i85D+fkm5n/TGbmuxyhlGK4YjCMMRjGGAxjUqzqSEpZCNwUfOYCufT4zufdeGsB0AEcA34BDgBfu1Vb82DHFIM5sFLKHOBR4EFgwgCD3l5v3pyF7hBNA8Be4G3gfbdq8w+ZeCllBvAU8CQwMqxhePH9OQo8D3zuVm0qoXteSjkbqAdeiCg8dqYAnwLbvcI1NmHipZS3A7uBa7CeBfo8eIWr3HLxUsongC8AvWUSRR7wnVe45lkmXkr5DFA9RFerHdjkFa5Z0QyjipFS3gK8xNDiBDZ7hSv3isUHr8L3kuTMxgCeSAbRRL0W3IfJ4g6vcN0Tt3gp5WTgXpLPi17hMuJd+Ye5OigG7oxZvJQyHbifq4cV8ay8nukorh7meIXLHWtUWUWS8QtbT0PmlCM12eaFPxyF43qN1AXr/w3kooovJQn8mTbqVE3OrBP1zun2jlTnNITor0OH2pHFSym1h5s4FGJ9IrWzLqvkyKFss6vRXjAhYKTosHp8GPMZl38ItfJ6bwkSRNOIcQ01ObNO/+qc6uy0OfTq6ig1FkbHIj4fC+k2RrTXumbUHc4u9Z0dkV+khFEE6CdeXLGI1ymbNdhsYxqeu3tLcd0OV09rZrq/Nc3fcnHAAsaKiEX8mZi7izqcSMtedJ+5VdmPrWxeM1dH1AElWi70OI//3jHx79rWEkdd29TCDp8zYgAWxB81DZRS2oAeK4Oxlm5+9mw71PlZ80MVNgK6/0tVKaOx9WL2qYYLk7prz5c4j7ZPntTlz8i6zOzg+sOPz4woPjiBM1YHZHsb2f3x/nOOnU1V0xyqyxHJVimUX9lOnOvObTzWXuSvbZ3uOt5RuH9tzdMPxCJ+B1BppXilCKw7KA7UNHZl7GyqyhnrPxvv4qzAo17t/yHc1tiMxQiBsWKGKhzpsDvLx23qPZw6tSHOLnTuTCziN+rFwmIMwajqctUmDFvuovwPcrfYK/fH2PS03vMD+gtlaZrmCWAXCSAjhZLVZeonhMhaPnrNda87l+6Lodl6PEoXqi4h0o3yBgliiot5Vdeq7xEitdq1vGLZ6DUDtsRlfidkOhhWvGmaXwHfkCCWFKvri7KUrl/ybcaC+QvzP9nnI8UXwvQVPKo1VB/R7vJHLPW4/RAC+8tlKj0jRbXr9/q04oobCrbVtovMvvcgXmBduD4iijdNUzd+lgSRajChulzV912kwHlbduls9/aWkylub9BRLsajOsO1j8WLbgC+JEGMsVP22HSlK8Z9XBTpk+aP3ZhWk1ayFI/6IVLbqOJN09SnfDGwlQRxcwEVZXlK1+37CAjbhplv1r5rWYk7mJS/E5yI5QQU55btET0t3aL65KpSXVq0tj4vpdRh6argOdAZl5U0NXey5LZ55q5E/1zQ6dpa4C4Gjw/4CFhpmmbLUP7WmQ+sBsqvIHVsA97SztA0Te3+42ZQ4v9DSjk+WOupDGb5mSHM9EA67PgR2AN8aJrmX4MZ1xLxYSoQzuAknME7+zfTNLusHEf8//s+SRgMY4xkCxgM/wCndapGdPJtqwAAAABJRU5ErkJggg==\" style=\"width:62px; height:62px;\"\u003e",
+  "iconSize": [62, 62],
+  "iconAnchor": [31.0, 31.0],
+  "className": "empty",
+});
+        
+    
+        var popup_9958cc5db47f1d9bf22c3140809b8bd5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_42888c1688bb5081dd4e05fc6acbe8af = $(`<div id="html_42888c1688bb5081dd4e05fc6acbe8af" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Terrassa</h3>             <p><strong>Total Votes:</strong> 95,123</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 19,638 (20.6%)</li><li>JUNTS: 7,225 (7.6%)</li><li>Cs: 7,747 (8.1%)</li><li>PP: 2,958 (3.1%)</li><li>Others: 57,555 (60.5%)</li>             </ul>         </div>         </div>`)[0];
+                popup_9958cc5db47f1d9bf22c3140809b8bd5.setContent(html_42888c1688bb5081dd4e05fc6acbe8af);
+            
+        
+
+        marker_5f1a95f098d334bb594f9d4c6f49b320.bindPopup(popup_9958cc5db47f1d9bf22c3140809b8bd5)
+        ;
+
+        
+    
+    
+            marker_5f1a95f098d334bb594f9d4c6f49b320.bindTooltip(
+                `<div>
+                     Terrassa (95,123 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5f1a95f098d334bb594f9d4c6f49b320.setIcon(div_icon_393fe76f6e15a5566f2549a5fc47188c);
+            
+    
+            var marker_ad8d6e73b2692a8425c4d01d8e7393b8 = L.marker(
+                [41.1172364, 1.2546057],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_7280570b99187baec33221561f693534 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAApCAYAAACoYAD2AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABDJJREFUeJzVmG1oW1UYgJ9zk6Zp15q0nW7SqsW5blZnN+4sKmNWnKAThjIR/aEO9kNkrMLwhy1SGM6PTdAf1kJEhjJRUVGHxSlMpzJ0Oo9a6ipmfrQsbq7faZu0WdscOV0qaZvm3pt+xD5wITk5971P3nu+hVKK/zsGSwCDJYB7PoJIKX3A9cBqV8cZsXz7Dg/QC7QCwTLVH8+KpJRyLfAQcD9wzWR5fHlxG1CZVDUaEv4TwOvA+2Wqf9jps4TTjiOl1Bl7EbgjZcBIpO2yW7clSyYTBl4GnnUia7tNSinzpJSNwM+zCdpAN4ungF9Cwn8n8ykppSwDvgF2AS7mztXAkZDw750XSSllOfAtsJ75pyEk/E0h4RcZS0opLwGaAZ3JheIxoH4umXwLuI6FZ29I+GscS0op9dByN4uDC3g7JPyFtiWllPnACywuK4HdTjK5A7iSxWdPqmzOJvkI2aEEeNBSUkq5Bqgme2y1k8ktZJfbQ8KvFyhpJTeQXQqAdVaroAoWGYWID7kLegZyfL39nuLBmJG7ssxCUg8/88IFwzM0kOPrCef4w32e4khfbvFoOKdIDeT4XFH3Mm/M5S0cE+4ihShBiEsBfWlKt1lIzmm1PhIf7/2upubosa7bbkYI/er05RTDSmgsc0U43K6i2ysOb3nihpekx4hFMgzTZSX5e4aBiSs6PwwVrNafyws7Nh+oruuq8AVPZRCq20oyk6ATtHTTNoqRd/EbuI3x8t2Vr6zduebglwbjTt7Qb1aSJ8mQQ0FxhUJ4k8uEwLWhpKXmQHVd8PK8c3/ZCBNsbK39x0ryi+nptkN0lFPtg2KVQuSm+t3rjlXWr39+xT1XffS1RahPphfMkDRNU7+Wd51KfnqGnkmf2eoIQf6W0mOb95kNP/hywp0pquhd4auWkgmadD+wK6gUwx/8KaoSJmIETyxdfX9ueOO+jQ3uTSuO661uMh83ttb+akvSNE3ded6wKxmK8GN0TOid4AQxkTtidY8QFD+w6r2b6qr2H/e6hgcSWXwGhwP3k3bb5junxX89WhM18tJmMpnSZWc37b+xfmBdUevTja213zuSNE1Tt5n7gNF0DxmP8/eJ81N3kiPCa1tS4zLi3Y9e+9pzs/2edgo0TfOr2Zb0k5zs5LRCTIkTFXkXHDj+AdxLQM3aRCznadM0A8DOVBlVCvVmUOiN/hSiwmtXUgK3EFDt6SrZWkyYpnkQuGt6Gx0cpeVsVMzYC0WMfDuzyxGghoBKNRQ5l0yIfp5Ya+rhaVyXNbeLoVR1oyI/XTs+BzxMQG0loFLen7FkQrTPNE19HlQVVzQ1d0yc6cwgYuRP/Ikk9PDSAjw+cQ4UUIcW/HwyMY7uGvnspz16T8LFjZs+EtTnRnkx4dFztF6m6bZ2dOIKqPNkiOPzyWxgsAQwWAIY2Raww789h0joyI5y/wAAAABJRU5ErkJggg==\" style=\"width:54px; height:54px;\"\u003e",
+  "iconSize": [54, 54],
+  "iconAnchor": [27.0, 27.0],
+  "className": "empty",
+});
+        
+    
+        var popup_dffe00ed4bbb2af00ea810e7063a12f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7cc929a8a48ec2e151a541fc7302fe66 = $(`<div id="html_7cc929a8a48ec2e151a541fc7302fe66" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Tarragona</h3>             <p><strong>Total Votes:</strong> 57,107</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 13,416 (23.5%)</li><li>JUNTS: 6,395 (11.2%)</li><li>Cs: 8,439 (14.8%)</li><li>PP: 3,595 (6.3%)</li><li>Others: 25,262 (44.2%)</li>             </ul>         </div>         </div>`)[0];
+                popup_dffe00ed4bbb2af00ea810e7063a12f1.setContent(html_7cc929a8a48ec2e151a541fc7302fe66);
+            
+        
+
+        marker_ad8d6e73b2692a8425c4d01d8e7393b8.bindPopup(popup_dffe00ed4bbb2af00ea810e7063a12f1)
+        ;
+
+        
+    
+    
+            marker_ad8d6e73b2692a8425c4d01d8e7393b8.bindTooltip(
+                `<div>
+                     Tarragona (57,107 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ad8d6e73b2692a8425c4d01d8e7393b8.setIcon(div_icon_7280570b99187baec33221561f693534);
+            
+    
+            var marker_d0ce2200e80de264912945bb9b348b1e = L.marker(
+                [41.6147605, 0.6267842],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_c0c606f3df915ec9a8ec5e0091bb39b3 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAApCAYAAACoYAD2AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA7lJREFUeJzVmF1sFEUcwH+zd70r7dHCWaG13VhqgARJzmNUqijV1NoYQ0wIapQYeTNWiZKYaCyGRImm+uZXaDAKD76o+GQfFhIjJWAQh/iJWL9SW4Ko0ULawvV6O2Z0mxz9uo/d9uzv7Wb3Zn77n53Z+f+F1pr/OxYLAIsFQDiITpRSlUAz0BAdHxRrhx6PAn8DXwF9tA+4JZFUSiWBrcCtwLqJvtJW/BSwJuvWERz7OLAP+ID2gYuFjiUKXThKKQm8CNw53XXLHT2V/OvBbMlshoA3gd2FyOb9TiqlIkqpPcCJmQTzYAnwLPANjt1GkJJKqThwEHjERB//NP3bn2M/H4ikUuoa4FOgheB5Dsd+A8cWRUsqpZZ6EVzF3NEB7PITyf3e1Mw1O3HsjQVLKqW2AZuYH0LAuzh2dd6SZiUDXcwvDcD2QiK5BVjG/PMEjl2Rr+SjlIYa4OGckkop87W4hdJxVz6RvJ3S0oJjm4U0q6Q5OJSSqskO00maL0ypuTrXUa0u0OHG3VHG3POk3GFSmVEuuSkuZtJcyoyTymhSrmDMDZN2o4zrclxdSUhU0z675LAfp4xYVPvhZ609mwf33wCYzdlsKVO2lVlxdXmu6f7Dj6QQIl7Vur1W1h/8tS/cdLbIbv6cU0nD0ijygeviI21179d11HQdTlGWojDO5ZI8QwDcdhUbEjX09VS0tVxrHznbs+iOkwX8/btckh/7VwQhCO+UOh4r00NpEWnsuPLlda11B46ds2pyzdQPdOvfc0n2AueDEA1Z1L9ykz498fvHshU331jvRF5YsqPXRcyUQX40uWGKpJTSvD/vERDLK2jetto1D/4fQlS/VfXQxrUNvadPRBKXTStgssLunJIer5kdLijRTY2sX1mtv89uG7Eq12xZ/vaq+5btPXxBVF7wmg/Rffl9M0pKKb8GXg1KUgiiu9frSDSkRyZdCB0vly2Jhk9G98XuPwZ0Fpo+mLxjICjRMosVLzXrL6a75opQ7a740yfp1p8XJCmlHPbOlb5KJNk0LmbD5iZ9lKl8CTxDMYmYlLIHeIwA2bpSJ+yY/iWrqR+4u78zOVKUpEFKuSfIiApBrKtZj4UtbXaRn835tb8zecZ3BcMTvQcYDEK0PMzqpxJ6L3B9f2cyO6r+C1ZKqZi3oJ70UZH7zdSDpJTvzFlVLSsP2gHc6x3H8sEsmNeBA1LKNAVQlOQESqmoV59sBWzAFLauABZ7EfsJMAeLXinlt8WO40tyvrBYAFgsAKxSC+TDP32DILz2BW2qAAAAAElFTkSuQmCC\" style=\"width:54px; height:54px;\"\u003e",
+  "iconSize": [54, 54],
+  "iconAnchor": [27.0, 27.0],
+  "className": "empty",
+});
+        
+    
+        var popup_3b0dfcda1692dbd9850312a44b30b2c1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9f7405b0edcf29ebeabbf916d2df90c8 = $(`<div id="html_9f7405b0edcf29ebeabbf916d2df90c8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Lleida</h3>             <p><strong>Total Votes:</strong> 55,992</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>ERC-AM: 13,402 (23.9%)</li><li>Cs: 5,521 (9.9%)</li><li>PP: 3,416 (6.1%)</li><li>Others: 33,653 (60.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_3b0dfcda1692dbd9850312a44b30b2c1.setContent(html_9f7405b0edcf29ebeabbf916d2df90c8);
+            
+        
+
+        marker_d0ce2200e80de264912945bb9b348b1e.bindPopup(popup_3b0dfcda1692dbd9850312a44b30b2c1)
+        ;
+
+        
+    
+    
+            marker_d0ce2200e80de264912945bb9b348b1e.bindTooltip(
+                `<div>
+                     Lleida (55,992 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0ce2200e80de264912945bb9b348b1e.setIcon(div_icon_c0c606f3df915ec9a8ec5e0091bb39b3);
+            
+    
+            var marker_966b9df10f271f38479f278a17df4a50 = L.marker(
+                [41.5398348, 2.4448926],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_5df8c3e798daa987ce8a0cafe5072429 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACkAAAApCAYAAACoYAD2AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABDxJREFUeJzVmF9MW1UYwH+nQGGMPwWhY9vNIAiyIW7Eq0QXlcSp8X9iTGaWTF3ig8nEZYkxvqjzxRcf1MX5IDMaX4zoMn1wD4uJ0zCZcZ4goCwDBAtdCg7GZYNtlJZjDpTZDvD2tmWV38ttT2+/++u59zs93yeUUvzfcbEKcLEKyExFECllIXAbUJXhGxIlT+/JBv4GzgK9hrKCaZGUUm4GngV2armF8dmS4m6gNurUab/wfA98DbQYyrro9FrCaeJIKfWMvQs8sGTAqalub+OT0ZLRjAMHgfcNZU2k/JmUUq6RUn4AtC8nGAdFwFtAt194HiGVklJKA2gDmoAMkmcDcMwvPFo4eUkpZQVwCqgntQjggF943ktKUkqZD3wL6JlcKfb7hefNZGbyc+BWVp4DfuF50LGklPIZ4PEV01rs8ZlfeNYu9+GSmQy8w41lPfCKk5l8AdjEjedVv/AUxCv5HOkhD9hlKymlvAW4k/SxM56ZfIj0crdfeDLsJFO9aDtFJ+0WO8lq0k+NnaR+eNNNnp1kUkVPMBQat7KKziUTA8i1kwwnE/2sb3D8RP3D/UGXezKJMJad5ECikZVionVgMvf2DR2zh6uauhViNsFQfjvJzgQDM3CRTm8wkLGtuLPwktvT8GX57tYEQ/XaScoEA/NVv8irDPncazOn6tZkXJ4YyK9u/Km08aRTQUNZw3aSumgadSoYVgR+GWFb5YwvVwgyG0pP64KMVu/9DX151R0OQh27fmCRpGmaM8AXTiU7x+hRCFd5aEjXMWxf9/N8AgrhPlK+27jgLh6KI4xeWZptJSN8pKtTJ5ItvaJMHzeGAl59XJ8bqJlLpXnRmz6peml62pVtV84eN5R1Ji5J0zR/15vQeAWDYf7smRA1Qs1aOQRz5gILVVpd0HftgiFXVtXh6pd7ZhHLLXF6/HWn5cNrwFg8km3D80uGWwXPR4/fW3ZSdzGuMZlVcEdLxfPLJdJBQ1nSkaRpmucj2yb9jC6LUqiWPnGzfl2gJmNuZ23RmblbH40vr7LxR++O65cmLfdGQoWYaZo60/f+1zlTIbpGroi5arI0PHol+rNs1/SWwqyJmNnUnCq9766e/M26yaD5C3jMUNblhCQjoh8DLy43o98N/fsXZoQCMc+bEIjt69p6Fn1JiKyjm3ZVjOSU/QDsMJQ1knQHwzTN5shmOGb9VIqZbwZE3cL7itCgLvhjaPCeXropJkTbp1V7nzKU1Z+yXpBpmvpX607ahzpZ9djoVdovzYjihXMqZ3xzmR1NSfZYrUuEo+9CANgDPHGoa1/MRiIlrT/TNHW2N0kptej+o/0iZoNcGRpctBcVgoK6oj/aOy9sdUcW6uZDXfuurmjrL5ryt9t1s7QRuAeoazv3aO7G8LDuHU1Hli8f8OtvY1uP1x/p6Ev0OklJ3ihcrAJcrAJc6RaIh38ADrtZnBop/XsAAAAASUVORK5CYII=\" style=\"width:54px; height:54px;\"\u003e",
+  "iconSize": [54, 54],
+  "iconAnchor": [27.0, 27.0],
+  "className": "empty",
+});
+        
+    
+        var popup_2d2aaa71ddcfa353bb6500dfed625178 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8dbfaa87beb8673165e215d5bce947b3 = $(`<div id="html_8dbfaa87beb8673165e215d5bce947b3" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Mataró</h3>             <p><strong>Total Votes:</strong> 55,361</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 21,542 (38.9%)</li><li>JUNTS: 3,633 (6.6%)</li><li>Cs: 3,413 (6.2%)</li><li>PP: 2,109 (3.8%)</li><li>Others: 24,664 (44.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_2d2aaa71ddcfa353bb6500dfed625178.setContent(html_8dbfaa87beb8673165e215d5bce947b3);
+            
+        
+
+        marker_966b9df10f271f38479f278a17df4a50.bindPopup(popup_2d2aaa71ddcfa353bb6500dfed625178)
+        ;
+
+        
+    
+    
+            marker_966b9df10f271f38479f278a17df4a50.bindTooltip(
+                `<div>
+                     Mataró (55,361 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_966b9df10f271f38479f278a17df4a50.setIcon(div_icon_5df8c3e798daa987ce8a0cafe5072429);
+            
+    
+            var marker_d0a7b180d51843e6cde713a79f8a43d1 = L.marker(
+                [41.4515626, 2.2083371],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_b8be8743f4faf1fa36f683f355b799c1 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA9NJREFUeJzlmF1oXEUUx3+zu3fbJmlzs0QT0psUG4taLZHQSGnVSmsJLRV8qR+Igj4oQh7ErwdRHwQf+iKo+LAo9qFQ9MWqT36hNVottGNrKlQqGtKsrdq0uSY2TXb33iOTbCAfu3t3927WgH+47N6Zw+E3Z+aeOTNKRFiuirCMFWEZKxbWgdY6DmwA1q84clTZz75sBvwXcMoRd6LmcFprB7gP2AdsnvWTddqOAttyZl5K2WeAI8ABR9wflhROa70WeAl4DLACzKPALbmnL6XsfuAFR1wzgOquOa31E8BZwPwGgeXTnUB/Stn7U8o2SyF85LTWxuZd4GHCKwI8D/SmlL3HEfd8kHExMNN/sEpgc9WVi2IbIab1deABlkadwCcpZdeVDae13msWMkurTcArZcFprRuAd6iNnkopu7ucyD0JtFAbRYE3SoLLZfynqa225YveIrgpj51AK7XXI4FwD34euee579QvX/3O1/9kGBDBqxHcnlKS8JZfx9SGN08rs5mz2pLLdzv8vMMR1VbHRqVoXCK4zpSyVzniXi0Gd8Pcl/GMShweZOvhQUVESba7mVO7O+TvmxO0x6OsryKcmcUbgZN54da9etKkkIJJ0RcVO3GRW09cVNPva+tlaHeHDG1tpaExPr3Bh9V1BeF+TG2PeEQvZ5SVzRDzssrKps2D5WWU5aVV3Esry89geVPm/4jlp8/FV55X8bRrqeNdV8dMHRdG876BeXC2P54FEhW5rY9+P9nS3DQSDm6i8NeaFNN5oWyXUXWGnS1dnhuODPizMNyMjpflTnGBXS1NxCJ13ogf5kxiAjNQTbgJ7rjGpS42nbS9EamkCJ3VMUfcTBDcFyU6E7rsAZpX3DTb4F2SVSHgvlzYsBguKcfMhxvoqr2un86GLXOb/Et+pXAmYgeC4Wa0v6irNbFv6UlsX9jsjcqaCuEO5ivZC8G9bwqUvD2WGmBHy235unxX7ArAxgsVnPnhkuLnzqXzk4NimF2tbUTUotOTiExKmkqm9XFH3KHS4WYAfwMendMyxl3XTrEy2pzX3me0ArC3HXHfK9RZPC8l5UPgGXOYZ3PTWZri1xcylcz09JSjD4LOKMFJMymvsanxfjrqi27sMiVXygB7yywbR9x0ODijPteMsgf4piDcFaZK8DQI3OuI2+eIG1jElr7d9A7/RO+wuVJ4aOE2Y+SPy7zsnmfPfBHY6Ij70dLdMvUOHwIO8Wl7T660vh3o9kbFWwAzmEvmHwOfOeKaiqcsqWpdu/6xLmFlz/mrgcmw93JVh/vfXbtG/muAYvoXny9DqYnNVNYAAAAASUVORK5CYII=\" style=\"width:51px; height:51px;\"\u003e",
+  "iconSize": [51, 51],
+  "iconAnchor": [25.5, 25.5],
+  "className": "empty",
+});
+        
+    
+        var popup_d6b773b98be111a485703055e52a8d23 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_13c5ea8939beb6dd5e3447c2282f6ce0 = $(`<div id="html_13c5ea8939beb6dd5e3447c2282f6ce0" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Santa Coloma de Gramenet</h3>             <p><strong>Total Votes:</strong> 44,783</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 22,913 (51.2%)</li><li>ERC-AM: 4,460 (10.0%)</li><li>Cs: 6,349 (14.2%)</li><li>PP: 1,918 (4.3%)</li><li>Others: 9,143 (20.4%)</li>             </ul>         </div>         </div>`)[0];
+                popup_d6b773b98be111a485703055e52a8d23.setContent(html_13c5ea8939beb6dd5e3447c2282f6ce0);
+            
+        
+
+        marker_d0a7b180d51843e6cde713a79f8a43d1.bindPopup(popup_d6b773b98be111a485703055e52a8d23)
+        ;
+
+        
+    
+    
+            marker_d0a7b180d51843e6cde713a79f8a43d1.bindTooltip(
+                `<div>
+                     Santa Coloma de Gramenet (44,783 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0a7b180d51843e6cde713a79f8a43d1.setIcon(div_icon_b8be8743f4faf1fa36f683f355b799c1);
+            
+    
+            var marker_d76ea18ae1acf27d15f40e2334dc5ea2 = L.marker(
+                [41.4728432, 2.0817809],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_33d54a37db8123020ad1069655c4d4ae = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA7dJREFUeJzlmG1oHEUYgJ+9XD4ul0b7keRiem2PmhQLq8ZR/DiriAh+UYoFg6VFWkER1vshIrS19pd/xKKuKfVAUNC2PxTpDyuUQhKtFRQnrT1pC7XGlMOSJlV7TXqNvdzInBs4a+5zL7mADyzc7O7MPjs3M+87ayilmK94mMd4mMd43TYgpawBTCA4PHjR6LNP6xceAwZ7Y5Ercy4npewAtgAPAXcBTfp8c2vDUSDs3JayTDsGfAN81BuLDJb6HKOUCSGlXAG8Dmya6cX+iE8cPfDa8Wm56/kK2NEbixyp+JiTUm4AfgI2l9njDwJfW6a9yzJtb0XkpJS1Usr3gL2AH/e8DAxYpt3hSs4Z7J8BFpUlrMeiZdrtZcsBbwNrmR1WAF9apu0rWU5K2QO8xOxyO2CXJCelrAfeYm54zjLtW0vpueeBpcwNBvBGUXJOr21lbnnSMm29mBfsuUeAvLNoltDraEG5R6kOjxcjdx/Vocsy7dZCcquoHssLyTVQPZqyC/8KwFLKOjcJaOONNbUbOz/pH0qEGs8mVgZGkq1BhaeU9hbklAN0LC2bOn/DHYe71/Ztje+4W5eVIvlXum547OqSi7+OL0v9fKnTf/ZyqOP3ycXteda83PmclHIUWFKu4JHf6A/27Wxaf+Xgf9ataZTiUnLKd+5CsuXPocshdSZxc/MviVBwPLXg4d5Y5Md8cgNO7lUWU2niPYfwDZxfl1yeipcSZVKZvzWqrk6fmGk8fIsLajwsvf8mY+ixwP7EJLWTJVQ9li2WS+5TXPJMp5qa8PhXP932wfclVNPJLHnlhBDH9NBxI9fqQyyqVyPH6801u5s3601PIa4B+wrKObzrRs4w8G5apU7r32/eYHWfqLvlTIEq+4mq0WLlDgA/uBEMB1iZmZeG0fhU24fehOFP5Lh1HNg+04UZ5YQQU8CzQLJcOa+eGAEye9VrRl3oicC+kzlufZWoihct5wjqxl7ABRu6lB5LGc7VBu/ZtnCb3rtms5uo2pOrft7QIoT4GHhRL1/lyLX5uHNhvbowXd7btD7c3xA+4RQ/ByL56heMe0KI94F1wEQ5E2NjlzqVdcK7peWdtlHP4l1AD1GVdiXnCH7h7DW/K1VwTTuhzMT4h/Npo8Zq2TP2ClGlI0Jeis4YhBA65t3rpNMni63n9bDsgXb6gJ06Vxze3q036ZX/kJONlHK1k1rr4zZgUdblEeCUcxwEDgkhCvZUxeSux8kFG4G0ECLXmlYduf/dZ1dPtQXy8TfMdSehJNOTKAAAAABJRU5ErkJggg==\" style=\"width:51px; height:51px;\"\u003e",
+  "iconSize": [51, 51],
+  "iconAnchor": [25.5, 25.5],
+  "className": "empty",
+});
+        
+    
+        var popup_cce69241d9f55832c54bd1f929d595af = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b2d45cef15ded674da3843ed5f016258 = $(`<div id="html_b2d45cef15ded674da3843ed5f016258" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Cugat del Vallès</h3>             <p><strong>Total Votes:</strong> 43,830</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>JUNTS: 12,146 (27.7%)</li><li>Cs: 5,188 (11.8%)</li><li>PP: 1,935 (4.4%)</li><li>Others: 24,561 (56.0%)</li>             </ul>         </div>         </div>`)[0];
+                popup_cce69241d9f55832c54bd1f929d595af.setContent(html_b2d45cef15ded674da3843ed5f016258);
+            
+        
+
+        marker_d76ea18ae1acf27d15f40e2334dc5ea2.bindPopup(popup_cce69241d9f55832c54bd1f929d595af)
+        ;
+
+        
+    
+    
+            marker_d76ea18ae1acf27d15f40e2334dc5ea2.bindTooltip(
+                `<div>
+                     Sant Cugat del Vallès (43,830 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d76ea18ae1acf27d15f40e2334dc5ea2.setIcon(div_icon_33d54a37db8123020ad1069655c4d4ae);
+            
+    
+            var marker_0f9befa275dbe777a6de3a5e779cadf5 = L.marker(
+                [41.9793006, 2.8199439],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_d67e3e9e235232484a42c2e5ce96fa89 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABBVJREFUeJzlmFtsFFUYgL8z291pu1s7Ra7tAkUDNBTSlGmrtoAXEjckRWOCYlONUawkTbw8aKJR4MUnjTE+oOKFGLU+GRAbCcaQVGtFY09FwVUbBUnXdUFtt7ZgS3c75pCRtHXvl9rEL5nsZs6Zk2/+c+Y/F2FZFnMVjTmMxhymINsGpJQOYB2wVO/qEcaju9U4GQFOeK3wH7MuJ6UsB3YANwL1gEfdj3jLe4Amu1o0IIxjwPvAIa8V7s+rnJRyObAHuAtwJqmuIrrBvp4JCONL4CGvFf4852NOStkK+IF7UxCLhYrwZwFh7A0IozAnkZNSqjrPqbcmewTQrro+IIzbvFb4dMaRswf7gRyJTaUGOBwQxhVk0a3PA1vJD1VAR0AYcR3iFkgptwMPkl+agafTkpNSFtpRmw2eCAhjczqRux9YwuzxZEpyUkodeHxWlBQa0WKf0z3xcrn6SJKmEh9QQZ7R5olzRpvuL9pUsEo4RANwH/BwMrmb8+hkFTUVHC/doY85loh6IcQNU8q2pCJ3Xa6NRAnh0nv0r90+5zLhFLVxql3Fh0t1fAPjieSqcyWl1zi+Ld2pDzlXaHVCiOuTVFcJfyVwMpGc+iAyRhRyvuROV5/nVtcCrUik+6Kr48rZ82jGRMrnOxe/rp92XOnamGETWqJUokKbOUUlde/83PoL3b99zMTknxm0cD6unGmaajAOZuomBJqjvkXvHV69iM7gOP7hbtLbQQXjytl8QxasKtPqdla8NHFBFLr5fmQjncHvODt2IoVHLwI/JpP7NBs5IfBsq9IHty98RV66EbHW0PP7Wj4K9XAhEkrwaBe+gdFkcmrNnxWbK7j6pF7d+JZn2z9LcsFIpIkjIQ+9g11Ercu5bAqHZt4QsYaElLLbXvtnzKt+cezIGauqJ9g8VhENTV9ECM5QW3aWSreathRRoBLfQCCVVcmzZEnLSstjCa2seXFHaBIxOa3QYjl9Qw0cDvYyfPEU8OZMsURynUBfNnIeJ+uqyyz/oKOs9rF5e1RP/JuxyTqOnjP4afSpWMUx5UzTVH19N/BXNoIPVFtD6vdd99bGL/T1aucWi920DwVTlrMFVWNt2ch53TTML7R+RQhn68IXi0dF8bSvEXiDfdbejDY4pml2AI8A08dMigiBs22N9YP6PyFclbcveu34lOL3kr180k21aZovALfY5x9pU7eAGpdmXRoeflfVhv0lLeqIQkXrDvZZkUTPxkwlsZBSrgX22zv3tDhwik/e7tc2ASF9cry9f9e1B3N6HGGaplrKXKOyBJDKdHSZLctQu7ldanZLVSytyM1ESrkeuMm+GoHSKcVh4Cs7Hak08oFpmgm7MKdyM5FSqsOdYpViTdPMZLmUP7n/3bGr9l8LJOJvI+E4fPpCTpQAAAAASUVORK5CYII=\" style=\"width:51px; height:51px;\"\u003e",
+  "iconSize": [51, 51],
+  "iconAnchor": [25.5, 25.5],
+  "className": "empty",
+});
+        
+    
+        var popup_2ede89472d4cabae5db5086aff9f84b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3c6fc6ba4bb9e91f0ae8faba8a4a59c6 = $(`<div id="html_3c6fc6ba4bb9e91f0ae8faba8a4a59c6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Girona</h3>             <p><strong>Total Votes:</strong> 43,151</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 8,123 (18.8%)</li><li>ERC-AM: 6,289 (14.6%)</li><li>Cs: 2,891 (6.7%)</li><li>PP: 1,429 (3.3%)</li><li>Others: 24,419 (56.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_2ede89472d4cabae5db5086aff9f84b5.setContent(html_3c6fc6ba4bb9e91f0ae8faba8a4a59c6);
+            
+        
+
+        marker_0f9befa275dbe777a6de3a5e779cadf5.bindPopup(popup_2ede89472d4cabae5db5086aff9f84b5)
+        ;
+
+        
+    
+    
+            marker_0f9befa275dbe777a6de3a5e779cadf5.bindTooltip(
+                `<div>
+                     Girona (43,151 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f9befa275dbe777a6de3a5e779cadf5.setIcon(div_icon_d67e3e9e235232484a42c2e5ce96fa89);
+            
+    
+            var marker_0edfbdedfd7a5438b868ae9cf5eccdf6 = L.marker(
+                [41.1555564, 1.1076133],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_17b05b332192c8a76e0ee72c5285f8e0 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnCAYAAACMo1E1AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABAZJREFUeJzlmG1oW1UYx3/n5rZp2jVk7bTOprCpOJmbox5W6NR2ipAJKhNEhs4hfpGpoIIvH3yBflPwgy+oxImiiB+GQ5hO7ZzYdmxq3XFbR3XqtNTEzrZoU9cXlqS5crqLtnm7yU0yC/7hEvLcc5788jznPPc8V1iWxVKVwRKWwRKWWaoDpZQHWAus9vYcIvDoM9p8Bvg2aMUmzzucUqoZuAe4GdgA+LQ9Gbz4EHCNPSwZFYF+oBv4NGjF+isKp5RaCTwHbAOqCvC9yb66oiLQBzwRtGJflX3NKaXuBgYB/ekElk0dwOGoCLwaFYH6skROKaXHvAVsp3QJYKeOZlQErg9asQnXkbMX++4ygS2UXqfdURHwU0JaXwZuozLaCHwSFYFlRcMppUJ2CiqpTcALRcEppXS4d3F+dO/oJQ1txWyIh4GWyjKBucoYWtHlGzebjGeBGxzhlFK6TNxfSSijQYw3Pu07WX2F0S6EWD1v7G5pJxT5Mi8csAVoqgSUqGF6+SM1R3wdphRCXJd2+1bAEe7GslMZzPl3VB+uv6N6jTBEZ45R16YbssG1lpOrNlTVv/wBb6OozohUujbS3eIlFDmbFU4pJewCWbK8V3kGG57yJT1+0VboFEDqR1xWOKAOyFu1nWQ2i18bu2p/qwoa7S6mX7TIV7rvUsDmVvgSTS96U2KZKzAtnbmcRfiffLvR7+YF5uxnkz5OxPpw15zM5ISTUs4CY27hUsLjeb/uliF+mupg3+ljTCUiRboYc3p8HXELZwjE2/XbUvNf4qlW9o82MBDrLTCKOms/OsF9UwKcccpctS6OGbdNdZya6mTf6QH+Sgw7TD9AKHLGCe7jEuAEQvj31m05vuhGPLWBA6MXcnRCR/FcZDO1J8NfukFKqRuR467gOOfvzfo7s20sH0PTnXw0MshkYijtXhLY6whn63nXkQO+q7p8bRKP/sFMJaz1fD66EvVnD5Y1Z1t3E4r8USjce8BBF3CG/rSE0bDft3kgz9Aahmc28+HISSbiOkuPZfWXzSilTNl96XQxcGJBEd3l3z7lOCFpXckXY68RiowUDGcD/lLsuc4Q6IZoXseq162xwKmEvEHYCuf0l2+mlPId4CGdqULghL3mtFLC09Rb034iz3Dd1d1XUlMtpXzJTvGsIxz/Rk7rdf+OXH3pK8BdhHOWlcLgFkRwPdBTaOS0vvbKS1ksvbZuJ2w9SNjKvpvdvI6QUv5sNyH6dUTWOmikRS4pzGC/t/V7YBx4HLiMsJVRbHOpqCOSlFKvvXf1pZTSB8OtwNX2AbV5wZ/Vu/wHoP+D2pv2tJ092kvYSlCkRLleuyqlakdnMHf2GXPDT7YWVYIqDve/e+1q/NcA+fQ3OSUqJfK6/BsAAAAASUVORK5CYII=\" style=\"width:51px; height:51px;\"\u003e",
+  "iconSize": [51, 51],
+  "iconAnchor": [25.5, 25.5],
+  "className": "empty",
+});
+        
+    
+        var popup_578910af54364c5d95a0c9fd20bfb6f4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0642fbd39ed104b199b73cf5389136c = $(`<div id="html_a0642fbd39ed104b199b73cf5389136c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Reus</h3>             <p><strong>Total Votes:</strong> 43,056</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 7,329 (17.0%)</li><li>ERC-AM: 7,434 (17.3%)</li><li>Cs: 4,624 (10.7%)</li><li>PP: 2,046 (4.8%)</li><li>Others: 21,623 (50.2%)</li>             </ul>         </div>         </div>`)[0];
+                popup_578910af54364c5d95a0c9fd20bfb6f4.setContent(html_a0642fbd39ed104b199b73cf5389136c);
+            
+        
+
+        marker_0edfbdedfd7a5438b868ae9cf5eccdf6.bindPopup(popup_578910af54364c5d95a0c9fd20bfb6f4)
+        ;
+
+        
+    
+    
+            marker_0edfbdedfd7a5438b868ae9cf5eccdf6.bindTooltip(
+                `<div>
+                     Reus (43,056 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0edfbdedfd7a5438b868ae9cf5eccdf6.setIcon(div_icon_17b05b332192c8a76e0ee72c5285f8e0);
+            
+    
+            var marker_cdfce7aaf9db8870ff7b60ec65cdcdff = L.marker(
+                [41.355724, 2.0706225],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_63cd66e7b0ba3bc38734fd36f8de53d5 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA8dJREFUeJzlmEtsG0UYgL9Zv2KThI2dh92so4gSoCpQ2iIi8UhaVW1oe0FICIkL4lLBBakXEAoSCE5cClwQlrgh4IDEo0KCIjhEIm2hmhYaFalqyysugrRp1nHBD9wMmmCK7Xr92DhuJD5pDzuzO/PtzO78/6xQSrEWMVijGKxRvG5vlFIKYCNwF7AJ6Deffu5S4PA3ncBp4ARw3FL2QlvEpJRx4IniMVxap7ze74qS/1JICvMT4C3gU0vZSy0Xk1J2AJPAM4C/ifYfKh7fJoW5z1L2sZa9Y1LKu4FTwPNNSFWip/xoUpgHksL0rlhMSrkHmAJucilU2d9+4GBSmEHXYlLK7cBHQIjWshv4OClMT9NiUsoY8B7gY3XYCbzQtBjwDjDA6jKZFOZ4w2JSyr2AnsbVxgAOOFVU40Xax5akMB+sKyalHAX08tBO9jcyYnoa28145fJRTUyvW+0mADzgKCal1Od3cH24p/SkLDQ8OSV6N/RwMhZSmWiIK/1BjHCAQKePzoCHHkPQJ8SqrWuDjmJzGWHOZfSLrzOaaijV7We+P8ilaIhULEQ2FlL6AVgXyHnNXEoHerd0OYoB+dr3CrGYJ5LOLbE4P5+6IT9zZWvmq+BY9sjQYNg+bQ91Zy9/7VosX0ts/prLlUpFlhbO3Zk/ld6emQ6MZw/HhwtJPeyRq9d0eae5f2DMT0EHe7fMOor9PLk5vfWlL6Zu/ess2zLTvm2Z6cGRwo9DArY4NtdhHGPHwChCCN+w4TYl0vziKKaR53cuFBO7+vjEDLuiGzHEcjueXqNnBWJH6q1jBxtqxuAME7E4XuNqSiQ6yr+sJjhjKfv7emLvA3/UbEaQZFe0C79hlhUL0W2ExQUXYh9UFlwrllCXgbdrNHKRHQMFQt5otUr/euPXJqX0ILxWX+wfXga0YCVpxvou0O0r2x2Vid3mSTcp9rql7N8aE0so/dTPVpTmGI2cpTewoVYvvhFPoQmpH4BXmstgE+qNkildYpN5gsHg5no9+eJGzU1GCX8Cj1jKXqxWWW8btQ9Yxy1dftZ3lkV/Jzxh8d/C60wWeNRS9nF327eEynJvZA+333ieRvFj6XhR44o5nbZbytY79BVseB+/qGPYY8BTy19kHYQQHZ6ocPoyPwNGLWUfbc3fnolZxcTsm8AI8Gq9YO+/2fN7RdFJnRlbyt5tKfunRroUrn7cHYrr0PNwMdu9D+grfcj0h/kvU4mcvuZz4F1L2TPNduFOrJJDcS2lo0B4ea3T75Ee5RXQGrH/0x9F43oLOPE3kycNI+EqeWcAAAAASUVORK5CYII=\" style=\"width:50px; height:50px;\"\u003e",
+  "iconSize": [50, 50],
+  "iconAnchor": [25.0, 25.0],
+  "className": "empty",
+});
+        
+    
+        var popup_02a3ddfb6451c883db0aa97884db3b2b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_feadc28aec8ecfaf9d1b169f8d7b6a6b = $(`<div id="html_feadc28aec8ecfaf9d1b169f8d7b6a6b" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Cornellà de Llobregat</h3>             <p><strong>Total Votes:</strong> 38,140</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 18,184 (47.7%)</li><li>ERC-AM: 5,387 (14.1%)</li><li>Cs: 3,813 (10.0%)</li><li>PP: 1,820 (4.8%)</li><li>Others: 8,936 (23.4%)</li>             </ul>         </div>         </div>`)[0];
+                popup_02a3ddfb6451c883db0aa97884db3b2b.setContent(html_feadc28aec8ecfaf9d1b169f8d7b6a6b);
+            
+        
+
+        marker_cdfce7aaf9db8870ff7b60ec65cdcdff.bindPopup(popup_02a3ddfb6451c883db0aa97884db3b2b)
+        ;
+
+        
+    
+    
+            marker_cdfce7aaf9db8870ff7b60ec65cdcdff.bindTooltip(
+                `<div>
+                     Cornellà de Llobregat (38,140 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cdfce7aaf9db8870ff7b60ec65cdcdff.setIcon(div_icon_63cd66e7b0ba3bc38734fd36f8de53d5);
+            
+    
+            var marker_5cd97943c437b5461320c16109ed9555 = L.marker(
+                [41.3459033, 2.0413673],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_ac2c76a545c4acafe607ae0d173e498d = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmCAYAAACoPemuAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABGlJREFUeJzlmG1MHEUYx//P3nIHR4GlFXnbawsmUmlCQ2yFpJUSTKUKMTZqUxtjjDVNiFJqY2pI+8Wm+kHjF6vGS42aNDE1FeuHGkWDsa3FCh0KfYFeKShhAykgbIsceD0YM8dBjuOO2z1eJPGXbPZ29mbmtzOzM88scc6xHJGwTJGwTJHnk5kxlgcgH0AugDRlX/Wgrb7BDqAdwDUAF1Wu60sixhjLAFAJYCeA7MB7XJZbAGwISPJopPwA4AsA36pc5wsuxhhLAHDYLxVnMJsVwFP+o1Ej5Q2V6+cWbIwxxh4G0AzgoAmpYDYBOKuR8r5GijxvMcZYKYBfg7ttHhwAcEYjJS5qMcbYVgCnAcRiYSkF8KVGStj6w95gjGX6paLtukg8DeBdU2KMMQLwGYBkLC6va6QUGBYDsAPA44vrNF2/M1SXhhOrxtKxAcD2iGKMsc0ANmJpqYgo9n0XHh31opVzLGXY8YRGSlJgwqyJ7nibtPN4G3IVK+9/TIWrOJNbMux4iAjKIopZAGwB8F1IsTVvX5b8CzJ0D6XUdCKlppMggY/n3Ycr2x18KG8VUm0W5BBBvLkLSX5YMQCpAGzBOSZAluYB5DUPTLqstPHb2xy8vSgdljQ7cokwoxuiJCXwYoZYyej5WFfMA79zEAHkG2STvyfPXDQSAdxNVOeiuDoXSCZ+s+R+90CJQ5ISR++smofYirBin/dXiVPICW8ueDeGG+sLz67e3eXub4xaTJrrrbztaxwT3JuQb7137UBHTvlQgXWdVCCtpL4oxbTwYk7uBtBltKRed+qFNxveSd9adv1eUuJIChHZkqtiW6MUm1FvqLhIRKFr5yqBc3h+7i2+ePrPHUXZa7VzBRuvF03di33Ekk923OVuJJoUuxBpSTozV+5xLvUca321XUjJsrfjtb2nRAA4DRElKXttTSalOlSut0US+xrAP6Fy3/UksEONR2w37zy4HuCeqoqTXqvVOysssm+LWQcZHhNiNcEJs8WcXOxqnIFJYnlq/ivvl0OXjuT/7U3wTQmbC1t+y1rTmxOqFrJQWuJua4NBKdEIxyKLTXIUwLBfaujErRcuferaU8wh+f6fsGKkadczP02Pq1AkPGfNBGHCgNjHKtc1Y2JO3i9Cn7FxW9tblw+PNPRvChhHfPDg/hMZkZYkiqGs+CdjIrXaDf/Oy0TM7+QfVTcebRoYS1EDk3c9+2N7sjKcBgMkvWwTW75wjIniVK67zYn5Jk/rKwDqpq5XO3rPbym8YnhlkOJpfWyhLLZ9wQiZcpXrLWHzzlXwh1f3iacqB3BKtnj/qKo4KfaXpkiutI0HJQ0CKFO5Pv3AoSCjn6E6Pyl4KTur5wMxrs3K9e0fcXluTIg3WHwu2KNyvSdSHsNiPmodDv9u/HkAhiMJT/v4V32V7hqV66eM5jEnNkWtQ3yTKAPwoj8aScdMegFc9R/foLS7HiaJTiyYWofd34LxoudQ2i3G0bxYGLH/0xdF6b8WCMe/Lx5sGiPcH0YAAAAASUVORK5CYII=\" style=\"width:50px; height:50px;\"\u003e",
+  "iconSize": [50, 50],
+  "iconAnchor": [25.0, 25.0],
+  "className": "empty",
+});
+        
+    
+        var popup_8c230708d4038e816802d31d4f1f812a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_e815ba8a3ff45cc618f000f75ba0c573 = $(`<div id="html_e815ba8a3ff45cc618f000f75ba0c573" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Boi de Llobregat</h3>             <p><strong>Total Votes:</strong> 37,157</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 16,001 (43.1%)</li><li>ERC-AM: 6,233 (16.8%)</li><li>JUNTS: 1,743 (4.7%)</li><li>Cs: 3,915 (10.5%)</li><li>PP: 1,633 (4.4%)</li><li>Others: 7,632 (20.5%)</li>             </ul>         </div>         </div>`)[0];
+                popup_8c230708d4038e816802d31d4f1f812a.setContent(html_e815ba8a3ff45cc618f000f75ba0c573);
+            
+        
+
+        marker_5cd97943c437b5461320c16109ed9555.bindPopup(popup_8c230708d4038e816802d31d4f1f812a)
+        ;
+
+        
+    
+    
+            marker_5cd97943c437b5461320c16109ed9555.bindTooltip(
+                `<div>
+                     Sant Boi de Llobregat (37,157 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5cd97943c437b5461320c16109ed9555.setIcon(div_icon_ac2c76a545c4acafe607ae0d173e498d);
+            
+    
+            var marker_ec2d47656005c5dc34bb7939a8091f3a = L.marker(
+                [41.7288939, 1.8286765],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_39724eb19620fe6043e69e32686f4ea5 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA7JJREFUeJztmF1oHFUUx393sxu32baOW6Wm3ahF9EGK1dxWsBLq2+LHo2CRChb0TUWfxI8++KDVBxXBD0JBWupHfauIDwEVg1JRubWtLdpUI3UmVlOb3Ww3SZPs7pW7mSSb6ezOzGaQPPiHYT7Pnd/cc+6594zQWrOSlGCFKbncBpRSOeCGzL6DrO7fXwNGcrp49j8DUkqtAh4AHgK2Aleb69WN3YPADnPsCGsE+Ab4Avgwp4sTsQMppa4AngGeBqyAxzcCD7rbK46wXgPeyOniVCwxpJTqA04AL4aA8SoLvASccoS1edlASqlHgC+Bm1meNgFHHGHd3zaQUupR4L04gt/VGuATR1i7IgMppbYBbwMiJpjFdwr6y0+u7w0NpJRaC3wMdMYMQyIrRrsPZU6vvq/zEAM9mVBA7kgyPo9Vq+5KHu1+PyM6rkzcDtwEPBEI5PbOU7GSCGrZ59OD2RfSt4mEuKbhzuMM9KRaAgEPtzG0W7voo8zxrr7UDiFEwidf7VzyvE8b9xKT0tuTP9ZdZNVd1EzNgZRSJojvjsVFz6UH1+1Jb/G4yE/bGehZGMne/HIj0LUclkRWnF//TpfTYSXq81oImfDoAf6o23tubojBRTrARX4yseTbQ5flhbDq2NJ5cd22dJ9P4IZRZf7AazxGm7rw1z9a1Jht03ymGdC5doGGRi+l+aX0fZvm5WZADnApamtaUxoup1KcuZhDa7NqjKISMOwLJKWcBr6KCjRR4WxSVxPU2MTvEz9ENP+avL1QafgF4GdRgZwyheR8+JwcjzowPm088QP6wO3G0Pq5AEldnUtuFb2Zc1NmdRlGo8DBlkBSygLwZhSgn8bEVUkqi+umY0Xj+jB6lbw92RLI1ethR5zW6KEi16f0QiqBqepWCjO/BpjawLvei75AUsqiO+tXg4CqmpHJilibpNLYluBo4e8WZibgdpK3L6tCmmZVKaWpqQLXRWPT/Gn2Ke3JieOzdzBZadbLj5G3j/jdaJnmpZRvAabqaPDHUg2XqH/lQlAvKoUqDHmumWd3k7cPNGsvcN6RUhrjewDf8vjkBVFfd3tcNqfz073M1Mbds9+AO8nb+1u9L9REKKX8HLjFVKHAklFxaoxrzT6lZ/2qkzUcK3wHvAz0krePB70rdL0lpTQgzyql9rol8i6tudUuc91cQ0tcZqafb4HDOFMH2GPP91KgIheAUkqTNPeZbe9hlawhTEW7waqVRMN8eIb+xjwQXuL/H1YBWnF/0P4F8ycfswEA5bsAAAAASUVORK5CYII=\" style=\"width:48px; height:48px;\"\u003e",
+  "iconSize": [48, 48],
+  "iconAnchor": [24.0, 24.0],
+  "className": "empty",
+});
+        
+    
+        var popup_66553349ac0f1e59d70c8d33b10d0fb7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9bbde5e88a1b12454bb1ac662e206f39 = $(`<div id="html_9bbde5e88a1b12454bb1ac662e206f39" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Manresa</h3>             <p><strong>Total Votes:</strong> 32,154</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 4,743 (14.8%)</li><li>ERC-AM: 9,119 (28.4%)</li><li>Cs: 2,282 (7.1%)</li><li>PP: 840 (2.6%)</li><li>Others: 15,170 (47.2%)</li>             </ul>         </div>         </div>`)[0];
+                popup_66553349ac0f1e59d70c8d33b10d0fb7.setContent(html_9bbde5e88a1b12454bb1ac662e206f39);
+            
+        
+
+        marker_ec2d47656005c5dc34bb7939a8091f3a.bindPopup(popup_66553349ac0f1e59d70c8d33b10d0fb7)
+        ;
+
+        
+    
+    
+            marker_ec2d47656005c5dc34bb7939a8091f3a.bindTooltip(
+                `<div>
+                     Manresa (32,154 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ec2d47656005c5dc34bb7939a8091f3a.setIcon(div_icon_39724eb19620fe6043e69e32686f4ea5);
+            
+    
+            var marker_b6e3ba24de12175c095afe1a6406cf3c = L.marker(
+                [41.4936194, 2.0319476],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_34002e4981ba0cd51cb08a3dc7135e0b = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA/FJREFUeJzlmG1oW1UYgJ+Tdk3TZmnq5jRt1k7aSf2oPyqbda4URYxjIGOITDsUQR06fyiiqOCEDWXOIfszJIoi1iEMXRWZMlY3JrLZljM/xmTadczmttN+pO36kaTtzZHTpjONuU2a1q7gA4Fw73tPnnPy5rzviVBKsZiwscjInusAUsobAE/++/U2p/8jE+jyqv62BROSUi4F6oC7gRoto6+bxZ4TQK1+bwi3AXwLNAJfeVX/wLwLSSnzgReB54CCFOFe4LHYq88Q7reBd7yqPzIvOSSlvB04B7yehkwihcCbwBlDuNfPWUhKuRn4LjbrubAaOGoIty9jISnlU8BnQB7zQy7whSHc989aSEqpE3Y/IOZJJlHqrrSFpJQuoH4+tgUL7MCHhnDnpiUEvAKU8t9yI/B8SiEppbZ+koXhJUO4C1Kt0BZg2QIJuYENqYQeZ2G5z1JISqmTeM2iEQLKAMfC+lBsCHeZldAqrg7LrIQy6tbGzGirPed8L0tIWTwtuFIJEje+vnSeVoro8DhnT/1JsLXt4uirF14oL7s3sk41OLsHPogEhhrG7pylUNhKKDiDRCQY4ZfjHYS/aRcVQ+Fx11u9O8MvjxyuxZHVTJ5nra4x7m25Xled/UzvrpAt8rN5S5pC3VZCncAokBOTGOgY5uyRgBDHDG4NmWINSo1sGvm6ZU/vzmo7Y5O7+c2uafXO5hSVy3c71LgRPdmzI1RiXlIzdQod8R2mSGzyv2+Sh9qHWH74osg79Re3mUosmbpXOtb+w4GuZ0pWmp1FVx4QdLKp+HqESFqGlFLhcLPZFNwdqlIhdLeZSL1X9T9qtULUNdp0K7ov/lqOirTt63ltYGOosfpfwxU5WhHiH8EEhBC5jjuya4s+d3YPHhz96fLHo+uIkhUXciw+PtmsPgFGYtMbfHjo0IlfAzUlG0ONVUliTSoLdJFMibCJa11b7DVFDc4LjvXZp2OXda/95bS4ZOey0jd+3Lt6rK26vmt7ucfsus7yUxxZLWzwZLSzj/dEW4K7QgdXnAvuTSnU93TB0sLo5d+mThSWVBU2syp/bSZCQDtwE77A5LcRI2kiFr47MAhs1ROxHE5widI83fxngt53HkqUsRSawK90sm23vO9x/I4Q8ck5G57AF2ia/anDr94Dnp1I3ulEqSwoz0BEl5at+AIHMj+X+dX+WBOlT6OT5NpOk59dnEHO3DOTTHpCGr86ClQAe4AQFa7EFZuJYWDHxPO+wMlUwUl/ZTOyTVzDA0WPkG17ENBJ7UwSpZO1KXam+xRfIK2inZlQPEdW6hXWG+OKqfoHnAf+wBfIaOC5Cf0f/rCyXW2BRP4GqXtZjNP0Fx4AAAAASUVORK5CYII=\" style=\"width:48px; height:48px;\"\u003e",
+  "iconSize": [48, 48],
+  "iconAnchor": [24.0, 24.0],
+  "className": "empty",
+});
+        
+    
+        var popup_f7b77b33cd8a07856c3347cbc4103135 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ab976672075e9cd12c11965ec834baba = $(`<div id="html_ab976672075e9cd12c11965ec834baba" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Rubí</h3>             <p><strong>Total Votes:</strong> 31,635</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 10,492 (33.2%)</li><li>ERC-AM: 7,232 (22.9%)</li><li>Cs: 3,301 (10.4%)</li><li>PP: 1,171 (3.7%)</li><li>Others: 9,439 (29.8%)</li>             </ul>         </div>         </div>`)[0];
+                popup_f7b77b33cd8a07856c3347cbc4103135.setContent(html_ab976672075e9cd12c11965ec834baba);
+            
+        
+
+        marker_b6e3ba24de12175c095afe1a6406cf3c.bindPopup(popup_f7b77b33cd8a07856c3347cbc4103135)
+        ;
+
+        
+    
+    
+            marker_b6e3ba24de12175c095afe1a6406cf3c.bindTooltip(
+                `<div>
+                     Rubí (31,635 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b6e3ba24de12175c095afe1a6406cf3c.setIcon(div_icon_34002e4981ba0cd51cb08a3dc7135e0b);
+            
+    
+            var marker_2158560af396dcf9ba6ea486aac14472 = L.marker(
+                [41.2241992, 1.7256327],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_308c306311bdd57dcb927b4c30879f5d = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA2dJREFUeJzlmFtoFFcYx38n2aAxNZmEQiOmiBRawWqN00YrWp/sPNgWhBaqWGipl1joS30o1OCDD14evIB3LF7qlUr7IhWE+JCSKiZ+tA0sitL1MtPaDaYmarSJ2T1y1kQ26exmdidZhf5hOBfOnPlxvss5Z5TWmudJRTxnioR5WUQU8Cpgle07XPLC3oNmua/V6M6/CgYkImXAAuB9YCHwkulPTJzQBMw3dU9ZfwMXgR+B72t0Z/eIA4lIKfANsBow9WyqBt7rfzZ7ytoKbKrRnb0j4kMi8jYQBRoCwAxVJbAOaPWUVRsaSETqgZ+ByYTTdOCCp6zFeQOJiPGRnWGdP00lwBFPWR/nDCQiU4Hjo5AazHzfecqaGRhIRIzdTwHjGR2ZlTrgKaskEBDw9Qj4TBCfMt/JDiQiFvAFhdFXnrLKsgIBi0fRVENlXOOj4YCWUlh9OBzQDAorOyOQiFQB4woMVO0pq9oXCKjh2eiVgUpkpICKJ3TdqVw9tokkkNToVJl61KB6QqdK09b9ZeKfpMoElNfxMXbz1ulF8R0VkQUVqeNHHjK4via7lsssWqMbbzw6W9e4anqERJgtxssE9Afwb0CY5A8xmivP7Syd1OcZU+d7OG/HcW/6Atm2/QhoCQCTOHpVnZdorGjFvSNzUp1PvSBntaY3/I4VZlN9JwtM3/7LqvXM9b6Xf4t/ZjLtgPJFOpne8LP7LiCeAaZ3d1TJT9d561D7l3fH6+70LSYfk90GTmQFsm37AbDRB+bh1jbV1uipWR88ONM8t6fl9UED8lufXThuT1agfu0B/kyD6d70q7rcfEu9WZHoatvW0TDP551ckS4BG4Z2+gLZtm0ibYW53WjN3XUXVaylXdWiddep+CdVxSSLQ/IkgE9x3P9EdMbcYdv26Z4E9WtblPd7h5pm+ho6t0T7QzyMjK8tx3F9ozlrMptTZ38bvaN2m0w6pfdq8/J7R5+EuJ9U4JVZhuMeyDRg2Ox6Y03tjjG6592T8c9fJJyupG62jrs/26BA6f5Kw+yz5fp+HbAdGBQVAdQFrAfewHF/GW6wyvl3zEplkuESYBEwFxiT6p9c1kRt5fw0CAGOpa5SjmtSSSDlDpSulcpcq6cAFUwtj/Ba+cAGHcNx85o4HND/4YdV0bMGGKrHCzUmgu57Ll0AAAAASUVORK5CYII=\" style=\"width:48px; height:48px;\"\u003e",
+  "iconSize": [48, 48],
+  "iconAnchor": [24.0, 24.0],
+  "className": "empty",
+});
+        
+    
+        var popup_d0da4778a9a8cd98dcfc90aa5435e8fd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9223c031b2bb26a05be1b8a7261b4040 = $(`<div id="html_9223c031b2bb26a05be1b8a7261b4040" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Vilanova i la Geltrú</h3>             <p><strong>Total Votes:</strong> 31,061</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 7,805 (25.1%)</li><li>ERC-AM: 7,739 (24.9%)</li><li>Cs: 3,055 (9.8%)</li><li>PP: 902 (2.9%)</li><li>Others: 11,560 (37.2%)</li>             </ul>         </div>         </div>`)[0];
+                popup_d0da4778a9a8cd98dcfc90aa5435e8fd.setContent(html_9223c031b2bb26a05be1b8a7261b4040);
+            
+        
+
+        marker_2158560af396dcf9ba6ea486aac14472.bindPopup(popup_d0da4778a9a8cd98dcfc90aa5435e8fd)
+        ;
+
+        
+    
+    
+            marker_2158560af396dcf9ba6ea486aac14472.bindTooltip(
+                `<div>
+                     Vilanova i la Geltrú (31,061 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2158560af396dcf9ba6ea486aac14472.setIcon(div_icon_308c306311bdd57dcb927b4c30879f5d);
+            
+    
+            var marker_c5efc172f76305dfd160175a5b3db5ec = L.marker(
+                [41.3140154, 2.1327337],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_b2b33443df2fa56a22cceae234388af0 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABAVJREFUeJztmGtMW1UcwH+nvW1XGraOPRhQ49x4bKkG2FFRcFlmovjNZYoxWTJNdPugkS++cMzFxZBFZozR+SAaEz+JMfGDMb4+mPkBNyAnqGw6YPFRboBRBFzLhPG45tZ2K9DHbQXCB39J0557enp+PY//+d8rDMNgNWFjlWFjlaFl21ApVQhUAuXAxo21dVP2P0cngV+An3zG+IVlF1JK5QIHgEPArnmVQgSBTbGiLrx9QCvwjs8YH1zyKVNKPQL8ZnawSCYxJcCLQJ8uvMd14c1ZkhFSSm0APgLuITs8wDGgThfe/emmMuUIKaWKgLb/IBPPTuCMLry3ZiWklFoLfAuUsXR4gS904S3OWAh4Gyhl6TEX/me68DotCymlHorupuXCnL4jloSUUgI4zvLToAtvfloh4H5gxwoIuYDDVoQOsnI8nlJIKWWW96yIip1pV4U9FDqUX5oqMPqBvOXoX3j4y12l9bl3OyacfrvXlkupEMLs7w6gN5nQTUslYC8QurtGC7hrHLOObbYtwsl2IUSioOiLL2gJAldWaGXa72v3u35ec5vm1ArFVmEXvoWdJSE3lVBWGAZGt9w+5PJo6/cUdVUJW0Z5lrnbrrGwYX9WQhD81Zmf59fP2p9trO9pa7+lI4PmwVRCZnqRMZMzBDtdldOb3cE7n7v55FjrJ/fKZxrrz//QXdJlofnFVEIB4FKmQuNXuXzBURLJd/LdweqjlSfap6YcO97/cF9lw0tPdPVevOF8kqZGNJtILCSlnAM+zVRo+G+uDts3FMTK+e7h6saKE+2Cudlw2FP5xrsP+481He4I6JvnjQbQQW3/QFKhKB9nKqSHYQbNNyHcE7FrW3KGq49UvHLWlDLLo2Prbm9+/eC2plcfbbs0vD6QrK9FQlLK7wDzZZlAWLgRQpxz7vwj/npBzlDNC/9KzUXDo21waFPNy82PFbzZUvcl8F5aoShPR+fXEoEQ68z3dteu0YV1haZUefOZ61ImwtHTt/VzavvDloSklAp4zZoODF4hkkZ0uioi07NIyjNY01De/H2c1DfRm4VFpApgDcBX6WQMg3BoWkQifI+j2EzoE1LkGbzr+fKTppSZ5B841V1vZCQkpZwBHjTTzVRC03PXw8SIPe/aTkuEzzPgfcr/1t2nuutHkn0nZYiXUpq7Zh/QlGxNhacZi32eFVpRSHhCSX7ua2B3aWtfypvGtGeOlNKQUh4FqoDTC+tHJrkSX/7R6Y9t6Rhm7HmAFuM+WozxdP1ZPgSllJ1Syr3A3uiCjPzTgYn5I9e+JrLTQtGFa055GS2G5WCb8WkvpTRH6bRS6kmg+NyouBH4IFp9OaD5zEXbS4sRt82tI/5/YJWGVffA6h9ADDeNbTl8pwAAAABJRU5ErkJggg==\" style=\"width:47px; height:47px;\"\u003e",
+  "iconSize": [47, 47],
+  "iconAnchor": [23.5, 23.5],
+  "className": "empty",
+});
+        
+    
+        var popup_2019558d31e64abb124846073dc03cfb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7e1b2dbbd02e4833b15b68c9d32df9d8 = $(`<div id="html_7e1b2dbbd02e4833b15b68c9d32df9d8" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Prat de Llobregat</h3>             <p><strong>Total Votes:</strong> 29,543</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 6,310 (21.4%)</li><li>ERC-AM: 3,347 (11.3%)</li><li>JUNTS: 1,435 (4.9%)</li><li>Cs: 2,893 (9.8%)</li><li>PP: 1,343 (4.5%)</li><li>Others: 14,215 (48.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_2019558d31e64abb124846073dc03cfb.setContent(html_7e1b2dbbd02e4833b15b68c9d32df9d8);
+            
+        
+
+        marker_c5efc172f76305dfd160175a5b3db5ec.bindPopup(popup_2019558d31e64abb124846073dc03cfb)
+        ;
+
+        
+    
+    
+            marker_c5efc172f76305dfd160175a5b3db5ec.bindTooltip(
+                `<div>
+                     Prat de Llobregat (29,543 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c5efc172f76305dfd160175a5b3db5ec.setIcon(div_icon_b2b33443df2fa56a22cceae234388af0);
+            
+    
+            var marker_eaf12aa6b663815818010a70f28d7c7d = L.marker(
+                [41.3163083, 2.0156034],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_e73c96892c99ceb6a9f1f23d8ec3d741 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA5lJREFUeJzlmF9oW1Ucxz/n3tylSdPlprmp7XazWv+hForKRFumTmRUH4Zo515UVBDsgw/6IAx8EWQOQRyCDwZBER8m/nnyxSk+iKP+YWfDgQoiCsttJmsbo4ut7ZIcOTXT/slNbpI2FvzCfbjnnvu7n5w/v+/5RSil2Eoy2GIy2GIKtfqilNIFbgBGAMcZf2DenMtfBHLAh64q/LLpQFLK7cBDwGPA7lUPhZgBUtW7iifsKeB9fbmqMB30GyLIopZSCuAR4EWgr1Yf5+6DM+bs3CWglSoBLwHPuaqw2PYaklL2Ap8Ab/rBBJiFQzqUJ+yr2gKSUqaBL4C7aF/DwNeesO9oCUhK2Q18BFzDximh15Qn7IGmgYA3gOvZeDnAW56wRWAgKeUEcJDN0z7g6UBAUkoTeJ7N1xFP2EMNgYD7gOs6ALQNeDQI0AE6p4frAkkpLeCeDgINrc1Na0foWkDbQye119fLnjoh0rt6ODkYUwtujPJAFCsRJhYNkTQE/UK0bsYN0kBtoLNFkTpbZPcJ1qcIA1VORsi53cwO9lBMx9TSzm7MZBeRuFWxqZRbHdmSLxDwr9MqpQQqH1ZL+Zj64/dkOf/nwML5i+nz02KwlLUuL2XtdCkX31E6l9xuLfw0P5ny8i+05HVlX6BXZw9Np8pz3+0s5RL95RnHopQE9FVPFUZTXZHe0J7wiPnt4pmy9qyNGaH98x9nm7YL25oiGd6jJ9k5HInmDhTn1SLRJiIU6u2yH6snvqC6wKjzj/kKSww5hyMnaU6f+gNlVAV4L3CoXdFTRMxV62bbsHlbZG8oKNRpVxVyjTL1sUChBB43Jm5d1yyE6H2myzV6+DVAFH2ioD5QRn2lk3bDUCO2hynCNVlN0Z862v19gwgXgLcbA/2tJ5d3j58s8Q1XxtaNzqourjEWm7D0Qd9PT7iq8FswoIz6EnjZJ1CFUUc7dUPFHw8Pm33iXI1Hr7mqcKzZE+Ozur5a/xVrCicc6HgihIj3vRLVQCtLm9Papfze8QfKqCXgfuCdFa1FxpJX04TMhHFTfDL8efX2B2CiXjlUvwzKKJ1FHwSOLv/KdEQSCV1Gk4rda91sXWG8rotLVxV+brtQXNakuIX9O44QMu6kOXnLUzSe/SBI5+BAl3Q8va96zL29ajO1qgddVmuAd4HPGM/679i2gVbqeFob75he6tUWnQx15j3DeHaVi3cG6P/w/5DxXwOs1V9TYQYtKnh5lAAAAABJRU5ErkJggg==\" style=\"width:47px; height:47px;\"\u003e",
+  "iconSize": [47, 47],
+  "iconAnchor": [23.5, 23.5],
+  "className": "empty",
+});
+        
+    
+        var popup_25c00b489df481897b36a5225ecec7d2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9427ccde5ea86a586d3d5dfd0b5536eb = $(`<div id="html_9427ccde5ea86a586d3d5dfd0b5536eb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Viladecans</h3>             <p><strong>Total Votes:</strong> 29,164</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 11,771 (40.4%)</li><li>ERC-AM: 5,216 (17.9%)</li><li>Cs: 4,442 (15.2%)</li><li>PP: 996 (3.4%)</li><li>Others: 6,739 (23.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_25c00b489df481897b36a5225ecec7d2.setContent(html_9427ccde5ea86a586d3d5dfd0b5536eb);
+            
+        
+
+        marker_eaf12aa6b663815818010a70f28d7c7d.bindPopup(popup_25c00b489df481897b36a5225ecec7d2)
+        ;
+
+        
+    
+    
+            marker_eaf12aa6b663815818010a70f28d7c7d.bindTooltip(
+                `<div>
+                     Viladecans (29,164 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eaf12aa6b663815818010a70f28d7c7d.setIcon(div_icon_e73c96892c99ceb6a9f1f23d8ec3d741);
+            
+    
+            var marker_107136b480e9764f4f256ca71287c56a = L.marker(
+                [41.4910324, 2.1374969],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_c714d139b3615a200f1c540ba905aa25 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA9pJREFUeJzlmFtoHFUYx39nN5dtlsRJSdpqI15SjKYmbbTtQyG1+ODaiFDUglCEoMUqtPXBgqgg2gefChYFy4KCkdaX1hSqRVBoa4NUpae1mEIaSDfpTNNobEyyTbK3mSOzbi5tdnZnd5s14B8G5sw35+N3vnP7zhFKKRaTPCwyeVhkKsm3opRyObAOWAssrQlsi3pvjCSAS8CPdWp0aMGBpJR+YDvwegpkVkIMA7XTRUNovcAx4EAucK67TErZDlwFgvNg0ush4C0gZAjtQ0NodmMKj5CU0m71F0Ab+ckHvA08awitrU6N6nlHSEq5EugqAGauHgXOGkJrzgtISlkN/AA0cOeUbKAhtEdyBgI+ARwrFqAq4IghNJ9rICnl1tRsWiitBt5zBSSlFMB+Fl57DaEtywoEPA3UFwGoFHjJDdBOiqeX3QA9QfHUaAjNXg7SA0kpVwEaxVWzI1Bq8Sq26h23jpEIvqoyBuytMvVJJLfNOe+ptxm7SH5TAkwrT6BaR6Adpz1lwH1uPZWqWP+WyZMDr450+CoPLNH816O9Yx2xmli32ZgD0E1HIOBGttpCWaNrYpd+f3PsYPWmyM92F99/cnDzmbvFcGV5U0nDsv0lqJjqmzyVMMYPRRvMYbUii0s9E1BP2ipKJe4xh86/Nt5hvXjzWEs58dZZE+ET+paW1eah0RnoMlHvD5TWVzxVYll/KxnujEUmjscfUzGW5Ap0xR5KdgZoFyqsyZ5tE8f/3D32WWOtNbIhHeuV8AMXoqZvk2l55kVXCOHxLhWPazt83PVKeTjeZ3WNfxmtivxq2jNrehx2OwINvNui1uw7dXhtrLt57+inK5viPQ8D9uOoI6EX7B0c0/Samf4TQlSWrfK21uyrQCWUPnU20Rc+HIsuD430Z4oQF6892QnsxoXCcf9vxkRdMns0TY/rWSZKxL0VraX2syf7Sh1Up4Ff3Dg+cbUtMv1uWZ6MEUqj8VQmmgVodj+zTxCOMpVn8Kc/Nq6fKecQoZT2ENDD7oCC6iLwUSZv5/9q6VV4vLNA3lyAPiegd+SaMb4DfJfOoBSxzv6tdpI1o4R7oAvALiejM1BQ2V32PPD97aahqRXnwvGqW5Z8l112OekzoEdyB/oXagp4Bvhg7pg6GnrOzotvkYsuOwpsIKCHCju5BpORep+d4lvgYMQs918ea5iXFSQSjhG6BrxBQP/6zh6lg+ocsP6rze0bU7PQPqvVTJtN0zv3XmcwdYy2o9JFQHe9JIhC7od2NX38YOqoVN2+/ZupdS09UeC6PQkJ6Hk5Lgjof3E/5PmvAW7XPyuRYC0kYQEOAAAAAElFTkSuQmCC\" style=\"width:47px; height:47px;\"\u003e",
+  "iconSize": [47, 47],
+  "iconAnchor": [23.5, 23.5],
+  "className": "empty",
+});
+        
+    
+        var popup_0542241941702af0ff048c12f74fedcd = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c9d500372ef96fa4781b0c0a0ca38a1f = $(`<div id="html_c9d500372ef96fa4781b0c0a0ca38a1f" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Cerdanyola del Vallès</h3>             <p><strong>Total Votes:</strong> 28,355</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 8,688 (30.6%)</li><li>ERC-AM: 5,420 (19.1%)</li><li>JUNTS: 1,864 (6.6%)</li><li>Cs: 3,704 (13.1%)</li><li>PP: 1,604 (5.7%)</li><li>Others: 7,075 (25.0%)</li>             </ul>         </div>         </div>`)[0];
+                popup_0542241941702af0ff048c12f74fedcd.setContent(html_c9d500372ef96fa4781b0c0a0ca38a1f);
+            
+        
+
+        marker_107136b480e9764f4f256ca71287c56a.bindPopup(popup_0542241941702af0ff048c12f74fedcd)
+        ;
+
+        
+    
+    
+            marker_107136b480e9764f4f256ca71287c56a.bindTooltip(
+                `<div>
+                     Cerdanyola del Vallès (28,355 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_107136b480e9764f4f256ca71287c56a.setIcon(div_icon_c714d139b3615a200f1c540ba905aa25);
+            
+    
+            var marker_2a287a38cdff47d0c842aa1e0e53bf15 = L.marker(
+                [41.6079555, 2.2876008],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_ceda9456a76a8b5b7d9d596718fd5592 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABD5JREFUeJzlmG9sE2Ucx7/PdVuPrRu3MUDktjFBxhAQ3SAGZcwZMv+gMowYo3GQLWAclIREE/bCkBhfLWrURYOaiC80KotxYEJmgjDDBht7hLTAZhZgk7J2q2tvpGvatb3HPKZburJrr+0Wl/hJmt49fZ7nPnf3PL/n95QwxjCfEDDPEDDPSEu2IaU0B8A2AI8CyM6vfjlgGHX5APQCsMhM6ZtzIUqpCcBbAHYBKJvWnhAngMWTpzYi9QP4DsAxmSl2vdcgegY1pZQA2A/gPQD5M9XJf3q30/D36JRQBOMAmvhHZoo35TFEKc0GcAbA51oyccgCcBRAj41IJSkJUUpzwzJPInVKAVy0EWlzUkKU0kUAzgHYhNlDAvCLjUgPJCwE4EsAGzD7LA5LGXULPfbRH7vcfhRi7uCv7x1dQkXvX06ze0lT3Vmh7Hgf6VQZ+HSeCxptRFoWV2ij3/oMGCvixycHyJbaMySjz43fGYM6y0IigLq4Qq3DtXsvDD3rfMlzqj2dTQyMB8nCxi6h4ugl0usL4s9ZlqqLHRj3kwUARgHw73/5TXzc0iQduHs9ffUjAoFYv5adry5AGSHgUVtPYIxHaeQyE/2EVkXKcKp8HRtOO1594pptKzs49kXnD1ZP3pvt5O6wFxcxO0wLK9FCK7RamZjXdHjs2FbLncr1397a7f+xrcP/tdV/NqTClqJQcazFdaGeHkoCN4qPOw8Vh5xC6Ner1TSncs91qOrGJIUWxBKaMVhFozLicPnzBvrHVvkGe2VppMuaba7y9HtasASJkxFLaDi6NmPweoOZ/YOeQrfVvU685n6oyOXP4/HjvnCNwJHD39zOyTX6PS2BJHwwFEvoakBNu+HwLrX3KmtUi2v90r88hStVGB7W6q20ZKBj+f3OSoBA3Gyw+LpDiS43NzWFDnR+PAiAZ4Ir9fREiGqve6O1fPJcahB9jm6e/uiGx5wuzVnWbDXzCqf19lbz/LlbojEwFY8MS0h5mizwm9LLJZkpQ/EW10/19GTK8l6uqqBbIssIIULuIWMiQt9HF9wj1Gw19wA4H7sfFmjYd4K/2nvIWGcoIyaM6ZAZDac4sYXCHOGzGxqseXCws2D5yIzjjBCSJdUbr+gQeldmikeXULPVzJ/QBzNfUHXU17byrY8mmdvTV0NAMEaVkzJTPks0Y2wE0BZduPO59puiOMETf02IgSwz1aR3a/zMM4Y9Wm01hZqtZn6HLwBomSzLyvReeaqyZ9pA1iLnNSPPn6OxAKiQmeJOWCgsNQHgFQAfAmyiYd+JaSlHLIRMslYsN3CByBm1TWbKSMobRc7PB1/ftHNH+yc85YZOgna1y7F3nOdIb8tM+UlPG91CU7QV8P18DYAXY6QrLgAXWJB9dWeH55TMlBB0krhQJG0FJeF8ZlF41eaLswXVt5POkVIT+j/8PyT81wLR/ANH3nsVIVh5IQAAAABJRU5ErkJggg==\" style=\"width:47px; height:47px;\"\u003e",
+  "iconSize": [47, 47],
+  "iconAnchor": [23.5, 23.5],
+  "className": "empty",
+});
+        
+    
+        var popup_643ef238a269c3f9e0e4827f6d4c5a77 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2ac26fb04c2a40a8d62f613a1ad4a8d3 = $(`<div id="html_2ac26fb04c2a40a8d62f613a1ad4a8d3" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Granollers</h3>             <p><strong>Total Votes:</strong> 27,619</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 11,974 (43.4%)</li><li>ERC-AM: 4,206 (15.2%)</li><li>JUNTS: 3,600 (13.0%)</li><li>Cs: 2,538 (9.2%)</li><li>PP: 832 (3.0%)</li><li>Others: 4,469 (16.2%)</li>             </ul>         </div>         </div>`)[0];
+                popup_643ef238a269c3f9e0e4827f6d4c5a77.setContent(html_2ac26fb04c2a40a8d62f613a1ad4a8d3);
+            
+        
+
+        marker_2a287a38cdff47d0c842aa1e0e53bf15.bindPopup(popup_643ef238a269c3f9e0e4827f6d4c5a77)
+        ;
+
+        
+    
+    
+            marker_2a287a38cdff47d0c842aa1e0e53bf15.bindTooltip(
+                `<div>
+                     Granollers (27,619 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2a287a38cdff47d0c842aa1e0e53bf15.setIcon(div_icon_ceda9456a76a8b5b7d9d596718fd5592);
+            
+    
+            var marker_203da9f99a025bdf848d52f20c772854 = L.marker(
+                [41.2861022, 1.9824173],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_d28c64f15dc5655ae502ed5b40b9bd06 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABBFJREFUeJzdmH9sE2UYx7/P/Sjrj3Wlrms7kVEVSiZLU1jGJKgRhWEccSbGaAyJ0ZkpRv4zBqsJ/lg0hmggTJzB4D8qMtHwDyYSskjQOfRthSKCc0LpsRG2jo2xMTbaMy/psKu7tldXXfwkTe/6vu/TT+96z/PckaqqmC0ImEUImEVI+SxijC0HsBZAFQCvqPRESxvWewAMAQgCaANwaJ46GC+IDGNMBvAcgBcA3J46phoMYwAWJ3eXJ+ddUMj2FYAd89TBozN2mhhj9wE4DmBrukgGygA0AfhJIVuzQjbDP5ZhjL0E4BsAi5Af/Oi/DKBdIZszbxnG2OsA3p6hP/oKAJ0K2Ry6ZRhjTwJ4FTNLBYCPdMkwxviVsQOFYZ1CtqacZQBsA1CEwvGuQjZvVhnGWDWAehQWE4DNWWUANOLf4SGFbFbNpMcY43KPFtKA5mDUtEo+bn5QHhdvojUAvphWpiVM3voF6i9uE9yyAA/RzNQuwU4XLOvkU6b75SKxlKqIqCY5dEpT5uA58h08Ryv59hxRHamciz+WOdSBJXZILhNcegTlhUKXpcHQY6yVSsmESiLiGTmdBZlq042EdDVO5lA/qkL9dGOwSFQvV9rRvcyhDl4XNKJcEpIBBVwrqpXCxQ3ysKFS9JBECwHwVybMmWR4wdNkLE6WYB98wb6/BI2iOrxURmzrrvLfS53DfujDkroj6JGZjitxKg6OFnuO7nUrXd23nIA+xEwyA8iDq2QoudfZfsf7rQ87D3f4ftCx9LdMMkfykUlAsAukuh67tS28e+/qmk/b1nyb49Kgpkwk4O8D8LNuGyJ5UCgZqnH8uNQiXb74fafvni3bnjiUSFC2Tq9dUybJ57plAJwXyy4Swdro3cWbMJw5W373K28+GxobMwxrLDkJ4LtsMi0A+BHSRY/ouv6lt1m7V7iMvWf49qVLlupNr23ojQ1Ye6dZ0oy6aCKjTCTg50Hf0CujSO5R/k4EuWnxzvOTn09MyIs2v/UMdZ+++deU6V0APkuPoZVNPwBwTI9MVCofn9x2GPtrvSUnw5P7qiq43mt5fH7HkSX8AuFH43nUReM5yUQC/gleVXmHn6tMj+Secmv6tPfjtBlk/mTP2uqvD9y5AXXRA9PF0KwzkYCfn/fVueaeXrGMpjQs0pWqlc7DnWlC7zywZU+rVoyMRS8S8PNTxVN81rwRE+x/uxV5xPNlmYD4tWRmb9we3rgpU4ysFTgS8J8FsArAiwBGtOYNCVbevU1BEuKe+vn7P+Q/aHt4o2YjPgnpeQpR0RyaC+ApAOsB+FLHDOr46a5oLW/kOTEA+wDsRKvakWt8XTKpVDSH7MkbO/5ymxMjQyeUu2LJy/YYWtUpOaSgMv/7RyLCfy2Qyp84QjG35C1H7AAAAABJRU5ErkJggg==\" style=\"width:46px; height:46px;\"\u003e",
+  "iconSize": [46, 46],
+  "iconAnchor": [23.0, 23.0],
+  "className": "empty",
+});
+        
+    
+        var popup_ce59c03d4e7c8e7c741fe56a7ec44f95 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d8152d1d3a5b340ea7ea3cafb1c7a68c = $(`<div id="html_d8152d1d3a5b340ea7ea3cafb1c7a68c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Castelldefels</h3>             <p><strong>Total Votes:</strong> 26,773</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 5,430 (20.3%)</li><li>ERC-AM: 4,290 (16.0%)</li><li>JUNTS: 1,525 (5.7%)</li><li>Cs: 1,777 (6.6%)</li><li>PP: 7,904 (29.5%)</li><li>Others: 5,847 (21.8%)</li>             </ul>         </div>         </div>`)[0];
+                popup_ce59c03d4e7c8e7c741fe56a7ec44f95.setContent(html_d8152d1d3a5b340ea7ea3cafb1c7a68c);
+            
+        
+
+        marker_203da9f99a025bdf848d52f20c772854.bindPopup(popup_ce59c03d4e7c8e7c741fe56a7ec44f95)
+        ;
+
+        
+    
+    
+            marker_203da9f99a025bdf848d52f20c772854.bindTooltip(
+                `<div>
+                     Castelldefels (26,773 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_203da9f99a025bdf848d52f20c772854.setIcon(div_icon_d28c64f15dc5655ae502ed5b40b9bd06);
+            
+    
+            var marker_444a0a5eb63f8ac4811b05da24d99735 = L.marker(
+                [41.5393484, 2.2130934],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_2e55453d0ff729041e0ba6485a07a671 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA4BJREFUeJztmF1oW2UYx39PmrbZujVnbiBt02Vu1FLqNtyLY2L9dgiiIKIibuKFF0MvOhkWJvOqVxuoTKxCFUGZ80IQNkEUXPGjSre5Z4gVJhvMac+aVqFEaZcmXXPkbT5Y0541ydLSC/83OScnz/v+8rxf/+eI53ksBwVYJgreSLCqrgIi4f3dEjrxXRIYiXjxK4sOoqo2gzuB54AdwEZA0k74ZPY+5YrzI/AV8GXEiw9WfGhU9Vng92wnu4BNFqLgZzXA/cAh4BdXnK9dcbZWJCOq2gQcyXZQqh4CzrjiHAS6I158qqyMqOptwOkyIa79s68BR11xfPvzfaCqUeAboJHK6Cng3ZJAVDUEfAaso7La44rTXTQImVQaFkcH5pvAc0BU9Wbg5UWCyPV5aEEQYC9Qx+LqYVecLQuBPMnSaJcviKq2AS1LBGKul5FtSwQxp69CkOgSgqxxxdngB7K6nBZT1cFEmTBhP5B/y2ntwi2S+L75gT4PSnVZCT+QsVIhrqZxh1KB+nvvOVXb09p1djy46u8Swof9QH4uFWRonEsJCXlNdcMd29efSb7T+grn6tu1iNDRiBcf9wNRIP+wGJ0cFRISStvrJzYca18bGkseb35626fR3d9OE/A99oFj197MAjHGXAW+KAXkhxjRyYA9I0GEcNfW18dEvPTF1bfe91bb/vNjNTcN+YR+5AuS1ZsUqek0l2NXpNkOTe67umBiy/MtR/rtdaoq1P5ey976n9buGCgIPR/x4gPXBTHGWCPUVwyIO8El+zkptbPbWHe2ozX8W8avioT7Gh6588NNe/qnpDpnrN8o1ga8CCzoxk+NMjM3JiUzNDmJEHyprdcJVSXy28HIiqa7D7e9GhtaGf0EeL8oEGPMBWtiWGBf6I/J+gxIbaGJpiqQbt63+fAsFz8dCNYd3fhCV8SLe0VbRWPMx9nMzAsz7RG7PCEzR0JSauaAWDWuHLnrwcY+W15Y/WVLkZ7BzvzeURSIlTGmF9g93447PMHF3HVSanzbeTz6+eaGFbETQEfPYOevZdc1xhg7ptba2cbyOp2dH1Ypn4wAUyK8feD2g4/2DHba4b6xSs8YY1fHTlXdDuwDHuuPSSQPQnVVQcgf2VroA3q9mZVV0ZLTZJb2M6pa++e43AHYuqdhTfofu8KOZ+fBAL3eOUqU/P9aokDL5v3IfzRpDuYBmoh1AAAAAElFTkSuQmCC\" style=\"width:45px; height:45px;\"\u003e",
+  "iconSize": [45, 45],
+  "iconAnchor": [22.5, 22.5],
+  "className": "empty",
+});
+        
+    
+        var popup_9dede8d25699c938a664d045d42a7edc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_954acbe638fa9cf4a76620bfeab5e317 = $(`<div id="html_954acbe638fa9cf4a76620bfeab5e317" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Mollet del Vallès</h3>             <p><strong>Total Votes:</strong> 22,593</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 7,921 (35.1%)</li><li>JUNTS: 1,142 (5.1%)</li><li>Cs: 2,135 (9.4%)</li><li>PP: 970 (4.3%)</li><li>Others: 10,425 (46.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_9dede8d25699c938a664d045d42a7edc.setContent(html_954acbe638fa9cf4a76620bfeab5e317);
+            
+        
+
+        marker_444a0a5eb63f8ac4811b05da24d99735.bindPopup(popup_9dede8d25699c938a664d045d42a7edc)
+        ;
+
+        
+    
+    
+            marker_444a0a5eb63f8ac4811b05da24d99735.bindTooltip(
+                `<div>
+                     Mollet del Vallès (22,593 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_444a0a5eb63f8ac4811b05da24d99735.setIcon(div_icon_2e55453d0ff729041e0ba6485a07a671);
+            
+    
+            var marker_0a6fecb5def1df7a7678c0d7cf109067 = L.marker(
+                [41.3812851, 2.0446381],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_ce4316f646c5013248abeaed2e53884f = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA2BJREFUeJzdmF1oHEUcwH//zTXplSa3McZaPIkYUWl8qF0ihVLjR/FA0FJQilrwoRQflRZMS6ESUPSl1ceUIvgSfFAqWhGKVWoqJaJjiin1o+nnbk1j05ozd7mPJjcy9C6k6e3d3uUSiz8YuJ27mf3Nzn9m/3OiteZ2wOI2ITSfxkqpu4CmSHdP/dJv+jPA+agen14UEaVUJ/BCvtxv6nLN9gCwFkh5Yg8B3wIfRvX4cE1FlFICbAN2AfeV+GkYeCxfuj2xvwbeiOrxX+cdI0qpu4EjwP4yEnMx8s8AJzyxezyxS96r5JdKqTXAj8BTVE89sAc46IndULGIUmolcBiIUhs2Ap94YktgEXUjJj4C7qS2PAe8GVgEeD0/vwvB257Yj5YVUUqZJfkeC4dZqW+VFQG2Ar5BVSOe98R+pJzIKyw8JgY3+4oopR4E2lgcNviKAI+zeHTO3lfmbvFNC3lnCZOwIhKva5aJuhYrZTXKCuBiMZHr1dzAWhW6EtnacMy6Q3J1zYJlS8haLkussISlgWWEaEKwRWQ5YEoBu2YiyWzuRDuHwo0vLl1fxRgSM4OZj4jWJPq+H75ij449RHWM+IlcqKSXz84xuGHk4wiae/k7Gzj3yOMSc1N+Iv2zH1cprqX5qe93Ht6U/Mq8oeFMwqtQxOQqFBVxHCcLfFmuB62J7xyQezozg6dCTN+Is5FUS4UiX/iK5OmlDH2n5eRYWlbuiPe2zlRe1x2kp8cIxmngUEkRx3G+A4769TA6ycDBs7KuXmfPrc2oVTf1dT75W0CRd4m5uZIieV4CLjOHnGZs14C0m8/PTh65NbAvJIPkwEfzuQ5lRRzHuZx/KU3Nrj9wSobHs9KK1np7vPeBWxompzvIaRNnfvwJbCHm6sCpouM4ZgV1F64vTnD8sCvmyICd+2eobcorlkI2cilljhPFMIN7kph7qeLk2XGcfcDLUznO7P5BOgr1WxKfxn0bnU0UW/4KWE/M/cOvmQQ5+67Z+3P71bSY48TTaJ35xXsiHdETkeI94rEpWnhak8AHQA8xt9SUBRMp0PbOYNfqzNDGz0df3Tbn5XUzXa39tDQcB94n5v5FACoSmeE1MWeVLsAErNlLlgBmxGb+j7Ffm32iIqoT+T//LWH91wIF/gV45BUrl9pFXgAAAABJRU5ErkJggg==\" style=\"width:45px; height:45px;\"\u003e",
+  "iconSize": [45, 45],
+  "iconAnchor": [22.5, 22.5],
+  "className": "empty",
+});
+        
+    
+        var popup_b7dae3916cd556fcbd0ff58da6186b8a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_db25dc08564b581b49963d7a78329b8a = $(`<div id="html_db25dc08564b581b49963d7a78329b8a" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Feliu de Llobregat</h3>             <p><strong>Total Votes:</strong> 22,235</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 5,307 (23.9%)</li><li>ERC-AM: 4,777 (21.5%)</li><li>Cs: 2,265 (10.2%)</li><li>PP: 882 (4.0%)</li><li>Others: 9,004 (40.5%)</li>             </ul>         </div>         </div>`)[0];
+                popup_b7dae3916cd556fcbd0ff58da6186b8a.setContent(html_db25dc08564b581b49963d7a78329b8a);
+            
+        
+
+        marker_0a6fecb5def1df7a7678c0d7cf109067.bindPopup(popup_b7dae3916cd556fcbd0ff58da6186b8a)
+        ;
+
+        
+    
+    
+            marker_0a6fecb5def1df7a7678c0d7cf109067.bindTooltip(
+                `<div>
+                     Sant Feliu de Llobregat (22,235 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0a6fecb5def1df7a7678c0d7cf109067.setIcon(div_icon_ce4316f646c5013248abeaed2e53884f);
+            
+    
+            var marker_99d4463b92d58a475a261183a63d5b46 = L.marker(
+                [41.3776796, 2.0899722],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_cc494b4322608289c2f63899f90de8fb = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA1FJREFUeJzdmF1oU1ccwH//tE1bq+3t8Gv0QnUbMiZDtuvoFKU6cSBMX3ywssEGG/i2F9GBY2yKH0OQbSDKXiYKPg0siBNU9lJq/TyNFqe4B2HrXePs1LvZrkmb3COnJiW2vclN1lTZDwI5Jzknv/M/H/9zI1prngciPCdU/pfGSqm5QH3DZzujNT93JIDfbO2lyy6ilBLgLWBj5vWyqfcbrYvA20DSFesmcBo4bmvv1pRPjVLqEzNi4BKwPSsxjmrgDeBz4KYr1mlXrMVTEhGl1HwzOuAdimcd8K4r1l7gK1t7fkkRUUotBa6WKJGlAvgCaHfFqi5aRCk1DzgFNDE1bACOumJJaBH1ZFEeA4zMVLIJ+DK0CLDNzC3lYYcr1msFRZRSC4HdlI8q4JuCIsDHmS+Xk7WuWIsKiXxA+ZHMgCcXUUq9CjQzPawNFAGWM328nnuujBepnUYRc6rPCRKJlNJjOj08UqLMrKAflmJ7up/gcu2MjpJSvxlDkIguqhdNfGfnYMWCuviq6NzU7RJEfg8SuR62B61J7+uWe4sexQZMuXHV0P0iJXpt7SWCRC4Cg2F66YzT2d0vS94fOGGZcmWD31Jppc19JSxncgtPiTiOMwycLNSDl6T72x5Zidb/tA51jeYNESpeWD00FuoQnAoUyXCEPPia/q1dYmskYqf7blWRGksHVbPTLRV1fpzCmMj9lFfEcZxzQVHRGv/ANel9mBRzaWb94FkTwTFEiDa2/vtrCJFdtvZSeUUymDwwYWRX7tFx4U95M1vePNhuMvVTVDelnUi1/5D8a2NC1CcVcRznL+DD3O08MELP/piszJajOnmnOeXa49uKMNNakQjafWZwH9nam3BMBJ6kzpMp2mHe+5oHW8/LHB8x989Rliav9wa1rX1pZIlU6dFtnUMfsNrW3t3J2uQ90h3H+RpoO3xDfulPyIu5n7UNtM8MaidCY0NLQuVUxYBWW3uBh56EefZt3hMzl5hDwJrRCq2HbvcukxqGa4LaaJ/4Hz/U1+HLwcyjRN58FEokS/OemFkjnzal+uZ39b23gmDuAD8+6ol+N+tCMsx2Lk5kjC1i7hEtwCuAmbJ64O9M7ujie21EiqI0kf/z3xKRZy2Q5TEF9BUqZl/DUwAAAABJRU5ErkJggg==\" style=\"width:45px; height:45px;\"\u003e",
+  "iconSize": [45, 45],
+  "iconAnchor": [22.5, 22.5],
+  "className": "empty",
+});
+        
+    
+        var popup_96c1603a55e96b4629712dfb55f29fd4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b12f2b2e01b646602dca361d1b8b50ac = $(`<div id="html_b12f2b2e01b646602dca361d1b8b50ac" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Esplugues de Llobregat</h3>             <p><strong>Total Votes:</strong> 22,168</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 9,525 (43.0%)</li><li>Cs: 2,527 (11.4%)</li><li>PP: 1,283 (5.8%)</li><li>Others: 8,833 (39.8%)</li>             </ul>         </div>         </div>`)[0];
+                popup_96c1603a55e96b4629712dfb55f29fd4.setContent(html_b12f2b2e01b646602dca361d1b8b50ac);
+            
+        
+
+        marker_99d4463b92d58a475a261183a63d5b46.bindPopup(popup_96c1603a55e96b4629712dfb55f29fd4)
+        ;
+
+        
+    
+    
+            marker_99d4463b92d58a475a261183a63d5b46.bindTooltip(
+                `<div>
+                     Esplugues de Llobregat (22,168 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99d4463b92d58a475a261183a63d5b46.setIcon(div_icon_cc494b4322608289c2f63899f90de8fb);
+            
+    
+            var marker_fe5d1ca71a37d070e9c971f4b4e8bc83 = L.marker(
+                [41.3050933, 2.0063126],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_690d62d55e76f1eb1a14b3b289a63488 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA3xJREFUeJzdl1tsDFEYx//fbO12ibVU28XQJipxCVUT4pJG6pK4JG7xgIfShIiQakRUUklD8CIloXgQRLy4RCSuL9oo1dblCF3XNsLqVrbKdlp62erukVO2Nu2MvdiW+L/MOXPON/M753xz5n+Ic46/LQn/gGIiCWKM9QMwE8AkeDymxFmLxGAaAVQBKJG56usVCMaYAcAaAMsBzAVg6WwwGpu6yj/kcpL1IoBzAMplrgZdbwolJxhjGQCOAhjXo5HzpsSp8wIhAmUHkClz9UnEOcEYI8ZYAYAiTYDgmgjgvpOsWyKGAHAIwDYxY4hcRgBHnGQtcJKVwoJgjOUB2IroSQxmfcgQjLEVAPYi+jrgJOvwoBCMMRMAkQe9oUEAjgWFALAOQDJ6T0udZF0WDGIrel9ZuhCMscQIP8VwNd9JVrMmBIA09I0EwGQ9iCnoO+lCpPQhxCA9iPZwnsI5WpyvKktcsbbXEUDU6UG4Q32Cx4vq/DKPPaM0e3ZpypwP0YR4G0p0tYq7a29h+LY3O2MtvNlCFkPC2wGj7dGCuPO7KM7RdOolleVWSOnTWyoezW27myru2/q7vlwZudIbBoAwPQ5NCEVRxNpWaEW1duBFdik1XHPQzFhfa9XJ+pwZ/jabuc7TGjNg8kvLBBYiRJHM1U+aED91Gt1k/4yStUWUUttMSeDcc+HjBjKiQ/yiO5Vg/th5vTliWdcGFEQnAitaEOcBqKLg43AX2ulB/kNpdgenzpeubr5ckdr+YkxgwBCTW3hOtBtM4x8Pmao5kwF6DuDSbyEURRGGNefrN1RuKiFPcS1N87cN9jY82e/el949ZmC/rwP95SLbwngO0jO6wkvmdjfCmn5CUZQzWcX0rL6Nhv0K541XXJnxEniPGJPBE+cve6WY0WXx6eU6EDkyV6+H7Ky8nIQLKvbXdzQWPhvlrR2h1VeCL4Hg6xrdvYSMJC8Zum98+TJXD2vH68iRl9YKYLHIkeRv78s3N52epdeXCDFWY+OP7BS5RAb5duL8wNwokLm6JyKj68hLa3Pkpa26VJd1PNhuGm+u/xxYfxQ3fWy7ZBRJuETm6vY/PgYOPe4+C2DUT8PzRquPzez6ElB9yknafXD8LkXm6tWoHH56aCONBSCWJ0l8NMLW36hZ8OpGzUIxG3cK7dnvEIYig/gfT+XS3wYQ7/8OJ+4tjOj6kSsAAAAASUVORK5CYII=\" style=\"width:44px; height:44px;\"\u003e",
+  "iconSize": [44, 44],
+  "iconAnchor": [22.0, 22.0],
+  "className": "empty",
+});
+        
+    
+        var popup_496378de8830f9c5beea99632b7f61db = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_361129eee608c038fd02fc5e20c8d729 = $(`<div id="html_361129eee608c038fd02fc5e20c8d729" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Gavà</h3>             <p><strong>Total Votes:</strong> 20,627</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 8,726 (42.3%)</li><li>JUNTS: 1,222 (5.9%)</li><li>Cs: 2,363 (11.5%)</li><li>PP: 1,069 (5.2%)</li><li>Others: 7,247 (35.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_496378de8830f9c5beea99632b7f61db.setContent(html_361129eee608c038fd02fc5e20c8d729);
+            
+        
+
+        marker_fe5d1ca71a37d070e9c971f4b4e8bc83.bindPopup(popup_496378de8830f9c5beea99632b7f61db)
+        ;
+
+        
+    
+    
+            marker_fe5d1ca71a37d070e9c971f4b4e8bc83.bindTooltip(
+                `<div>
+                     Gavà (20,627 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fe5d1ca71a37d070e9c971f4b4e8bc83.setIcon(div_icon_690d62d55e76f1eb1a14b3b289a63488);
+            
+    
+            var marker_cd54aaaa0847a5a722d78b29d63dcdea = L.marker(
+                [41.5790182, 1.617346],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_6bb5a430f2016b94fd1668990a15ebbc = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA1hJREFUeJzdl11Mk1cYgJ+vEzJkQZcJk3S1adwS0JQp06mJRrIla4hosgvJbrYETeRCUowxc+Iu5qKb8UbDmk2igyxe7EIviVJjFJVEmR5AKiQoKoNWgkUYbW1qW76zfIqkw5b+UTV7kpP09Gv7Pjnve07fo0gped3oeAOYl8qXhBDZwCqgVJHBnNLHlVnAI8DxbFiG/BmREEK8BWwFdgDrgLe19yVZHiAv4qMB7IZmoAnL0NlEfltJpCaEEF8Ax4Dilx5K6fnk8ZeREpFcBXZhGepIqyaEEPuAlqgC8dkAtGM31KaUDvF8+RuBb1IIPjPGMeyGQixD3yW7EkfmQCCSvdgN1QlLCCEqgN3MPTbshhVxJYQQ2nY7TmbQUlMfVwKoBPRkjg3YDeXxJGrJPFUxJYQQHwKrX4HEFuyG+VElgDWZjj7hyXXf7Cy63dyyviTWOVE8V8FUVZl8OLxooK/fONJ31xhyugpyvb75Ril1+YA2llXA9WgS+akEDASyvfcG9AN9d4zj/fcNyoj73feePs02gbIU0EY0lrx4MVPCl0hQKVH9YXoHH/3jlJfagk0XrJtBMSfpPh5LwjNLYM+wn55Wl6K2OsOLvnL/Mf71yOm8Qx11a0FRSJ6BWBLDkZOQyoPeMQZbBpUFN90sn1Qxb/afF1fGfvxAF1LD+7sOmiS6VBuj6BJhlcu+EB3XRvCe+1sxOp8oJsCElOGVQce1BveeovfV0Y2Tqs75feeBgqCaPb3NkkTrHx7E7CeMhzr7I4tJH374V6N7V35RqN80lZaJw7e+HXX59bEKLhEu2hzWz2f7Kz8J/PyO6uv5ZbQu/Fmg7dNpfUnoRN/2+y6/fiXp0RA5iSbxa9340bJq7ynLzAfNg5vau8dK1qcp0AOcid/eVSvbp1Zkmo7RFa2Nd6rK0hTQglXYHNb/9J7RK7tB/g78+WLqelLYNgcCGrtnCsTrtrcBhb5Q7sIj3Xum6yINDtscVq1ZfonYe7xBBoDyn7r23piU87R7RjrYbA6r1jCn3vLXmOu13vAHYHEKB9LOaClIWkKjxlyfNdV1WYHZ0qMCvcBvWnHbHNYgcUhYIpIac/3HgHZWfAQsBHKAu8/uGHDD5rB6SYKUJP6Xt3Ld6xbQ4v8LcgdHq2Tc0l8AAAAASUVORK5CYII=\" style=\"width:44px; height:44px;\"\u003e",
+  "iconSize": [44, 44],
+  "iconAnchor": [22.0, 22.0],
+  "className": "empty",
+});
+        
+    
+        var popup_320827ab8d6955fbe54caac8845f5834 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_377ecf48c0e54678839467c4b2bab01c = $(`<div id="html_377ecf48c0e54678839467c4b2bab01c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Igualada</h3>             <p><strong>Total Votes:</strong> 19,103</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>ERC-AM: 4,217 (22.1%)</li><li>JUNTS: 7,503 (39.3%)</li><li>Cs: 1,082 (5.7%)</li><li>PP: 651 (3.4%)</li><li>Others: 5,650 (29.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_320827ab8d6955fbe54caac8845f5834.setContent(html_377ecf48c0e54678839467c4b2bab01c);
+            
+        
+
+        marker_cd54aaaa0847a5a722d78b29d63dcdea.bindPopup(popup_320827ab8d6955fbe54caac8845f5834)
+        ;
+
+        
+    
+    
+            marker_cd54aaaa0847a5a722d78b29d63dcdea.bindTooltip(
+                `<div>
+                     Igualada (19,103 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cd54aaaa0847a5a722d78b29d63dcdea.setIcon(div_icon_6bb5a430f2016b94fd1668990a15ebbc);
+            
+    
+            var marker_56082bea5cf1d7b11f6a54d382390b19 = L.marker(
+                [41.3463825, 1.6995213],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_5cd6ac1777356da3799183a2ca0743e2 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA7lJREFUeJzdl11sU1UcwH/ntmu7sbIOELcx9sGKbMW6ucVhIEoyZxqd+AGCiU8mGo1x1hfjgw8aEk2MDz6QvigJi0oMxGAIwQcTMBMGIniD2K0IYVm3lrERaMs+7Jauu+aW+7B1a3tv2QLxl5z03tNz7vmd8z/3nHuEoijcbyQeACQeAMxGK8iyvAp4EXgOWGvt7hlyfPhpNXAbOAH8VKnERpdFQpbl14E3gafn1lOKin4Dtmu3OwFfWDjOAD8A+yuVWPKeJWRZVnt5AGgzEOKntPRWWDjeqFRivbkqZBN4Vv0xIJBOC3AuLBy785KQZbkJOAas5t5YARwOC0eHIQlZllcCPwI2lgYBdIWFo1y3BHfngJOl5SHg+7BwLGhzQYYsy+qw7WJ5eAZ4O6cE0Mny8m5WierPL5a9f1ps6rlBd2KWgaVu3VwhQo4PrNGZb9e55+WnlWu7Pilqv7okatWbzaVK4LWNyi1XKQ2SSMXUeMPV0oB9t2WocJt5rVQoGoD1wPOAf1GJJ6cuVPVaXIFJUViuCKm0Lypcn5wXSCjJreX8+eoGZXp9MU1CpF67jBQ4pWv2PZawbYt5nWQVG4FUp+ZQn3EkDt98pxFwqdd3hP3OFYtzuNdSH/MXNExfHawz7Q2Xr0wUrBhtrzINd9RgW2VFXUtSWBqkK/Y91hFbi6lKWIQzx9u1IaMEc9aFEmW8pHX6opoWPGEqaKm4fPaRgGxq+9khSmZ2HS8eEmaxCVCTHkzZJCYXq6EozCZmC/qv/1sx4o88Kl2KNFaOxh9uBppBmdnavCZUUaZuorqZziYR1hqdGE8UX+0fqxv/K9JYHIg2OOPJIjW2akpDmL8+sPPm3o/3p8c9G4MZJY4Gd5y+Nlb38uBEtVNBUnuqi9sRx5bAPzV/u+qDj+msciHjOnFiuP334EStKjAvZnroOrhD3R/00p1Rwuf3RrSNyzDxKZv71JmmczqKnscTupxRQuMzdVqQB0eOtZUlk1IiR7Ev0zMWSPj83j7gUD4SyaSp5ujx7WezFPkFT+hITgmN94AgedDd07I5HreMLfLXrcU2r4wSPr83CrwAxIxKKIpY892hjvQVLp56nic0YOjzznc3LNuAeZNID/6+utZI1H5Dux0B2vGE/sjrQ9fn9waAJ4CDxjRE4Tddr/Sn5oD6sesJZZsnCL1n0U73vlbgI+ClHEcF9e1QzyJf+Pzek7qUjR6IO937Vmuj8zjg1ja9uDbsp4BffX7vuJFnGpb43x6IpfstoLb/H++4KN1lbWK3AAAAAElFTkSuQmCC\" style=\"width:43px; height:43px;\"\u003e",
+  "iconSize": [43, 43],
+  "iconAnchor": [21.5, 21.5],
+  "className": "empty",
+});
+        
+    
+        var popup_1576feac995503c173ccbdcc0c32d25f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_00d3e5e2b4480e208314e02ee60243d4 = $(`<div id="html_00d3e5e2b4480e208314e02ee60243d4" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Vilafranca del Penedès</h3>             <p><strong>Total Votes:</strong> 18,146</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 3,625 (20.0%)</li><li>ERC-AM: 3,999 (22.0%)</li><li>JUNTS: 5,339 (29.4%)</li><li>Cs: 1,040 (5.7%)</li><li>PP: 598 (3.3%)</li><li>Others: 3,545 (19.5%)</li>             </ul>         </div>         </div>`)[0];
+                popup_1576feac995503c173ccbdcc0c32d25f.setContent(html_00d3e5e2b4480e208314e02ee60243d4);
+            
+        
+
+        marker_56082bea5cf1d7b11f6a54d382390b19.bindPopup(popup_1576feac995503c173ccbdcc0c32d25f)
+        ;
+
+        
+    
+    
+            marker_56082bea5cf1d7b11f6a54d382390b19.bindTooltip(
+                `<div>
+                     Vilafranca del Penedès (18,146 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_56082bea5cf1d7b11f6a54d382390b19.setIcon(div_icon_5cd6ac1777356da3799183a2ca0743e2);
+            
+    
+            var marker_4ee0a2106880a9ece10fd03fad8997cc = L.marker(
+                [41.9302021, 2.2545943],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_4024f5ab94cc0317734d8124dfc5409c = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAw5JREFUeJzdl9lvDVEYwH9n7sxdekuFaBTXrq69HLW/oLZKCF54QETiRSKRWMKDJ/4FIREkeLC8NcKliljT+IqGRBGpPVFLcVW0dOTIlVTvOq2G+CUzyVm+zG/mzPnmG+W6Ln8bi38Ai38A22uAiPQB5gFzgQGBi1ef9Ni8cwjwDLgFnO/vNkqXSIjIcmAHMAFQv/rdvNAlYEaiucKcvuwqOhYqtc8AR5n/rKXTyyEig0WkCjgJTGwrkAoVIh6c5FsEHARuEosM7JSEiEwGbgOzyJFuK/23lFL5ieY4oJpYZEaHJERkLHAa6I4H8hf7C9t1mXYVscgKTxIiMgg4C/T0IhAo8d2zgmpEiiE/cIBYZFTOEsAewOwCTxSsDzRmGA4Bh4lFkq6Z1CEiZcBCrwKqG43OYMu8uJkw42uzSgDb6QAFqwK1Silzt9nYlFFCRHp42QltCS9w+uc4dTSxSN+0EsCUbHkgFcGp9h3lVyZr5kpZNgnPFKwLNHkMMSk/bdoe69kg3/fN7q2meYwamknC8urwrXhYr8cPp5/r97QyFHRabBzLh9+ycJSD3/Lj/DyC2CqEY+VhqzBKqUwSn71KtNrhksaR20oahm+5/+bJg8cf71SGy95VjCpsfds7Q1ic+eklXtJBHNuKFg2NRvsMiX6tbtpQc/1hQ03To5v+1fHj/SY03y1uN/1V20Z7iRt0EqUIFIXVtGUlhXwfX/7q+uvyus11zfHu7+viqz6dyCtvqhwTpLnmt5i2NaaIBIDXXj9a2XBd3HgLtRX1Kl5R7xbPjlfN3Lt7y4OUEgYROQSsoYv43sqFyaV6drbdsJ8uxGexr31fkoTW+gpwpIscTgHHs0ok2AjU82d5YZZZa+3mJKG1fg8sTbykf4KvwEqt9dtUg2kzpNba1JalQG0nBd4Ac7TWl9NNyJimtdZPE+V80jrmyDlgvNb6aqZJSVs0HSJinspWYIlJkFkevfk92KO1vkYO5CzxCxEx3wQjZAraKGAKlA/Ac+AecEZr3YAHPEv8tz/E1t8WMNf/AY+w2f4DHuVSAAAAAElFTkSuQmCC\" style=\"width:43px; height:43px;\"\u003e",
+  "iconSize": [43, 43],
+  "iconAnchor": [21.5, 21.5],
+  "className": "empty",
+});
+        
+    
+        var popup_09eb5675728892596dcdc817cdbd4d9d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cf8d530c0f362880185e49c85ca4df41 = $(`<div id="html_cf8d530c0f362880185e49c85ca4df41" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Vic</h3>             <p><strong>Total Votes:</strong> 17,728</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,089 (6.1%)</li><li>ERC-AM: 3,472 (19.6%)</li><li>Cs: 690 (3.9%)</li><li>PP: 212 (1.2%)</li><li>Others: 12,265 (69.2%)</li>             </ul>         </div>         </div>`)[0];
+                popup_09eb5675728892596dcdc817cdbd4d9d.setContent(html_cf8d530c0f362880185e49c85ca4df41);
+            
+        
+
+        marker_4ee0a2106880a9ece10fd03fad8997cc.bindPopup(popup_09eb5675728892596dcdc817cdbd4d9d)
+        ;
+
+        
+    
+    
+            marker_4ee0a2106880a9ece10fd03fad8997cc.bindTooltip(
+                `<div>
+                     Vic (17,728 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ee0a2106880a9ece10fd03fad8997cc.setIcon(div_icon_4024f5ab94cc0317734d8124dfc5409c);
+            
+    
+            var marker_02350b74139f557a9a35b2abfe38e582 = L.marker(
+                [41.3667951, 2.0570346],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_06b66d877e091748514fa601a1d1eec4 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAypJREFUeJzdl0toE0EYgL/ZbJImRl21aoqpioivCj6pj2qt9RFRqKgXj97Ei6B4EAQvnj15sRdREARviqIivtuq6GAFHygeiomPUrGxramJSUbGRu0ju0lao+IHA9mZzM63M//O/iOUUvxtDP4BDP4BzGI7SClnA+uAxcAs783mNuvA4RnAK+AxcD2kYo9LIiGl3AHsBWr71yu/LwPUZMt3osJ6BBwDToZUTI1YQko5DTgObCpUGFgEnAB2R4W1O9/MOMaElFI/dWuRAv1ZBtyNCmv7sCSklGuAy4DFyPABZ6PC2laUhJRyku6YvcHvwAWcigprTsES9K2nFvmdjAbORIUl8kpIKeuALZSGhcDOvBLAAUrLIUcJKWU5sLnEElWDY2PwTNQCQ9asBDQ4Sazgz7DAVqIrSSCteK8UXUqRKqFEpe22veu6EQSCPxsNlfC5iPvN7+XLKDeJUSbJgJvkVHd350LRlqp6fe3rMCQ8thLA5/4XqYzwdmfwxpOpeCj1rmNO4lGivvfOmJrEg1lWpstisvdmZnl5xdviJT45SUQMlX5fkW5/vTTR2lvf2xRY9eX+9PJM5xRAl19M8NymZmKdUCojAnxSPYwtQqLdVuJpZNW9gIof7L8kORnrbqJ24mr9Uwhh+FaYL+JXU9VFSDTbBmZAxe8AOj+wJ2C2UD9ppR79R5V/jbuX4rhhK0Gj+ghctO3qd91n/eRqhBjQzzPXpTe5QmkKqdhLe4k+jpCLMuMhG4OLMMSQREj4mS189FAYRwdXDJVoVA+A0wPqPEYr4WAVhhjwav2UEMIsqzZfFCBwCziXX6KP/UDfm2eKJ4SDM3EZjrmFv86dbyZieivKlXPmlmhUHcAG3OIemyoqcRuBPAPgne8a59DcrdODkIq15WoUjiewK5XzgEvA1HwSSqnkm4aeDF8pG9T0AdgaUrGW4R1+wpFnwJJstp12+qsQwlO2ZEhcnAfmOwnkl9CEIx8IR/Zkv3w6qGy/Ff61ZqeeFOACsDakYnoGBuyOxS9HLq5U6u25HlgOjM8msbp0JJ6nWzr2xZsLGXhkEv/rgdj42wJ6/G/0ov0uHp+eBgAAAABJRU5ErkJggg==\" style=\"width:43px; height:43px;\"\u003e",
+  "iconSize": [43, 43],
+  "iconAnchor": [21.5, 21.5],
+  "className": "empty",
+});
+        
+    
+        var popup_bf8c8a7f1e0aeaf34fd9ff0662d08cdc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c95fa929f045033ac571a701244839bd = $(`<div id="html_c95fa929f045033ac571a701244839bd" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Joan Despí</h3>             <p><strong>Total Votes:</strong> 17,166</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 7,929 (46.2%)</li><li>ERC-AM: 2,742 (16.0%)</li><li>Cs: 1,656 (9.6%)</li><li>PP: 672 (3.9%)</li><li>Others: 4,167 (24.3%)</li>             </ul>         </div>         </div>`)[0];
+                popup_bf8c8a7f1e0aeaf34fd9ff0662d08cdc.setContent(html_c95fa929f045033ac571a701244839bd);
+            
+        
+
+        marker_02350b74139f557a9a35b2abfe38e582.bindPopup(popup_bf8c8a7f1e0aeaf34fd9ff0662d08cdc)
+        ;
+
+        
+    
+    
+            marker_02350b74139f557a9a35b2abfe38e582.bindTooltip(
+                `<div>
+                     Sant Joan Despí (17,166 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02350b74139f557a9a35b2abfe38e582.setIcon(div_icon_06b66d877e091748514fa601a1d1eec4);
+            
+    
+            var marker_8ffd9f9d483c85620b5661c403c777a3 = L.marker(
+                [41.4993372, 2.1573095],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_e6ce5599afbf82743d5be062c05c5989 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAu1JREFUeJzdl21ojWEYgK/n3dnmbKf1srFPW/mKRtibxZCvUEPyUUoTf5AfQjSKzA/JH35iieSHhiI//VmHtcjc/FI+FpZTCjEaZ8Z5Hz066mx2Pt4zh+Wqt05P9/Oe63Q/z33uW2mt+ddYDAMshgE+rxtEZBIwD5gLTMwNtr+09x0eBzwHOoD2Ct39ICMSIrIWOADMil3XeX43KmSeTWYtpOxHwEngYoXu/j5kCREpAy5Hf32qVAPngO0hZTdU6O5naZ8JEZkN3PcoEEst8DCk7PVpSYjIfCAIlDI08oGWkLLXeJIQkXLgGpDLnyELuBRS9rSUJYDzQBF/lhHAmZCyVVIJEakDlpEZzLu3JJUA9pNZ9iaUEBFzCFdlWKI6pOwZcSWAhcBvOcsASxNJ1PB3mJRIovwvSUxMVLYjXt/2tbKEUUu+BN1eZUXCynLDKjsStnLcsPK7vSrf7VUBt08VoJWpFbEFLK7EN68SFJfVnV18qHVXV9PyRGFa04N5XHoivepJonS88eqgFNmVdSsCR+3dt5PEBZRFifIxwRfo384NlLhHGowNMKe1vKH4QmDDnRS3tCWSaE3nXCiF1VjDx6aRjTU3/QsfprClNa6E4zjdwHXSYLSf2ulFPN1WdGL8g5xp/XI+gA6adWdciShHANMteWbPdB1BqYJ1xedHvvBVvooTdnzgwm8SjuOY1qwlHYmCHGbMK9X3XZU1ZmnpVfeNVfh2QEiQZn0tqUSUncBL0mBHtc43F/Kbyq5aUHbjXY/K64m5eRsH2zOohOM474GVwAevEn4fU+oruWs+f7Hypiwou/G0j2xz1jbQrF+nLBGTFtPiPcYjmyfrEgv985a9yyqsahhzqp5mbVrFQVHJxkARCQCngQYvIlc6aWvptD4DW7sOzgwlik0q8QsRMZ1zI7A6yahg5oxbn/o4tmiO068eDFniFyJSGB2AzN/+1GjvGAZMvk3pDjqO8wkPeJb4bwdi618LmO//AT1Q30RDz/dtAAAAAElFTkSuQmCC\" style=\"width:43px; height:43px;\"\u003e",
+  "iconSize": [43, 43],
+  "iconAnchor": [21.5, 21.5],
+  "className": "empty",
+});
+        
+    
+        var popup_24c797f74dcbc4142e0107d19d13daf0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f5bc2a6346e239222c962b04121e5e55 = $(`<div id="html_f5bc2a6346e239222c962b04121e5e55" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Ripollet</h3>             <p><strong>Total Votes:</strong> 16,339</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 4,243 (26.0%)</li><li>Cs: 2,013 (12.3%)</li><li>PP: 650 (4.0%)</li><li>Others: 9,433 (57.7%)</li>             </ul>         </div>         </div>`)[0];
+                popup_24c797f74dcbc4142e0107d19d13daf0.setContent(html_f5bc2a6346e239222c962b04121e5e55);
+            
+        
+
+        marker_8ffd9f9d483c85620b5661c403c777a3.bindPopup(popup_24c797f74dcbc4142e0107d19d13daf0)
+        ;
+
+        
+    
+    
+            marker_8ffd9f9d483c85620b5661c403c777a3.bindTooltip(
+                `<div>
+                     Ripollet (16,339 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8ffd9f9d483c85620b5661c403c777a3.setIcon(div_icon_e6ce5599afbf82743d5be062c05c5989);
+            
+    
+            var marker_6a159480a35cd45635ddc80e2729f273 = L.marker(
+                [41.6756178, 2.7932391],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_f637226591614ac525003420f5f55d57 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAzhJREFUeJzdl1tsDFEYgL8z3d1qFduIe13qGnFLTFyilZJgI5IqEU8eREIiEfHgxYs3iScvJEiIiAQRkSC8lLiFtjhFWrcEW3bTi3Z1VTHb3e6RkUG7ujM7tQ3xJZvMnJn/P1/mXPY/QinF30bjH0DjH8DjNkBKOQVYA8wFpuXevPvWv3vvBOADUAlcKFLRlgGRkFKuBfYAi3q2q/y8W0CZdbsOOBQW/jvAGeB4kYom/lhCSjkJOAEsczHEZdZva1j4NxepaL1TgJ2A2XGtC4FUdKA6LPzr+yUhpTQ/+xWgkD9jMHA+LPwVriSklEXAZSCf7CCAY2HhH5OxBHAIGEF2GW7OrbDwC0cJKeVKwFwJA0EA2OYoAexkYNlhKyGlHA2sHkgD3wzN17lr1Cy7fWI5kJPVXj105S3x1BeUezt9M3OmiBwx3RqWp+kk5mejX20I7YNX+57lB7yaZ6yYJYRIzVsKHEgnMbK/HXsmaA0FFd63eaVevzaE2UKIEpvXB/WK7WNjcYUYGe8Yd6kgKHyiGDC3+Ezoslsdn90IKEWsufZaoWgzPrqJA2J2Eg1uMr3p4MGM9prJ1EQKSSS/ZEviSaZZlEIdq4/nj+9uHItiIvciD11IPLKTqEwdr3S0GjzobI/8qhXaYqW0GHUZSlxOK6Hr+ifgaiZZjjwVeYuM2p5DoFHVVkC3MhxCqwiEXqWVsNiPA51x6h63iTmrvt4c1utBkmKqI9UO4QdTG36T0HW9Bjhtl+XUS/EVpZIlRo1Zb/amxVhKa+xZmlCzPjnrKGGxHQjSB/EkwcowC3LpCg5Vn4f28UoOd1t9JFXq3DKHYBOBkMpIQtf1DqAceJ/67GKQMAgxOd7QRDqSTOV+pKpHizl31hMIRV2Vd7qu11vF6rufuRXvz70WC83rMqMqiR2NRgmR2EtzIX2vTwKhun4Vurquv7DOFyfN+9uNPE8kRa55veLLLaf/GQ/3P9wD5hEIXbN7UWR6FpVSLt5yQ+yIxsRGlEq8Di30euju68iQsPaBwxxV5r7jSMYSP5i471Hh1PibpdebNiwGxln1h/lFQ8Bj4AZHVTMucC3x3x6Itb8tYPb/DSxeEIPo7ZYwAAAAAElFTkSuQmCC\" style=\"width:43px; height:43px;\"\u003e",
+  "iconSize": [43, 43],
+  "iconAnchor": [21.5, 21.5],
+  "className": "empty",
+});
+        
+    
+        var popup_6b35e7ebce3d55f86ba4aae0813e266a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ec08850cc2bfc198c033251c6e6a0d64 = $(`<div id="html_ec08850cc2bfc198c033251c6e6a0d64" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Blanes</h3>             <p><strong>Total Votes:</strong> 15,998</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 3,249 (20.3%)</li><li>ERC-AM: 3,268 (20.4%)</li><li>Cs: 2,017 (12.6%)</li><li>PP: 561 (3.5%)</li><li>Others: 6,903 (43.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_6b35e7ebce3d55f86ba4aae0813e266a.setContent(html_ec08850cc2bfc198c033251c6e6a0d64);
+            
+        
+
+        marker_6a159480a35cd45635ddc80e2729f273.bindPopup(popup_6b35e7ebce3d55f86ba4aae0813e266a)
+        ;
+
+        
+    
+    
+            marker_6a159480a35cd45635ddc80e2729f273.bindTooltip(
+                `<div>
+                     Blanes (15,998 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6a159480a35cd45635ddc80e2729f273.setIcon(div_icon_f637226591614ac525003420f5f55d57);
+            
+    
+            var marker_23dd3a0da97de1a24f908c3438e8ba2c = L.marker(
+                [42.2666314, 2.9638434],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_4c0b77e7a114fab2701a2eb7f0964d40 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAzZJREFUeJzll0loFEEUhr/qmTaTmYkm0aiJUXHB5aCJlijGJW4wHvQignjzoCcR9KAgHkQQFHEDFcxRjBchHgRxRY37ViDigokaZQKaRY0aY8JoSmrSgTiZzkxnIh78oemuqvf6/+v1q+pXQmvNv4T1T9kBf38dlVLGNy9/zXphv65rK9YtrX9dgFJqLrAWmANMBwLY/lfAxHqR+xq46lxni3VL24AJUErNAw4Ds/owm+BcG4DGepG7BzharFt+9jsHlFJZSqmDwI0U5IkYDhwCHtWL3NH9EqCUCgLngC0ZJGsJcKte5E7yJEApZfqrgKVkjjHATTcRlovTZmA5AwfzSSrbdozsxWcldiilTCLtHkBy/GOtusLTYTu40N6YUgCwHcgeEGYfsbxtgesjjgcLfYNFKbCTi6NzXAUopXKcdZ4xskp8z4rOhN+GltiLhBABp3sosLivfWApYLK/3xDZtA7bla0GTfMtEEIki3C52ajcBMhMyIPL/A/ztgSKhE8YEjf8MeZPsm49w8oXTQX7grV2sVWWhnlpPA8i0W9x34TBIV7JA6tyagtPhew0yQ18QLi7YSUM/vIq4GX+uJ+i/VeHR7d2NwHvvQq45Fvo58KHGF9jbz2Qt7gJUF4FPLGnDO/UoogrDWGaO56n4VJHJKrdBNz3KiCGHbqXJV8Aw7jRNIZoW6pJnO/ZsBIG7wLvvAgQAl0ZXt3kNMM8/DSdmm+3Xcw7TY3gKkBK2csgFSzQ1dllBT26bJ5+KePx5+ok5meJROtcBTg4BtTgIQKtIjS12cr72LObN9/Lud2cKMJUVfQpQEr5A1jnhCslLIFGCKsqtOJlr8GG9nKuNNyiU5uy7CiRaHVa9YCU8q5TE6SEcO5VoZXJDxhfY/O51njCqax6TwAXSCmPAJtSRSIeAfPN7PGTNF3PCbjMl9gmItGkxanV18ullCYhF5gNz81GiC6BWlgFD7JmmuXYjQ6ntlhOhf7hOgFSQEp5J/4Dga3JlmjPF1SGVzcChuwkMJkKvZcK3ZnxuUBKabbP/UqpA4A5I8wGZgCjdNf2bYS9qrXHXY8fTCr0d9KE+O8Pp1a6ofpb+A2PQ+pxS7uM0AAAAABJRU5ErkJggg==\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_f7129f8ad2f5ed482d5fa8ac2eef7487 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5facb8d8920e4d688aed691aa6809e74 = $(`<div id="html_5facb8d8920e4d688aed691aa6809e74" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Figueres</h3>             <p><strong>Total Votes:</strong> 15,585</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 2,489 (16.0%)</li><li>ERC-AM: 3,232 (20.7%)</li><li>Cs: 1,384 (8.9%)</li><li>PP: 671 (4.3%)</li><li>Others: 7,809 (50.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_f7129f8ad2f5ed482d5fa8ac2eef7487.setContent(html_5facb8d8920e4d688aed691aa6809e74);
+            
+        
+
+        marker_23dd3a0da97de1a24f908c3438e8ba2c.bindPopup(popup_f7129f8ad2f5ed482d5fa8ac2eef7487)
+        ;
+
+        
+    
+    
+            marker_23dd3a0da97de1a24f908c3438e8ba2c.bindTooltip(
+                `<div>
+                     Figueres (15,585 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_23dd3a0da97de1a24f908c3438e8ba2c.setIcon(div_icon_4c0b77e7a114fab2701a2eb7f0964d40);
+            
+    
+            var marker_54ce861015f0eb2efe8c2a21724f43a9 = L.marker(
+                [42.1822177, 2.4890211],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_d90eb43ffc9cab2291dfece54d20c873 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAxNJREFUeJzll0tsTGEUx3/fnTvTTqtjFC3JTNASQYX64lFBBEk9Vl6phYWI2Egk2oWdxxYhEg0iVmIj8dgQEwmlEovmSAgaj6rqRIOgUqUt5sqXjkRH7zzuEAv/5G6+e879/+53Tu49n3Ich38p65+6A7bXRBEJAKHSum2Wv639U8Tp/vzXAURkMbASWArMBfz47WdAZVyFnwN3gUvAhYjT3ffHAERkCXAAmO8SogxE8toIvIur8F7geMTpTnjuARGxROQYcDON+XAaDZi8lrgKV3oCEJEC4BywA++aU3a0qJFYVOcEICJWspbr8zBn9N5gU2Cqrxa4QiwazRoA2J1sNs8KbQk0B2ts06xGZcBFYlE7I4CImJqZBvKsohV2S0ldYGHKsinD9owADL69qb8nBWb4Wkc1FE5XSvmGub2PWLTQFUBE/PnU3TdexcceDI5RShW7hIwF1rgCAKZhSr2YqxK6x50sHlCWMibpVJcOYLkXc/z0jz89okMFVEUW0QvSAUzK2VypRPnxYrFCalaWGVFi0SI3gFG5+ocawm3+iJXa8ZlU6AaQyBXgZdWeiQPtgesknG85pDluAE9yBUjYwWkPqs9M6G/iHh29LVmkmL/kRzeAVjzIsQsqH2w4X973LFTG5VfCh4GnacIfUduZcAO46wVg8El25OHGc4WfR0wZyY03Fdx43Uzf97fDRN4aksZQNQMd3iF85a3rzpT2jKt+zIevi7nSVYC8b+K70/9L1NlfU1TqUCoiDcAh8pHj9FTG6tvCL5tnD7oQZ+bITiaX2NR2zhvCzO86AbTnBaBUSVvt4anvpqwebEqHCPc/1nC1qz411Epd0Fr3Jseq/jwhgi+W7p/9umrTneRKI0e+3c4IYKS1FmAn+Uopf7ymYX5X9dZTQP2wIU6ag4mImHHsqPnR5YERA9Zqrb/kPJRqrRuBZUCnB+Oe5Dy5ys3cKO0O/JSImG/3ZmAXMD1DeG9ymN2jtY5nerbK5WwoImb+X5S8qoAI8MmcAwDz0TFNdk1rbdaykvrvD6dW1vv/l/QDttTm4uzQvYIAAAAASUVORK5CYII=\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_e2e698eddbb19b16581dc27d95c5c19b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5a25a1568bfc6a600f3f23d4ddddc393 = $(`<div id="html_5a25a1568bfc6a600f3f23d4ddddc393" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Olot</h3>             <p><strong>Total Votes:</strong> 15,364</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,761 (11.5%)</li><li>ERC-AM: 3,337 (21.7%)</li><li>Cs: 590 (3.8%)</li><li>Others: 9,676 (63.0%)</li>             </ul>         </div>         </div>`)[0];
+                popup_e2e698eddbb19b16581dc27d95c5c19b.setContent(html_5a25a1568bfc6a600f3f23d4ddddc393);
+            
+        
+
+        marker_54ce861015f0eb2efe8c2a21724f43a9.bindPopup(popup_e2e698eddbb19b16581dc27d95c5c19b)
+        ;
+
+        
+    
+    
+            marker_54ce861015f0eb2efe8c2a21724f43a9.bindTooltip(
+                `<div>
+                     Olot (15,364 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_54ce861015f0eb2efe8c2a21724f43a9.setIcon(div_icon_d90eb43ffc9cab2291dfece54d20c873);
+            
+    
+            var marker_e88940fb50ef01c388f943e340efaf89 = L.marker(
+                [41.5172534, 2.1265942],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_143dc6e2952d5b5eb4965f58dbf648ce = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAyhJREFUeJzll19oW1Ucxz8nbZMS2nFtV6G0Oken4tgQe4ZdZUMYGwEfBvqwMfBFERERBtvDfBAfhIIv6h4cVH0RVHxQGRNkTPbQCq3b8FDbjT20jVVyawv2T7omS9Lc3CMntl2W5ia5bbM9+IVw7/ndc37nk9/v3h+/I7TWPEwFHuruQP1mFyql6oDWlpNv0BCdSnbqeLLmAEqpA8CrwGFgL9BIQ/0k0GULy1x/A34CfujU8fS2ASileoFPgB6PKQJ4cvV3ysy1hfUhcL5Tx91NvwNKqaBS6gIwXGbzUmoDPgIGbWHt3hSAUioMXAbeZvM6ZNJiC+s5XwBKKRPSr4EjbF0twM+2sPZUDQC8C7zM9mkn8JUtrA37BYoNSqnHgPfYfh0E3qoIALwPmPzXQh/Ywmr0BFD/vXgnqZ1ai1MbKJrwEtBMbfVKOYAeaq9nywE8/QAAdtvCCnoBhP16E+31c3WPilnRxB0C5Kos/62Fg0L5ag5czT8rRxOLT5xrOrjuQOsMmiQud3WOFFkyOqtXdIasTmvHTeGmrzsZL4BZPwA357l9PDbdTVdDFCvYZWxCiBCCEAFahPEeylsLl+VCz9TFvVJwyw/ANxOifYe7/AhDc0t+uInEXC+AwWq9pHOMT8Z5PIgTJON280fiepVLfywcBAoHUsprQLQaLwPTzAh0Yt0wGu8gp9NbAlhVPxWkNc53UbG3nty9NkzTiVowf6CcFJGYqgTwKfBnOS/zGUYWM6KtQWdT9z2wU8+TdP724gbOFBsDxQYppQnja0DWC+DSlHDMNaQzxSEPMzT3l8eyfiKxXyoCGEkpB4B3KCGtWboSo9vch3V6ZcOEhNPLTOr3IutF4LSvlkxK+TnwZnEkJpYYdVyR/7qb3GTpKN1YCKP1WlX8HjhBJJb13ZRKKb8AjgHja7ZvJ4RpsfJqdpdLl96cfoqxpcHVxuYUkVg+Zb4BjKSUxtF+4GzKYXh0XuzLPwAs906p0m3S8iXRxOtEYn3lNjeq6lwgpTROP97VN2LOBi8ALxqojtzMWgU0X8MY8Ctwlc8K6kMFif/94TRQbahqpX8BBugVWocILboAAAAASUVORK5CYII=\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_c8c07e0b6413572e8b74c9765af0d677 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7528f98aedde56b4260905c0ef2fe598 = $(`<div id="html_7528f98aedde56b4260905c0ef2fe598" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Barberà del Vallès</h3>             <p><strong>Total Votes:</strong> 15,304</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 3,941 (25.8%)</li><li>ERC-AM: 2,421 (15.8%)</li><li>Cs: 1,424 (9.3%)</li><li>PP: 728 (4.8%)</li><li>Others: 6,790 (44.4%)</li>             </ul>         </div>         </div>`)[0];
+                popup_c8c07e0b6413572e8b74c9765af0d677.setContent(html_7528f98aedde56b4260905c0ef2fe598);
+            
+        
+
+        marker_e88940fb50ef01c388f943e340efaf89.bindPopup(popup_c8c07e0b6413572e8b74c9765af0d677)
+        ;
+
+        
+    
+    
+            marker_e88940fb50ef01c388f943e340efaf89.bindTooltip(
+                `<div>
+                     Barberà del Vallès (15,304 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e88940fb50ef01c388f943e340efaf89.setIcon(div_icon_143dc6e2952d5b5eb4965f58dbf648ce);
+            
+    
+            var marker_a9f85d7124199211ee14f6fb7b941b0a = L.marker(
+                [41.4823115, 2.1869985],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_f9f39e403123e743a9c059a7b7c53f6b = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA55JREFUeJzll11sFFUUx3939mNsAXdIi5TaqoXYBlvTXYcHPwIEDe6D4UEkhDcNmhBj0sQXjZD4AQ9qAkENSB9MG194aaImYCIxWkGwLd0boESlFqHtLi1oWxcWt1u222um3Ta17mxnt93w4D+ZZO6de+75zdwz554rlFLcTWl31TvgztdQSukBlpVs3+lxX+mLVahovOAAUsoaYCvwPLAOEMrrvQysiQjjKhACWoBjFSo6tmgAUsoNwCdAvc0QAaxOX9uBoYgw3gUaK1Q0lXcMSCk9UsqPgR+yOM+kUuAQ0BkRxuq8AKSUxcB3QEP6DfNRAOiICMPMGQD4FFjPwmV9ja8jwnjAMYCU8iXgRRZPK4EvI8JwzQsgpyL9MIuvx4Bd8wIAbwDW+hdC70WE4bUFkFIuBXZQOFnxsMUWANhcwLef1o5siejpQnnVDDGk17n69YDLnQ3AWLAnwYTnIa1X97tu6H73mHeNtlRbLiqFS6xML0GAE5U6wfBYJoB/BYgTuR7x9PvW6wN6nUu4K7USUUSVEGI6LWdGnPot+xcMcDN2+9S9VTdHl232PpeDmVWAXLcLwgmnsyRSdF86cVSpyJ3iawMrruQAMEgwfMcOIORkBqWI7jkznnh5pPnxyiWRFYc/2zaSA0Dv7IY252GrA+cTH3WJy+Yf30R1kvo9rkR1PKbXdYRqOx0CXMwG0AH0ZbM+PcipHweofvuv/X6rLQTeal9Pz9GWZ0tTKS3pAKDZFsA0TStAjthZ/jnK2YNdYuOGRNs5n7rtm+4PlJwfTqXcVS1fPfPTPM7bCYY7bAHSOpApFpIT9L5+RtSgSH44ss/asGZU4/ttMnuebqv334oVD2Gv3XM7tLkdpmmOp7fimZpOKf7e3S6S8XHhq012ny1P3SibbWPo0fQ/L3yNTVt/tXG+n2C41VE9YJrmL8Cb0+3mS+LC77fEwyilDgy/U/6fSYQqLSsanIzu/nDZU1d7V3XPGfJ5epd1XhGZpmnVgq+eH6L1eJ940uq7P3W9c22yJ2OG85dcuDZ1J7QjTS8kZj06DrxCMKxyLkpN02zcG9L2AlbJzfsj+4rsxj66/OeZJBaPF9V/f3LdSeCtyRI+GLaWNb+TUd+egFUR1z6YDL+2MdFu1QsZVb5kYFX6dhRo+uLYpp0Ewx9kc25J5HQ23CWsjWQT8ASwFrjPOh0Bw0rR1dB2MKTQvj10sSHmdErxvz+cas6/f2H0D98PJ+QIAFegAAAAAElFTkSuQmCC\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_8b1f05e30d9c43676058a37488872968 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_eb8791cd70e28d6e2c7521c967ade1f9 = $(`<div id="html_eb8791cd70e28d6e2c7521c967ade1f9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Montcada i Reixac</h3>             <p><strong>Total Votes:</strong> 15,156</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 3,348 (22.1%)</li><li>ERC-AM: 2,966 (19.6%)</li><li>JUNTS: 723 (4.8%)</li><li>Cs: 1,587 (10.5%)</li><li>PP: 563 (3.7%)</li><li>Others: 5,969 (39.4%)</li>             </ul>         </div>         </div>`)[0];
+                popup_8b1f05e30d9c43676058a37488872968.setContent(html_eb8791cd70e28d6e2c7521c967ade1f9);
+            
+        
+
+        marker_a9f85d7124199211ee14f6fb7b941b0a.bindPopup(popup_8b1f05e30d9c43676058a37488872968)
+        ;
+
+        
+    
+    
+            marker_a9f85d7124199211ee14f6fb7b941b0a.bindTooltip(
+                `<div>
+                     Montcada i Reixac (15,156 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a9f85d7124199211ee14f6fb7b941b0a.setIcon(div_icon_f9f39e403123e743a9c059a7b7c53f6b);
+            
+    
+            var marker_8b08861d654745d4250bd9e28001630c = L.marker(
+                [40.8110158, 0.5209333],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_a9ade4ecefa716009f5671d4c6fd11f5 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA1BJREFUeJzll19oU1ccxz/nNGlL2tTWVlkkmY26VZAMt1PKZKATHxwqKGNMEQYqsjHIMkYf9raXPQw2kC3NxnwVZxkDH/agKBRtYeDUQ7cFffC/o6ljisQ2aW1icscpWYlZb++9acWHfeHCPff+fuf74ZzfueceYVkWz1PyuboDvnoTtdYmd/nyvYfx37ydD1vZ/DMH0Fq/ChwANgExoBm/7wawbky0XwcuAGeBn8JWdmbJALTWrwPfAH0LhL1Uud4DjoyJ9i+Br8NW9kndAFrrRuArIO6xXlZU8vaMifa9YSubsQuUC5gHgFNAYhHF+gbw25ho7/UEoLUWZh6BbSxeXXdbupPxWDLqGgD4BNixBOb83vHaxcHug68AJ+OxpM8RQGvdDXyxFOZnQruGT6/a3YsQLcDGygpaGADoB0zx1a0yonRszeGR0c6+LQhR7fFZPJZssgXQWgeBQ4sxn5GNk9/19I+OB17cPM/rCPCuLQBgkkz116WsvyMzsP7Tv3L+NtuqB3ZWN3w1L7fUa/5nYPXVwejBLktI8zFyWpq2I7C+HvPRjt4LJ6KHui0hV7oID8djyUa7EVjm1Xwksv3apYYVb9UUm5P8QMHc1CaVvAKUQnnh0fxfgFnJmhd3vPRiWRRDbX8E/bIw7SGtCOTtAG54AShb/P3Y19y8K3Lqkoe0q6l0omgHcNYLwHSJh49ksPhmaDgqKLudvpHqhqxuKKUuA7fcAkwUyE3IYKlBliNbV53/1WXacVuAigZwqfvTFCZka9nc74yc7nSRMpRKJy46AXwLmN8rR41PwYQMzgI0NRR6ersua4eUz2sfyNoHSilTIB+4WZKZnGialK1z7XeiJxsWCB9IpRPDjgBGSqlzwMc4KJOnJSdazc/LrFr9+Y0vL7t2ZZ7Qocou+x9Ju86VUmYqPqys23l1b4rOnAzMARjtXzs4WRP2I7C7eum5AjBSSn0PbAVuUyPLovzgMSunROCpPjqbHvaFAuMm3hj2p9KJfal0wvbMIHGQUuoXoAf4yGx6cwBwv2wJ35Rofmo/EYKZPat//sHkpNKJI079C69nw8rhZMeDaV54f1huiBbvZM7fe7ut8hU1sEMctR657U/87w+n0tP4PwP9A/VL9/y39RYVAAAAAElFTkSuQmCC\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_08397a37e34f8db1977b49f5e9635d70 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_08412eb89b518f2fae0930d9ec99d6e6 = $(`<div id="html_08412eb89b518f2fae0930d9ec99d6e6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Tortosa</h3>             <p><strong>Total Votes:</strong> 14,863</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 2,042 (13.7%)</li><li>JUNTS: 4,357 (29.3%)</li><li>Cs: 930 (6.3%)</li><li>PP: 359 (2.4%)</li><li>Others: 7,175 (48.3%)</li>             </ul>         </div>         </div>`)[0];
+                popup_08397a37e34f8db1977b49f5e9635d70.setContent(html_08412eb89b518f2fae0930d9ec99d6e6);
+            
+        
+
+        marker_8b08861d654745d4250bd9e28001630c.bindPopup(popup_08397a37e34f8db1977b49f5e9635d70)
+        ;
+
+        
+    
+    
+            marker_8b08861d654745d4250bd9e28001630c.bindTooltip(
+                `<div>
+                     Tortosa (14,863 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b08861d654745d4250bd9e28001630c.setIcon(div_icon_a9ade4ecefa716009f5671d4c6fd11f5);
+            
+    
+            var marker_931a6c231a00c4f4251171ced8d74f6b = L.marker(
+                [41.2199677, 1.5348566],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_f72a6bd65634c927327d87320cbbf4c5 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA0BJREFUeJzll1tIVEEYx/9zdt1dd13d1vWSLISaSOb9aFlKCvVQUehDUBBBha8Z2UsggYqRRUGWUPvSQw9ShC9FdFFCoouGk4nQxUtCHrUSbc3U9ZITg6datz27HnXzoT8sh51vvvl+Z75v5swQxhhWU8KqRgegXaojpZT7rrHuLyZBPb3jduYcDzgApTQDwGEAOQBSARgQpO0GsF4ili4AzQAeAbhtZ86pFQOglOYCuCAHVlKC/DsE4KJELOcB1NiZc3bJAJRSPYCzAI6rrJdIGbhIIpYDdubsV+oo+AhuBHAPwIllFGsegNcSsYiqACilvL0ewHYsXzYADyRiiVs0AOanfOcKBHeHqJeIReMXgFIaD+AMVl7pAI76BQBQCiAYgVG5RCxGRQBKqVleRoFSDF8ZigCYLzoOEUgV+gLIQuCV5wsg7R8AREvEQpQAQtWONq43fWUgcypceMwwpa14Ti1AX1Hi0H1Dxtv+MbveNDs2bJsackVPDmhiJqTQKNdgTMjsd74HeEqvBDCgFuCpeZNQlVoce+fj3raG/h25ozoresyJfzowNqqbm+43z4w6I6Y+z9jH+4SskeYhpRS8UgvQqt1oIwTGwnV3c0uTLz3RkNnpBR0ICZvW6JOGDZFb34Wl5DfG7A61M+ecEkCzWoBJorO265L4WQBxob3bqrPLOq36kUEfLs/c/wgexucAOtUAMAZy01T0O3XBWldyeWZlUJq1vU3B5YYigCiK/IR6VRUAgAZjQciCQQmzFSdeTz0YX9fk0b25tqOkRRFA1jUA76FiBoaE8CQXdC73dkKg2RLVUlCRWdFi0Ex+k1lPe/oLng2iKPKBjqhYkgSEBDca8994M4YbRjZXZ5eNxJo/VNV2lDT6BeASRfGFfCbwq1+3ilumwjGlPlrhR9fJlJpKbzZByUkUxVoAxxY7Ey/1GWsVTA8B7IODeT2cCr4GlSHyfNUErwH+dBFDwidNxBc3E0/lKQC74GC8BrxK8AXglo50OSV/gTBeA1yEkHrTHr4fTACoA7ABDnYODt93P60/ABmCv81lSukV+W6QI3+6oxnAc8/XfHerPv0xgCY42KJvSeS/v5wKi52qQOknAOP4TjNWHk8AAAAASUVORK5CYII=\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_04b3d1145e0105244477d9d21a628220 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f28fc49e9643f467088e30b2b3753b97 = $(`<div id="html_f28fc49e9643f467088e30b2b3753b97" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Vendrell</h3>             <p><strong>Total Votes:</strong> 14,635</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 4,001 (27.3%)</li><li>JUNTS: 1,198 (8.2%)</li><li>Cs: 1,496 (10.2%)</li><li>PP: 630 (4.3%)</li><li>Others: 7,310 (49.9%)</li>             </ul>         </div>         </div>`)[0];
+                popup_04b3d1145e0105244477d9d21a628220.setContent(html_f28fc49e9643f467088e30b2b3753b97);
+            
+        
+
+        marker_931a6c231a00c4f4251171ced8d74f6b.bindPopup(popup_04b3d1145e0105244477d9d21a628220)
+        ;
+
+        
+    
+    
+            marker_931a6c231a00c4f4251171ced8d74f6b.bindTooltip(
+                `<div>
+                     Vendrell (14,635 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_931a6c231a00c4f4251171ced8d74f6b.setIcon(div_icon_f72a6bd65634c927327d87320cbbf4c5);
+            
+    
+            var marker_34f0aa0edd0b632d85ce4da781521fbe = L.marker(
+                [41.4138087, 2.0159626],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_1e11acaf3a86d31d940de86dc65b0768 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAxRJREFUeJzll82LFEccQF/19KwzumK7hqA4asQVUROQlCvBQ4yiziEYvHkRxI+LIIoa8JRbQg5BhEgOOegfIOotIgYTIYgiFKwHibi7ya7T6hqizs7O7Mx0212htdVx3J7uWXf0kAd1qOr6Vb2uqu6qElpr3ifGe+0dMKcaqJRKAfN6duwjPfR3JaeLlY4LKKU+BXYB64GPgQxpcxDotYU1APwB/A6czelibdoElFKfAT8CfS2qLQ/THuC4LazvgZ9yuuhOeQ0opdJKqZPA1ZjOm/kQOAFcs4W1YEoCSqmZwAXgwFssVgncsIW1pi0BpZQAzgCbeXtywGVbWEsTCwBHgS+ZPnqCF7KFZcYKKKUWA98x/awFDsUKAMeALjrDIVtYqUgBpdSs8DPqFIuAbZECwBfPfi6dZWcrgU10nr5WAsvegcAiW1iZKIGedlsTGWrthgDWi4zZ9LDerkDqIP8s6O7ur15xx8bPO73eqF6YIKwYJWC307mv+dcZGPNSG8Sa7q+6CJJf1X/Wrj99OH7OybmDfu8kYRONO6XZ9DDYWhNTcbm35Mnj5fgZF0OkgzIjK1bO3JgOEtrVw7V+b6R81vmgftNbFQ7/cGMbZlObF4FvkwqMTlBaq6vLeMAtFmbf2HBEWnyU7TODhPb0qHPbv1M+7/zWWMdozEgpFVBIKjBUws/oepa/ymNxdUVKzJ+xOvX5vG+ylyIFQn4gIXeekDHxUjyqB/tHEq6TL1yLE/i5eZ6iGBrTzz8nn6WU3LgYD9jfXGg0F0gpHWB3GBCJ1tTvVcTcVzblkRiBk+QL/bECAVLKK8BhWuD43BX4T18W3K/OblH913CXfQMjKkJKGZwF9wKvOmngcY1HBn4wWs+p+5/g+uOTVP0F2E6+4LQlECClPA1sCdYbTYyUqaW019homrsTtxryJeDrsPMJIjCIIZyO4A5wpPFHNVAUXSbe60fu4UqwbqrAKWAF+cJx8oVJR7Cte4GU0g2P2SeUUuuArbeLzJ/jl+YEsxGmQWpecDG5TL5QJiHif385NZIOVaf4D9v9DOxikJXKAAAAAElFTkSuQmCC\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_b40d88fe9035d8014bb30bc0820538f1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9cc672d08da6142fa5faaeb044ce47eb = $(`<div id="html_9cc672d08da6142fa5faaeb044ce47eb" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Molins de Rei</h3>             <p><strong>Total Votes:</strong> 13,644</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 4,077 (29.9%)</li><li>ERC-AM: 2,120 (15.5%)</li><li>Cs: 696 (5.1%)</li><li>PP: 263 (1.9%)</li><li>Others: 6,488 (47.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_b40d88fe9035d8014bb30bc0820538f1.setContent(html_9cc672d08da6142fa5faaeb044ce47eb);
+            
+        
+
+        marker_34f0aa0edd0b632d85ce4da781521fbe.bindPopup(popup_b40d88fe9035d8014bb30bc0820538f1)
+        ;
+
+        
+    
+    
+            marker_34f0aa0edd0b632d85ce4da781521fbe.bindTooltip(
+                `<div>
+                     Molins de Rei (13,644 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34f0aa0edd0b632d85ce4da781521fbe.setIcon(div_icon_1e11acaf3a86d31d940de86dc65b0768);
+            
+    
+            var marker_83e48e7c3df34f5cd2c205b8d0fbf35a = L.marker(
+                [41.0679423, 1.0657579],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_0d92c89d177043cf4ffabad794bd32e0 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAABApJREFUeJzlV31oW1UU/92X9/LRpC5ts6Yt6cfaTRSV0W1xaveBOIlFRXQOHTplczDQEnGbbFK0f8hEymBaOqUgCDpkc04KzsGw2tWmZjJvh0bLaCdLlzRt2ilpaUvSNO/KbZOSZclrXtqxP/zB++Pee849v3PfueecSxhjuJMQ7qh1AGKuipRSLYC7Cl/YK0h/X5uysdDUbSdAKd0MwAHgUQB2ABIk8SqA1X5iHgDgBtAB4GsbC0WWjQCldAuAZgAbFcTWxL9XABz1EzOXb7GxUDRnApRSHiMtAN6AOhRzEgCe8xPzDhsLBVQHIaVUx48yB+PJeARAr5+Y7aoI0HnP2wFsx9JhhYRvZ46XVWVNAMAhAE8sg3Foikiw7KRpXLtacwrny6VFCVBKawA0LYdx7QOavpIvjEwwkvsAPAjgwKIEMO89//9LgmmHtmdls6GaaEhJ0vReRQKUUn5Ezy/JMoFsed/QZX5NV0cI0aes1uB8eV1GAphPMgU5287DROmXRqq3i1sVxF5VIrAtV+NiheAtO2m6obEIGa9cHM8qEajMxbhhq0itbXkFREuqsxC3JN8GMWWxUI1hxiDrXzJeKdygryeEaFSo8t88mo5AVs0BY5jw/IvLQfpDuMplzbNbwv01q4buVUEgmukX9CtqyRg860XXyx2EfOf6gxz2vuOwiDekY8d3Vrd/v6U7S+PcyenEQExZ7EunEYqg90Q/iXUOYT0DqbxnZsB1JriHl2bYjH4ZILqOzo2b//yrpufgmyfW6nVRkwKBX+HwRTKdQO8CTYbw1XF0v/0LGdjTKaz7aYjYGYhQEfVdPDey82HCbzwve4ZRQ0JnZNRSd/i9hrHrPivvDTLhTPJATFnsnonhkjuI6c+vkPsnZsiclwkUz4799uPw9nUayAsBly9NWpJlZmPiquaPd00/6ehx1T/u3pSGwDfJA5LalFYeuXwgXstvgjkW+v1ioP5uA4sseMzBGCJO9zGJQbglrdvKgq79DV+t12pnEzoUDt+GxWrBpwCuJU8Y5ak+V+Dp6lTjcx4Q6Ir0/6RtOPwB66ZDTQ3+wEgR3497ejBVRkidGGys5RG6G0CMj3VyeKAn8FRpPpvKRwaUG/1zdzodolFpzQdHd1u6XLVNcPguLEqAY7CxtgvAfolFvT8PP7OiQB5XrA+VpuuTSusAuXS6fduHqnrCwcbaluHXrdMlsbE25c35CfiUEthpALtaPc6o6odJ6SfBzwA8lik/JFBsGLslNgDwu/4ugBdbPc5I7m15G7uAfWQtgAYAbwGoSBUxSZMrk4YTca+PtHqcNwVzOhBVb8N9hCefh+JluyrefptlRkac7o+88YfJuVaPM5ztluR//zgVsj//24P/AEa7TKXIMxC7AAAAAElFTkSuQmCC\" style=\"width:42px; height:42px;\"\u003e",
+  "iconSize": [42, 42],
+  "iconAnchor": [21.0, 21.0],
+  "className": "empty",
+});
+        
+    
+        var popup_da9a379a9563641a13d171d8ccef3c0f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b574d21d7d15a2ca639a4bb8ee20616d = $(`<div id="html_b574d21d7d15a2ca639a4bb8ee20616d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Cambrils</h3>             <p><strong>Total Votes:</strong> 13,375</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,883 (14.1%)</li><li>ERC-AM: 2,841 (21.2%)</li><li>JUNTS: 1,660 (12.4%)</li><li>Cs: 1,918 (14.3%)</li><li>PP: 854 (6.4%)</li><li>Others: 4,219 (31.5%)</li>             </ul>         </div>         </div>`)[0];
+                popup_da9a379a9563641a13d171d8ccef3c0f.setContent(html_b574d21d7d15a2ca639a4bb8ee20616d);
+            
+        
+
+        marker_83e48e7c3df34f5cd2c205b8d0fbf35a.bindPopup(popup_da9a379a9563641a13d171d8ccef3c0f)
+        ;
+
+        
+    
+    
+            marker_83e48e7c3df34f5cd2c205b8d0fbf35a.bindTooltip(
+                `<div>
+                     Cambrils (13,375 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_83e48e7c3df34f5cd2c205b8d0fbf35a.setIcon(div_icon_0d92c89d177043cf4ffabad794bd32e0);
+            
+    
+            var marker_4fb35dfdd02a0630646e38c07881058a = L.marker(
+                [41.4304832, 2.2182775],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_21052c8f74d794a95505e430b9b6d3d5 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAuhJREFUeJzll89vDGEYxz/vbHf9qNa0yla7oqKoIMUbDn6ViAsH8aMiQSRNxB/AETcO4iARhz04uThwIAQHlCCS5k0EDaWqTVajrcZ2t7q71d1XZk2l2Nmdra4efJPJZOad5/0887zPvM8zQmvNZMmYNDJQlK+BUsoD1AErPB+6plQ0NlnXvcCTgA5/KQhcKbUROALsBoqte6nZFa3AMvuRVEiYz4GbwIWADn/+a7hSqga4CGx3sYSr7eNYSJingXMBHf6WzcBRSqldwCsX4N9lReYMcDskzBl5w5VSB4GroyEep7YC90LCLHcNV0pJ4NIEfQ1rgRshYXpywpVS04ErgI+J03orD3LCgaNALROvUyFhznWEK6Wstz1OYWTlzgFHuB2eKgqnxmzwbRRWa0PCnOcEt7K80FruBPf/A3ilEzyvz2vEI2Jlm4aahU8P5GE2zQn+KR94Z9w3WFz3bXPV4YhRsWPwoack9dGFWbcTvCsf+JuBIqPXmNUnBCVTq5MNlfujfn9j9KnPP/I6i9lLJ/ijvOBhUdzmq+0ZvRaCIm9Zat2cnV+Xzj0UeT590XAL/NIqDQIdTnCrFqfcwtsHqGz1LolkGvNM0yvLt8TWVDdFOkpl/DGGTgC3AjqsM8KllH12JcsprRnqiVHV6qtzrNeWRBELS2ViQ3VTZGDGisT5sWOZ9vZTQDIXPJEiZAW63bvgj2qV0QmDV+aL2LOscCllG3A212T9cfqtc7fHX+KCbbVUTb/fNBwePgnczTZbVxRrDYkaJXNygEeAfQR1lyu4lDJpN4rXnWZ8GxbpDSmJ4U/gTTuSQcPpNw7qB5kGDafJpZRDtgNWI/hHUrWF+dEaCWF88M7/uXGM0XuggaC+7MQwnAZsB1JSyhN2Mbg26oTW6M4oP6vTa+/i9Prbemf3BPUE9S8JNq6+XUr5FtirlJoF7IknWZVIinpgphX5dm9NC9AM3AHuE3T3Dyb+2381YzLh3wFf5N90NiDkLQAAAABJRU5ErkJggg==\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_712e92989c19dd12d2ccff6510a58e65 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cc5be7fa26e607778ac98a6421e34390 = $(`<div id="html_cc5be7fa26e607778ac98a6421e34390" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Adrià de Besòs</h3>             <p><strong>Total Votes:</strong> 13,218</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 4,199 (31.8%)</li><li>Cs: 2,131 (16.1%)</li><li>PP: 602 (4.6%)</li><li>Others: 6,286 (47.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_712e92989c19dd12d2ccff6510a58e65.setContent(html_cc5be7fa26e607778ac98a6421e34390);
+            
+        
+
+        marker_4fb35dfdd02a0630646e38c07881058a.bindPopup(popup_712e92989c19dd12d2ccff6510a58e65)
+        ;
+
+        
+    
+    
+            marker_4fb35dfdd02a0630646e38c07881058a.bindTooltip(
+                `<div>
+                     Sant Adrià de Besòs (13,218 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4fb35dfdd02a0630646e38c07881058a.setIcon(div_icon_21052c8f74d794a95505e430b9b6d3d5);
+            
+    
+            var marker_89c5f65b9537e762004ce6e9832a9a25 = L.marker(
+                [41.4926822, 2.3605846],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_a25da777724e6e9b22b0c3cc83720ad6 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAslJREFUeJzll19IU1Ecxz/nzom6mUvnTNyIonwoIePQQ5bVQ5YY9VAoRELQQ74U1FMvvRREEBFBUO9BUfQSCRVE/56K6oBEw7JEAoVMsbk5Led24uQ0WbtubooPfeFw7z3397ufc37n3+8KrTXLJWvZyEBBLk5KqXpgo6Pvq8PbeqwQ6Afe+HVoZEngSqndQBvQAtSYukSlN2gaMWPTLzw9wC3ghl+HhjJ9U2Qac6XUWuA6sPcf57Fo0LfrwCx8jqLAOeCyX4d0TmOulGoFutKBM8gFXAIe9wtP5YLhSikDvA2Ukrv2AC9CdcXlWcOVUpuAe7lOyL/S2tsSHfJs+3mfDuHICFdKlQCdefYYLD1Z1Tb2qsg/tRNoBE5mhAMngEA+XFGoR6uPRIJOT6JhTvV5OkSVLVwpZcJ8Kh+ww5X4Vt0eHnQU680pr0wkj9vCgWagOlewsyLeu+pwJG4VUGtj0j4fXOYKLgrE3vsOjlUIa3oDslEtHcJnB7dr8bxybfj1uqJ5vFYIPFmY18/cpC6l9QsFl22deOmum2wUIutDKmAHz6bls9KuktXBiw9Hv0ennvSOEg+GnEUfws7ykckCN0IIjbA0CJJX87wiEdFdNvDBBfVeCLfT7WmocUNNFexIVic0w9EYA4MThPvCJD6FRPHnUSoHogR+iJVm308L/wJsJ09ZAm9p4Z/CujJoCkyfLVoTG5rQ3bN2KX6KJZQQxH0l2MLvAhNLyL8jpYylhUspTQJwc4nAOnnMzird8rhi5gyLr04pZfe8cCllT2oLF0ER4ExqpWVjfBZ4tEjguNnTpZQfs4JLKY3DIeBZnuAp4KiU8kG6l5adl5TSzPom4DQwngP4HbBFSmmy2dyyVyOl1BrgKrDPHNnMr2HgAnAtGUHygs9IKWUykf2ASY38yciZMgm8BZ4Cz6WUJtwZJf7bfzVrOeG/AbAd1siSk/M2AAAAAElFTkSuQmCC\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_706c2f1e91cb253700f99d94854a4be7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bb1f5de5902304745a3660d78b98ded5 = $(`<div id="html_bb1f5de5902304745a3660d78b98ded5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Premià de Mar</h3>             <p><strong>Total Votes:</strong> 13,065</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,753 (13.4%)</li><li>Cs: 1,498 (11.5%)</li><li>PP: 330 (2.5%)</li><li>Others: 9,484 (72.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_706c2f1e91cb253700f99d94854a4be7.setContent(html_bb1f5de5902304745a3660d78b98ded5);
+            
+        
+
+        marker_89c5f65b9537e762004ce6e9832a9a25.bindPopup(popup_706c2f1e91cb253700f99d94854a4be7)
+        ;
+
+        
+    
+    
+            marker_89c5f65b9537e762004ce6e9832a9a25.bindTooltip(
+                `<div>
+                     Premià de Mar (13,065 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_89c5f65b9537e762004ce6e9832a9a25.setIcon(div_icon_a25da777724e6e9b22b0c3cc83720ad6);
+            
+    
+            var marker_5e120fd7407f190b0b72971f69ba494c = L.marker(
+                [41.2619218, 1.7721357],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_cbb20e535b17b3ca2f1e0e6f0b8012fa = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAwlJREFUeJzll11ojWEcwH/Pe87MzDhsY/RSJgnNR8soYlmJQlwo+bpQEhfKRyTcqEWuiLASUrhyMRLzlVm+4rFlTWZGhzM2m7xmh1ln76PndLaO7bzOh5124Xd33vP++/2fj//5/49QStFfGP1mBtyJBEkppwDTXe+87qyVG1KAD8BzU1nNSZFLKQuBjcACIEc/s7OzagCdSBCf8NQCZ4CzsSQiop25lHICcBxY2Cu4zV8zonBZtzyMNmAfcMxUlp3QmUsptbAqkjgKg4EjQLlPeDLjlksplwJXgEEkztxQAtkxy6WUOugykMq/o4/lkk94RFS5lHIgcA7Qt7ivKAJ2RpUD24Dx9D37fcLjcZRLKfXWbCU5ZACbHeXAzK4aThJr/ybXNzyZTA6/+T3ls0k+BU7yiPXYx4x0ksdcXgFbed11114lIB/gJP8eLbLTpuFWvb+MC1ua8oafn5GAvNGpqz0FZkWKsBVN17zU3n3ZmFL6cU3BsNzOatI9uSKVH+pXXD/B9U4rfxRB2lL2nvLVNxnU9uyqXe5bMnuYaP1M3tA5+ntXjtEUh9gCdNuNuPL72qeTUopv9z9RVVIj8jsC9sTTzdvfFrVX6J6umJX5CyFcOiDFNKyA17Fr9qTUVFZHxJXn5+f7Ojq5+LiJ8vV3BEdfGPPTO76+ftKwyFXUXjEt+NIQ90NyBk7tzn6s4Y9j5XrQcJ5kVt0yDgOVKCUW/7x970TL7nkGqivJVuZk6+Gim5SxRoDYuGIqS++sc2Px7p1RPcRuPXDsy57KUy27CsPEMC69kjTXiPD33aOM4PZHQVfRjphmuGpfYTEQvFBhadYxzfPnM33hsoRuwX+jE1hnKutNbJNMidIBK4Ab3c8KMv0YoleyIkP80SZ70B4Sl8Y3w5WoH8AS4BAZ7gpGp02P9JoY4PiT/E6PUaayLiU8vQa5bk7CEMWh3ehFw/LvftVOeuijrvuDwMnwskpc3kXZmDGhSVaf/SQgS1dA4yZ/bcBrNwBXgQemsvSxRUX8t//VjP6U/wao/wHgg0TyPQAAAABJRU5ErkJggg==\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_4a3686eee1e95e9612c10b9802a5c8b7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_558e51b9cd884c48b4cf68f7dce24ea2 = $(`<div id="html_558e51b9cd884c48b4cf68f7dce24ea2" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Pere de Ribes</h3>             <p><strong>Total Votes:</strong> 13,017</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 6,278 (48.2%)</li><li>ERC-AM: 1,344 (10.3%)</li><li>Cs: 795 (6.1%)</li><li>PP: 360 (2.8%)</li><li>Others: 4,240 (32.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_4a3686eee1e95e9612c10b9802a5c8b7.setContent(html_558e51b9cd884c48b4cf68f7dce24ea2);
+            
+        
+
+        marker_5e120fd7407f190b0b72971f69ba494c.bindPopup(popup_4a3686eee1e95e9612c10b9802a5c8b7)
+        ;
+
+        
+    
+    
+            marker_5e120fd7407f190b0b72971f69ba494c.bindTooltip(
+                `<div>
+                     Sant Pere de Ribes (13,017 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5e120fd7407f190b0b72971f69ba494c.setIcon(div_icon_cbb20e535b17b3ca2f1e0e6f0b8012fa);
+            
+    
+            var marker_ed9cad3555c01093b2bd71a3f038f01f = L.marker(
+                [41.3934193, 2.0099482],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_f9a2fdb57f1d6fe16d49e72296561f89 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAApFJREFUeJzll01IFVEUx3/zxpfPDMP8ChPMUuhpUnbCBLNnFBGJRBAi7XSREbiroEWf0E5pkZvXF0JEUEiLvlwUFUSL4FgbkSgqCsIiUkqM/JqYx6TyePM+Jh8u+sMsZu6593fvPXPPOdewLIvFkm/RyEBGqh1U1Q9sAUoCI+/8VbdaMoGPwCvC1te0wFV1G3AIaAJy7G8T2YWDQNWsUYfxBrgGXCRsfUk0ppHI56pa5gxYH93mmxgbrOltnIPPaQw4AVwgbE178rmqNke2MwY4gZYB54Enw4cLV6QMV9V24PbfLfai/qzt2XXFDx6VnnuZnzRcVesifgPTK/hFZs1QR35XeWiVMXlz10yvqpoJ4aoacHzsGfzav/Z9S+GlgragNdBZbW3K8EV+0pMJ4UAnUO4V/NksGm5aecM8U8tg82pChjG7iCOqmucKV1X7zB73Ch715YzuKen71tPoG16fRyiqealzVF1X3gDk4kHjRmC8dU3fYM+OgFmQRa2L2YH5L9HwnV7AU5hTR4PXn51tzC3LyiAYx7RSVSvc4NWpgi2wLku4v62+tM70UZxEl3K38Do7q2T1vKG7f/O6jbsNI+lQXeQGn0wFPOPPrggEQ7HCazyZbtv+PaVhDGMJqWvCDW5npXTrtRvcTiLp1A87nLjB7UQylUb4HRGZjgkXkU/OBNKlq/NfYsX2U2la/WPncYeLyFCkAllY/QTaRcRKppg4BtxfIPCMHdNF5EN0gy+WtYjY274fuPePYPtMHxSRuymVUSLyC9jr1GKuRWAcvQW2isgVz9WrLVWtBE4D+5Iot0eALqBbRH7HMzRSuS6pqp0UWoENTnZaDthll+3PAeAh8NRxW0IZ/+1dzbeY8D8Pg7RoNickEQAAAABJRU5ErkJggg==\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_0ed75d3e98040a0676ea1c2f99c55c85 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f6b86ce602e1e3a647af71ff63b99e9d = $(`<div id="html_f6b86ce602e1e3a647af71ff63b99e9d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Vicenç dels Horts</h3>             <p><strong>Total Votes:</strong> 12,810</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>Cs: 1,512 (11.8%)</li><li>PP: 242 (1.9%)</li><li>Others: 11,056 (86.3%)</li>             </ul>         </div>         </div>`)[0];
+                popup_0ed75d3e98040a0676ea1c2f99c55c85.setContent(html_f6b86ce602e1e3a647af71ff63b99e9d);
+            
+        
+
+        marker_ed9cad3555c01093b2bd71a3f038f01f.bindPopup(popup_0ed75d3e98040a0676ea1c2f99c55c85)
+        ;
+
+        
+    
+    
+            marker_ed9cad3555c01093b2bd71a3f038f01f.bindTooltip(
+                `<div>
+                     Sant Vicenç dels Horts (12,810 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ed9cad3555c01093b2bd71a3f038f01f.setIcon(div_icon_f9a2fdb57f1d6fe16d49e72296561f89);
+            
+    
+            var marker_5ffedbcbce4231cb2f6ffb991addb8a7 = L.marker(
+                [41.2366707, 1.8228136],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_9a81d6c299a6f17851d752c683688cdc = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA7pJREFUeJzdl19sU1Ucxz/ndqPYymxZt3RjxeEQ5gCR3DGRTCSGSIjRB6OL0UgI4UGj9lHjiyb+eYBgDElNQOXBRE0w4hyBkGpmMnRDYs5YVjbnFhjDTdax2LKVUkbba27SLqW7t//ULPGb3IfzO7/f+ZxzfuffFZqmsVhSFo0MlBUbIKUUwMNAveXSWLmrba8VuAL012nhyf8ELqVsBp4H2gCPbktWuwaAdWmfceEYBr4EDtdp4al8bYp8OZdS1gOfA9sWBEduDFRvf3oenqEZ4F3gUJ0WjpeUcynlU/p0GoHzqAI4KO7mJH5PZdFwKeVe4DtgWZHgdMsJ92G7Du7C73EXDJdSNgIf/5PdUHXQ1m1xKfo6WZdKW364lFK3HQWWlgp2vGbtsjZZMlP1BH7Pvrxw4HVga6lg+67yc/Ynyx81qPoQv6fGFC6l1LfeO6WCl6y3DDq81g1CCMVkEd4xeiXLYTvgLAVscYuJqgN3uYQQthxuL+SC7ygFLGzMuI/Yo0IR1XlcG/F7VprB1aLJCnH3Z/YRYRX3FxjRaAY33I+5VP2R7axluVJMp21m8OliwLfnZoOHTu9Onv7hke7glPNKsfCyrIprhYI1jdhY9wk8t0PWU/7WLaf8rQiRvFrlCo1uaLoYVx8aqvHUBVcLgX4LZkqYwQseed80v+ycOtnoWDkT/DnYmuqQUjN1rbKms6uSzq4W3RJyOmZGHlh7+Wbzpt9cDavG11os2oAZfKjAUYc+7Ys69iX+rKWc2hW2iYsT0RUNCz2FMxS+p6Xn3Eb0D7RJ78vHAmt2Guf8GGB6Bab1/R/0N0XOh9Pl5+77ZryQToP4ac2rPYl06Q64qqpBoD1XeCLJ+NEhsWX37NfL07aGZZc2WZVYpAD6/syC0TH4nj4/ZtFfjYixREKLboudnX9ECEHFLo+/Nw+4wxfwypxwVVUDwPtG0bE4v7ePsrUhfnnQQtKSWfdYzZnaHOBZ4I1so2Lkqarq28An2XbfBRHRx9kWObEgplyJr17vvNBn0Jye45d8Ae9wQfCUXgGOpwuhW/T2TAoVTUu03ehowkDP1LffzDLFgD2+gLfDyF/BRKqqJoEXgQOaxtz+XmHX7RXa7IAzed3w5qtaOr3ZsSSUfj4PAi2+gPcLM4ZiVpHqwC1VVd/8cYKNw9eFfjgkdkTP/GXmLwRlz6769lfgLWCzL+DV10/pT+dM3fvB+drjk3seb57r16/eB1OHlH4uXAVGAX0xdHJEm9/L/xr8f/Wvpiwm/G8ZvjFcGlqsgAAAAABJRU5ErkJggg==\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_96b8df9b24340ffc871a99ecbf49d149 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_03526b4bf5c24bfd910ec968fdac5cc5 = $(`<div id="html_03526b4bf5c24bfd910ec968fdac5cc5" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sitges</h3>             <p><strong>Total Votes:</strong> 12,445</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,406 (11.3%)</li><li>ERC-AM: 2,172 (17.5%)</li><li>JUNTS: 1,860 (14.9%)</li><li>Cs: 1,349 (10.8%)</li><li>PP: 423 (3.4%)</li><li>Others: 5,235 (42.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_96b8df9b24340ffc871a99ecbf49d149.setContent(html_03526b4bf5c24bfd910ec968fdac5cc5);
+            
+        
+
+        marker_5ffedbcbce4231cb2f6ffb991addb8a7.bindPopup(popup_96b8df9b24340ffc871a99ecbf49d149)
+        ;
+
+        
+    
+    
+            marker_5ffedbcbce4231cb2f6ffb991addb8a7.bindTooltip(
+                `<div>
+                     Sitges (12,445 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5ffedbcbce4231cb2f6ffb991addb8a7.setIcon(div_icon_9a81d6c299a6f17851d752c683688cdc);
+            
+    
+            var marker_7fea4d361de159ac1eb03a8d823ff10d = L.marker(
+                [41.6138122, 2.0875963],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_434fc901dea9feabd720eb9c3c09ba90 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAzNJREFUeJzll1toFFcYx39nsnET0hg3WRO7utqoKF6SNo5V86AoXlZ8KY0vVgiBWvpUpVVRMG3xEnxQGxAFEbzh7UFRBEFd6qUY6nrhq2hIfTBG011NqNSYeKtJNiPHNhqTXXdnSMiDfxiYc86c+R34vvm+/yjLsugvGf1GBlx2N4iIAsYBn6W1R1InPP4uFfgLuEkg3NgncBGZASwFZgE5eq7VyK4BJrx5KOi/BRwAdhMI/53onSpRzEVkNLADmNN9zeh4XlP0aPFb+Fu1AOuBrQTC7Y5iLiIaeDUWOIEGAluAcwT9ObbhIlIKnAY8OJcOVRVBvydpuIgUA7ucJGQM6eQ8QtCfkhAuIhnAIWAAvScdtuUJ4cA3QD69r3KCfm9cuIjo8TL6RlnAt3HhQAAYSd/pq/fBdQHpS00k6Pd3Drpnc2FvktrbjdaGRm/4br3vYd29oS8jD3JdSlljygOEY8F9TiDPX7ibw5G8SN29oU13633Rhsac9JYnH+VGo8YwUKMAfXVqROdNd/i/dqBRlZ53eO+8U6GagvkWRqwyG6/6xYz5U2xIKeUd/PUi97ppa2uKcq7/keS2SDz4fWzKk509a2vhtvCSsfsmVZg/XxuWEbmTYEttPHiVXbhSGHOnjM//wVtxYZC7+fPVhZs/WVFQeTEzteVhjMefANXx4CcB274q3cU4z6T5xuGMkitKkZKfWT9j4+Sf0kpHH/zNpdq65tGF7dXLojHhpmk2AEdxoAUjKKr0rRl8Y8D423qsFJlTc6/N/GXaqn/m+M7+Dq+Nw6aue3qYCRHRFe6Wk8by4Bmh7y92+K/cD6R7O5re6eNNL7P2e/Y9Lus616OxmKZZB1TiQL4Miot9KY2zPz4WacPV1mXpqcfdXJGsmfgROOPkAEsLrNxnqVljF+btufz/VAdQyk7rdlJw0zR1UpQAv9qFuwyGL//UunzDPXH6ukErzwNl7LRO2DaQ8l+LXQlssJMDlkXr6pAK1baoNfXlRZccu1ctESkA1gJfAD3sUIwKpt1upWma7y3Xys7vkogMAb4E9GG0pdbtUQP0J/oncBwImaaZ1EvVB/uvZvQn/BVGwv9U24dYNQAAAABJRU5ErkJggg==\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_689f3163f914644a72671880fabbff54 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0bb676d75dcc60258e11a9b26ba04ded = $(`<div id="html_0bb676d75dcc60258e11a9b26ba04ded" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Castellar del Vallès</h3>             <p><strong>Total Votes:</strong> 12,317</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>ERC-AM: 2,771 (22.5%)</li><li>JUNTS: 1,307 (10.6%)</li><li>Cs: 731 (5.9%)</li><li>PP: 265 (2.2%)</li><li>Others: 7,243 (58.8%)</li>             </ul>         </div>         </div>`)[0];
+                popup_689f3163f914644a72671880fabbff54.setContent(html_0bb676d75dcc60258e11a9b26ba04ded);
+            
+        
+
+        marker_7fea4d361de159ac1eb03a8d823ff10d.bindPopup(popup_689f3163f914644a72671880fabbff54)
+        ;
+
+        
+    
+    
+            marker_7fea4d361de159ac1eb03a8d823ff10d.bindTooltip(
+                `<div>
+                     Castellar del Vallès (12,317 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fea4d361de159ac1eb03a8d823ff10d.setIcon(div_icon_434fc901dea9feabd720eb9c3c09ba90);
+            
+    
+            var marker_f04f250cd47c0ec17880c4bf1688d12c = L.marker(
+                [41.6276807, 2.6898707],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_8e0b58fca61759ceaac4738fca1ecb4b = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAsBJREFUeJzll81LVFEYh59zp3RmUJtw/CBvC50gyCzoLgKhiCBaBBVRYIs2tWkR0aIWQUWbFrWooD+gFoFt+qAWBUWLoBblqRCFxEzSWWijdvMjy+u9J47NhOgcZ8acXPTbnHPunPt7ztc97ztCKcVyyVo2MrCi0BeklCuB9UBjqPdzOH7oqG73A+9t5Q4WBS6l3A4cAw4AZfpZUBXv1IPI9EmK2AfgFnDTVu6XXJ4i155LKdcB14E9814en+is3rH3D3yWRoGLwA1budOL2nMp5X7gXTZwDlUAV4HnSRGrLBgupWwB7maWeJHaBrwwDcAygLfqfVuir2ED0JoUsXleVhZwCXAbCLN02gWcyQkHTgH6kC21ziZFbLURLqXU7ZMUR6uAE0Y4sBOoo3g6uBB8N8XVpqSIrTXBmyi+NprgNf8AXmeCi0JcPG/q6yLggQk+UYiL7Eu5oWhQUCQDXBNcR6m8FChGnvb55ZGE11Mg/JMJ3pavQ5dLR9n0NyINnjFqGWbdboLfA/Iya+0WldX+kCqJ+3YB8Ce2crPvueM4Q8CjXA5eQG/HiGis9VMhEaLBigapPOHXZjey3e0XAH8hh1cD9Omy1h/UKRSReu9jHuBntnJfLwh3HKcDuGxyUAp1p1skdL3GT0V0GU14Xg7wOHB87kPL0Pm8afnHPNoHJ8XMPtf4qaguS+L+mgXA+gwdsZXbkxfccRx9KA5nG8DjPsYy9Sp/uHymEiJhhYPhLFZ6RVps5T7IxrFMw3UcR184Ooe7lDbRSz75sFdszvSp9Edm4rMQiEi91z3HQmeyzbZydSqWVZbph/QAAsdxzqUDzv3+ceSkL37PVqnvpXilmb7RhPczXdU5/Glgi63ctr9KnWer6crb2lFP7NMzCgc/4l3J5npgChiYHhMvB1or3qRPdV53hfhv/6tZywn/BZBL6Ev3RXLbAAAAAElFTkSuQmCC\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_31edf1d747b9c575316630575b7ee322 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f636d9b52cc3b67c83e92fddd4d9bf3e = $(`<div id="html_f636d9b52cc3b67c83e92fddd4d9bf3e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Pineda de Mar</h3>             <p><strong>Total Votes:</strong> 12,107</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 5,587 (46.1%)</li><li>Cs: 607 (5.0%)</li><li>PP: 536 (4.4%)</li><li>Others: 5,377 (44.4%)</li>             </ul>         </div>         </div>`)[0];
+                popup_31edf1d747b9c575316630575b7ee322.setContent(html_f636d9b52cc3b67c83e92fddd4d9bf3e);
+            
+        
+
+        marker_f04f250cd47c0ec17880c4bf1688d12c.bindPopup(popup_31edf1d747b9c575316630575b7ee322)
+        ;
+
+        
+    
+    
+            marker_f04f250cd47c0ec17880c4bf1688d12c.bindTooltip(
+                `<div>
+                     Pineda de Mar (12,107 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f04f250cd47c0ec17880c4bf1688d12c.setIcon(div_icon_8e0b58fca61759ceaac4738fca1ecb4b);
+            
+    
+            var marker_0cd524ee8eacef2c101d2d3b4dcae725 = L.marker(
+                [42.0021068, 1.4766988],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_05fd69523a96c7c4c3edc80a6a5eb4cf = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAs9JREFUeJzl109IVEEcwPHv7K67mZuarn9SWa1UKkmCEUINUSgKC095qEMHwfbQpUtB0LUORUSX6FYRFZ069Ac6BEYERU5GYfTnYMYmlVmbf3f3uftiZJNF9/+6eOgH77Cz8+bzdua3M78nTNNktcKyajJgy+QmpdQOYJt1ZNTm6u2zA17gZY3pm8gJrpTaDRwEDgDVui1c5hoGmv718YriT8AN4EqN6RtPNqZItuZKqU3AZWDvspunZ4bLO3sW8aiYA04DF2tMn5nRmiuleoHXseAkkQ9cAB57RXFZ2rhSah9wG1hH5tHlqJq/hkeUpIwrpfRU3gGsWcA4qo23rv0z7cBdPMKeFFdKFQD3gcJs4DV1xpCre3ajEBQBHcCJpDhwDKjLBs6vDw6W7pndIgTOqOaTeIQrLq6U0n+949nABVsDz0u65pqFWEi66NAzeTQuHsnqDZnCzubAs+Jd/hYhWLa+kUiIt2UKF7b4nxbt9LcKkXDjqsUjFjYoHUs71mYCF7XNPXE2BTuEQMT6Pogt+NnmHvtgr//1zVq+pR++xsLd6cLrO2cHHI3h9hGb2/sxb/PEO3vj1Pu8hvCIzW37bi0vnLIUuMJYKhFCJ/HC1R+5dylemQ5sFqytfXNmwP87ZB+cNMT8VJBQKAhlAaxWv7CUBjB8QXx/AhiThlk0beikE4vmUvwH0JCyLoTT7nDICqBi+aMtbzEJG2FzPF7C6VMpZyEEFrt14fiNib/IJQ78BIbi4XpbDeYQvyWlNGLiUko9JVdziF+P/hBrbz+bo18/IKV8lRCXUn4BLq0wPA30pVpMnAIerhAcBg5LKUdSwqWUoUix+ChLeAY4IqW8l1YZJaXURWBPpBDUg6QbuvaTUsqbGVevOpRS+iQ6DxwieYzp0hk4J6UMJOoo0nldUkpVAd1AK7A9sp5TkWsUeBDJ6vlUxhP/7buaZTXxvxHL1X5UN3WMAAAAAElFTkSuQmCC\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_81c44da7ab02e46fe7b70f733c867f10 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9135e1ea8e2dee594d76b3fc7125c35d = $(`<div id="html_9135e1ea8e2dee594d76b3fc7125c35d" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Masnou</h3>             <p><strong>Total Votes:</strong> 11,895</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,528 (12.8%)</li><li>Cs: 1,207 (10.1%)</li><li>PP: 366 (3.1%)</li><li>Others: 8,794 (73.9%)</li>             </ul>         </div>         </div>`)[0];
+                popup_81c44da7ab02e46fe7b70f733c867f10.setContent(html_9135e1ea8e2dee594d76b3fc7125c35d);
+            
+        
+
+        marker_0cd524ee8eacef2c101d2d3b4dcae725.bindPopup(popup_81c44da7ab02e46fe7b70f733c867f10)
+        ;
+
+        
+    
+    
+            marker_0cd524ee8eacef2c101d2d3b4dcae725.bindTooltip(
+                `<div>
+                     Masnou (11,895 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0cd524ee8eacef2c101d2d3b4dcae725.setIcon(div_icon_05fd69523a96c7c4c3edc80a6a5eb4cf);
+            
+    
+            var marker_cf9e5c7e8cad6d95e0b87a2b78ed311d = L.marker(
+                [41.4499648, 1.9719416],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_b6945f8f660480c54e0df11ff6da7b52 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAAxxJREFUeJzll21IU1EYx/9n811zW2w26wpq5VJBrIWUoEhBkURBpFAfzQiEIAik0A8RSdEnhQqkDwlCrxKEH3rBKPO15slSlLS0Npc2Jblzmm/bPXHlDobtujt1+KH/p3POfc75nXOew8P/EsYYNkqqDSMDCFvNJEppNoB09XdruL6oRDyAE0Anx/ixkMAppQcBnARwFAAnjgkGfR+ATClEsBPtWwAPADRwjOcDrUkC5ZxSmgrgDoDD/0yenulLKDjmhftqHsBVADc4xguryjmltBjAJ3/gAIoEUAXgtZ1odUHDKaWFAO4D2ITVqwBAq51otyqGU0ozpdypsXZlALirCE4pjQPQCCAe66dCO9EWB4QDKAOQgvVXjZ1otbJwSql4zRcQGhkBlMvCpVediNDp+ErwPIRWGb4vfzk8CaFX1kbCU+XgQeV75ufwkJuoxVIajH7LwSeUrtBmm32Z1Xw+z2LM7QgSPiIHHww0kzEIDUNoSWy5qdNgWjeZvCVcgModBNwuB1/xFIzBXT9IOjr7beqimcYccSxZZxPaDfmdCsELAEbl4M8BLMqAF2r7SdezYZb+2FGa5h3fGf+NtRvyOQHEowD+lGO82y/cbDaL+bjnBzxb3UN6Xo2QfeXOW18MwqTe+80Y80snqMKSLfpcJae/7dvxV9uvSdfjBbuufyQDLWNkr9HtsJRN1eX6BkerZ1PEqHcJB4wMWMmZvOAY37oiXDp9jQTmr1iIrWuCZIMxV4PjzLbl8YQgzhjtsHlU4du7N+e8lwG7AFxUaiYuz7nx6FIncfROkiWbdNZV353kGfVrCkyawSXj+MZ4yJ9rmQZwhGN8vyK42Wz2nG5SlXx1EqvY13icnyv4atm6b9IOLBWaRVWEqUeb/cEPuC0oG2Wt2P1HNAFgrOrJeGksAYhcbFLsSIy33ZRYGCs1f4jzl+dZEVzagMdauafStDh0AsBD34foK03E1JKVFrWgjtIPx+0QDckujvEta/fttawXwCmcIwYA4kb2A0iTXCpRETYeqZ6rm/dENYuONd/Vpajikf/2X021kfC/EzgaFEtur1gAAAAASUVORK5CYII=\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_f9d250097ce9be5dc930f4cb10d9639d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e421c9f609a09e12f63f3ada7ba49b6 = $(`<div id="html_4e421c9f609a09e12f63f3ada7ba49b6" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Sant Andreu de la Barca</h3>             <p><strong>Total Votes:</strong> 11,870</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 5,080 (42.8%)</li><li>JUNTS: 506 (4.3%)</li><li>Cs: 1,435 (12.1%)</li><li>PP: 442 (3.7%)</li><li>Others: 4,407 (37.1%)</li>             </ul>         </div>         </div>`)[0];
+                popup_f9d250097ce9be5dc930f4cb10d9639d.setContent(html_4e421c9f609a09e12f63f3ada7ba49b6);
+            
+        
+
+        marker_cf9e5c7e8cad6d95e0b87a2b78ed311d.bindPopup(popup_f9d250097ce9be5dc930f4cb10d9639d)
+        ;
+
+        
+    
+    
+            marker_cf9e5c7e8cad6d95e0b87a2b78ed311d.bindTooltip(
+                `<div>
+                     Sant Andreu de la Barca (11,870 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cf9e5c7e8cad6d95e0b87a2b78ed311d.setIcon(div_icon_b6945f8f660480c54e0df11ff6da7b52);
+            
+    
+            var marker_0b3fed92674459e0fcc6c2f11ec2999e = L.marker(
+                [41.4769177, 1.9283971],
+                {
+}
+            ).addTo(map_bd46b9b22464c4a136de8a2d4631f681);
+        
+    
+            var div_icon_a50b7f84b47369ecc3fc6b397ec34e40 = L.divIcon({
+  "html": "\u003cimg src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAPYQAAD2EBqD+naQAAA2lJREFUeJzll2toHFUUx39nZif7aIibJm212RhCfUWNtoIV7cP6QvtBEUREoQgpGIQwCkWIEiqKVQstaDL4+KSI2H5QqhSrDTXUR1osTGscWoxgE5sRJUayYe1us6+Rmy5pmu5udtMs+eAfLsy9c+/87uPMOeeK53kslrRFIwO+cgfYti1AC7BaH/rdqH+8TQdGgf6IFx2vCNy27Y1AB3AvUKfassvqTwI35bpkXQkPAPuBnogXHbtsuG3b1wDvAveXcIRrcmWbK+EdwK6IF00VG1BQtm0r4LESwLO1BHgdOOBKuLpsuG3bW4CvgFrmLzXpPlfCdSXDH3nv+FrP4635GGQe3Q584UpYnxPetONEcOAf2bPtiIwnM/y2AHB8V2sNy3tC7XPCPx59tm1pZnxiOCarnu6TK0f+pX/eVI1M7fP+wyveD62oulbfycHGqwrD28XYcO7Hl0/8cd8aa6zzuJ5KnHnuB23dvtN873lMlsM1rtN+Xflp9eCSh6o2iUgQUIb3TGE43AMsUw8Px3tvO+Wuv2H7+K6jewfTjV3H5HQ6izsn1UeyritwePnboWYtJDfOevtEMfgDMysCsjX2yZ2/jKyLbBr+cKy9L5P4OzH16+WV/1b9ZMNn1WeC6w21WiNPlxYONq4sBF+dfzEZX+dEz4ajQxsj33y5P97vpg55HpnpSfqJ178R/Lb+zWCL+EU5pWJaOz1uZlQbfqppb40Razb0lOGTdJVPSwc0yfo1siHlOETwq35RrWait+WFI83X3xFufuXJQN1LgaViSBOlqY0HRz64BN7R2n0qFzTySiOT9uuT8YA+eTbgS5xL6f6zsWS1qEiD4IGnjkp9UDWpytTz+TZP1aX2itjuF3tf++j8jl6s0WLwLLovkQnVqEJyfo4vHg8mLyzmYg1SeQ0Ugv9UYXBs5gJnwz+HC1ZcAR2wHDObF2455p+5ZKBSemdmJV9U6wSmjWIB1Ws55ndF4ZZjqjPZucDgKLC11GTiVeDrBQIrG2qzHNMtCW45Zhp4TG3VZYJV/rbFcsx9ZaVRlmPGgc1AF6AmU66Ut7zbcsw9hTpIKTeWjtbuW4DtwKPAJenQLP0FdAO7LccsarhSznWpo7W7IRd27wJuBmqmvC4MAT+riwNwKHdsc0r+t3c1bTHh/wEeaxr4egwaCgAAAABJRU5ErkJggg==\" style=\"width:41px; height:41px;\"\u003e",
+  "iconSize": [41, 41],
+  "iconAnchor": [20.5, 20.5],
+  "className": "empty",
+});
+        
+    
+        var popup_67278603cbfd406ed45691ba122f82a3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0a197b1b8181d72d1974def0bf0fa33c = $(`<div id="html_0a197b1b8181d72d1974def0bf0fa33c" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial; width: 200px;">             <h3>Martorell</h3>             <p><strong>Total Votes:</strong> 11,753</p>             <p><strong>Distribution:</strong></p>             <ul>                 <li>PSC-CP: 1,859 (15.8%)</li><li>ERC-AM: 1,084 (9.2%)</li><li>JUNTS: 5,958 (50.7%)</li><li>Cs: 828 (7.0%)</li><li>PP: 307 (2.6%)</li><li>Others: 1,717 (14.6%)</li>             </ul>         </div>         </div>`)[0];
+                popup_67278603cbfd406ed45691ba122f82a3.setContent(html_0a197b1b8181d72d1974def0bf0fa33c);
+            
+        
+
+        marker_0b3fed92674459e0fcc6c2f11ec2999e.bindPopup(popup_67278603cbfd406ed45691ba122f82a3)
+        ;
+
+        
+    
+    
+            marker_0b3fed92674459e0fcc6c2f11ec2999e.bindTooltip(
+                `<div>
+                     Martorell (11,753 votes)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0b3fed92674459e0fcc6c2f11ec2999e.setIcon(div_icon_a50b7f84b47369ecc3fc6b397ec34e40);
+            
+</script>
+</html>
