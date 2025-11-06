@@ -70,7 +70,7 @@ Aquest document proporciona una explicació detallada de les tres tècniques de 
 
 ### Enllaç a la visualització
 
-**URL de la visualització publicada:** [Enllaç a la Word Cloud](https://github.com/adriagonzalez-uoc/PAC-2-Visualitzacio-Dades/word-cloud/topsogns/visualizations/spain_top1_2000_2025_wordcloud.png)
+**URL de la visualització publicada:** [Enllaç a la Word Cloud](https://github.com/adriagonzalez-uoc/PAC-2-Visualitzacio-Dades/blob/main/word-cloud/topsogns/visualizations/spain_top1_2000_2025_wordcloud.png)
 
 **Visualització:**
 
@@ -280,7 +280,7 @@ El Proportional Symbol Map amb gràfics de pastís és ideal per a aquest object
 
 ### Enllaç a la visualització
 
-**URL de la visualització publicada:** [Enllaç al Rose Chart](https://github.com/adriagonzalez-uoc/PAC-2-Visualitzacio-Dades/Rose%20Chart/wind%20rose/wind_rose_plot.png)
+**URL de la visualització publicada:** [Enllaç al Rose Chart](https://github.com/adriagonzalez-uoc/PAC-2-Visualitzacio-Dades/blob/main/Rose%20Chart/wind%20rose/wind_rose_plot.png)
 
 **Visualització:**
 
