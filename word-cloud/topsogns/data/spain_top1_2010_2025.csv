@@ -1,0 +1,845 @@
+Year,Week,Issue_date,Streaming_Artist,Streaming_Song,Airplay_Artist,Airplay_Song,Streaming_Song_Clean,Airplay_Song_Clean
+2010,,Issue date,Artist(s),Song,Issue date,Artist(s),Song,Artist
+2010,,1,January 10,Manuel Carrasco(feat.Malú),[1],1,Manuel Carrasco,1
+2010,,2,January 17,Lady Gaga,[3],2,Lady Gaga,2
+2010,,3,January 24,Lady Gaga,January 22,Alejandro Sanz,Lady Gaga,Alejandro Sanz
+2010,,4,January 31,Lady Gaga,January 29,Alejandro Sanz,Lady Gaga,Alejandro Sanz
+2010,,5,February 7,Lady Gaga,February 5,Alejandro Sanz,Lady Gaga,Alejandro Sanz
+2010,,6,February 14,David Bisbal,[11],Alejandro Sanz,David Bisbal,Alejandro Sanz
+2010,,7,February 21,Estopa(feat.Rosario),[13],Alejandro Sanz,Estopa,Alejandro Sanz
+2010,,8,February 28,"David DeMaría,Pastora Soler& Vanesa Martín",[15],Alejandro Sanz,"David DeMaría,Pastora Soler& Vanesa Martín",Alejandro Sanz
+2010,,9,March 7,Estopa(feat. Rosario),[17],Alejandro Sanz,Estopa,Alejandro Sanz
+2010,,10,March 14,Estopa(feat. Rosario),March 12,Alejandro Sanz,Estopa,Alejandro Sanz
+2010,,11,March 21,Estopa(feat. Rosario),March 19,Alejandro Sanz,Estopa,Alejandro Sanz
+2010,,12,March 28,Estopa(feat. Rosario),March 26,Alejandro Sanz,Estopa,Alejandro Sanz
+2010,,13,April 4,Estopa(feat. Rosario),April 2,Alejandro Sanz,Estopa,Alejandro Sanz
+2010,,14,April 11,Estopa(feat. Rosario),April 9,Kesha,Estopa,Kesha
+2010,,15,April 18,Estopa(feat. Rosario),April 16,Kesha,Estopa,Kesha
+2010,,16,April 25,Carlos Jean(feat. Various artists),[31],16,Carlos Jean,16
+2010,,17,May 2,Carlos Jean(feat. Various artists),April 30,[34],Carlos Jean,
+2010,,18,May 9,Edward Maya&Vika Jigulina,[35],18,Edward Maya&Vika Jigulina,18
+2010,,19,May 16,Edward Maya&Vika Jigulina,May 14,[38],Edward Maya&Vika Jigulina,
+2010,,20,May 23,Edward Maya&Vika Jigulina,May 21,Estopa(feat. Rosario),Edward Maya&Vika Jigulina,Estopa
+2010,,21,May 30,Estopa(feat. Rosario),[41],21,Estopa,21
+2010,,22,June 6,Shakira(feat.Freshlyground),[43],22,Shakira,22
+2010,,23,June 13,Shakira(feat.Freshlyground),June 11,[46],Shakira,
+2010,,24,June 20,Shakira(feat.Freshlyground),June 18,Shakira,Shakira,Shakira
+2010,,25,June 27,Shakira(feat.Freshlyground),June 25,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,26,July 4,Shakira(feat.Freshlyground),July 2,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,27,July 11,Shakira(feat.Freshlyground),July 9,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,28,July 18,Shakira(feat.Freshlyground),July 16,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,29,July 25,Shakira(feat.Freshlyground),July 23,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,30,August 1,Shakira(feat.Freshlyground),July 30,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,31,August 8,Shakira(feat.Freshlyground),August 6,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,32,August 15,Shakira(feat.Freshlyground),August 13,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,33,August 22,Shakira(feat.Freshlyground),August 20,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,34,August 29,Shakira(feat.Freshlyground),August 27,Shakira(feat.Freshlyground),Shakira,Shakira
+2010,,35,September 5,Shakira(feat.Freshlyground),September 3,Lady Gaga,Shakira,Lady Gaga
+2010,,36,September 12,Shakira(feat.Freshlyground),September 10,Alejandro Sanz,Shakira,Alejandro Sanz
+2010,,37,September 19,Shakira(feat.Freshlyground),September 17,Lady Gaga,Shakira,Lady Gaga
+2010,,38,September 26,Shakira(feat.Freshlyground),September 24,Lady Gaga,Shakira,Lady Gaga
+2010,,39,October 3,Eminem(feat.Rihanna),[77],Lady Gaga,Eminem,Lady Gaga
+2010,,40,October 10,Eminem(feat.Rihanna),October 8,Lady Gaga,Eminem,Lady Gaga
+2010,,41,October 17,Eminem(feat.Rihanna),October 15,Lady Gaga,Eminem,Lady Gaga
+2010,,42,October 24,Shakira(feat.El Cata),[83],42,Shakira,42
+2010,,43,October 31,Shakira(feat.El Cata),October 29,[86],Shakira,
+2010,,44,November 7,Shakira(feat.El Cata),November 5,[88],Shakira,
+2010,,45,November 14,Shakira(feat.El Cata),November 12,Juanes,Shakira,Juanes
+2010,,46,November 21,Shakira(feat.El Cata),November 19,Juanes,Shakira,Juanes
+2010,,47,November 28,Shakira(feat.El Cata),November 26,Shakira(feat. El Cata),Shakira,Shakira
+2010,,48,December 5,Shakira(feat.El Cata),December 3,Melendi,Shakira,Melendi
+2010,,49,December 12,Shakira(feat.El Cata),December 10,Shakira(feat. El Cata),Shakira,Shakira
+2010,,50,December 19,Shakira(feat.El Cata),December 17,Shakira(feat. El Cata),Shakira,Shakira
+2010,,51,December 26,Amaia Montero,[101],51,Amaia Montero,51
+2010,,52,January 2,Shakira(feat. El Cata),[103],52,Shakira,52
+2011,,Issue date,Artist(s),Song,Issue date,Artist(s),Song,Artist
+2011,,1,January 9,Shakira(feat.El Cata),[1],1,Shakira,1
+2011,,2,January 16,Shakira(feat.El Cata),January 14,Melendi,Shakira,Melendi
+2011,,3,January 23,Shakira(feat.El Cata),January 21,Shakira(feat. El Cata),Shakira,Shakira
+2011,,4,January 30,The Black Eyed Peas,[7],4,The Black Eyed Peas,4
+2011,,5,February 6,The Black Eyed Peas,February 4,[10],The Black Eyed Peas,
+2011,,6,February 13,Lady Gaga,[11],6,Lady Gaga,6
+2011,,7,February 20,Lady Gaga,February 18,Michael Jackson(feat.Akon),Lady Gaga,Michael Jackson
+2011,,8,February 27,Pablo Alborán,[15],8,Pablo Alborán,8
+2011,,9,March 6,Pablo Alborán,March 4,[18],Pablo Alborán,
+2011,,10,March 13,Jennifer Lopez(feat.Pitbull),[19],10,Jennifer Lopez,10
+2011,,11,March 20,Jennifer Lopez(feat.Pitbull),March 18,Shakira,Jennifer Lopez,Shakira
+2011,,12,March 27,Jennifer Lopez(feat.Pitbull),March 25,Malú,Jennifer Lopez,Malú
+2011,,13,April 3,Jennifer Lopez(feat.Pitbull),April 1,Malú,Jennifer Lopez,Malú
+2011,,14,April 10,Jennifer Lopez(feat.Pitbull),April 8,Malú,Jennifer Lopez,Malú
+2011,,15,April 17,Jennifer Lopez(feat.Pitbull),April 15,Lady Gaga,Jennifer Lopez,Lady Gaga
+2011,,16,April 24,Jennifer Lopez(feat.Pitbull),April 22,Lady Gaga,Jennifer Lopez,Lady Gaga
+2011,,17,May 1,Jennifer Lopez(feat.Pitbull),April 29,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,18,May 8,Jennifer Lopez(feat.Pitbull),May 6,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,19,May 15,Jennifer Lopez(feat.Pitbull),May 13,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,20,May 22,Jennifer Lopez(feat.Pitbull),May 20,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,21,May 29,Jennifer Lopez(feat.Pitbull),May 27,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,22,June 5,Jennifer Lopez(feat.Pitbull),June 3,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,23,June 12,Jennifer Lopez(feat.Pitbull),June 10,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,24,June 19,Jennifer Lopez(feat.Pitbull),June 17,Jennifer Lopez(feat.Pitbull),Jennifer Lopez,Jennifer Lopez
+2011,,25,June 26,Shakira(feat. Pitbull),[49],Jennifer Lopez(feat.Pitbull),Shakira,Jennifer Lopez
+2011,,26,July 3,Shakira(feat. Pitbull),July 1,Jennifer Lopez(feat.Pitbull),Shakira,Jennifer Lopez
+2011,,27,July 10,Shakira(feat. Pitbull),July 8,"Pitbull(feat.Ne-Yo,AfrojackandNayer)",Shakira,Pitbull
+2011,,28,July 17,Shakira(feat. Pitbull),July 15,Jennifer Lopez(feat. Pitbull),Shakira,Jennifer Lopez
+2011,,29,July 24,Shakira(feat. Pitbull),July 22,LMFAO(feat.Lauren BennettandGoonRock),Shakira,LMFAO
+2011,,30,July 31,Don Omar&Lucenzo,[59],30,Don Omar&Lucenzo,30
+2011,,31,August 7,Don Omar&Lucenzo,August 5,[62],Don Omar&Lucenzo,
+2011,,32,August 14,Don Omar&Lucenzo,August 12,LMFAO(feat. Lauren Bennett and GoonRock),Don Omar&Lucenzo,LMFAO
+2011,,33,August 21,Don Omar&Lucenzo,August 19,"Pitbull(feat. Ne-Yo, Afrojack and Nayer)",Don Omar&Lucenzo,Pitbull
+2011,,34,August 28,Don Omar&Lucenzo,August 26,"Pitbull(feat. Ne-Yo, Afrojack and Nayer)",Don Omar&Lucenzo,Pitbull
+2011,,35,September 4,Don Omar&Lucenzo,September 2,"Pitbull(feat. Ne-Yo, Afrojack and Nayer)",Don Omar&Lucenzo,Pitbull
+2011,,36,September 11,Don Omar&Lucenzo,September 9,"Pitbull(feat. Ne-Yo, Afrojack and Nayer)",Don Omar&Lucenzo,Pitbull
+2011,,37,September 18,Don Omar&Lucenzo,September 16,"Pitbull(feat. Ne-Yo, Afrojack and Nayer)",Don Omar&Lucenzo,Pitbull
+2011,,38,September 25,Don Omar&Lucenzo,September 23,Britney Spears,Don Omar&Lucenzo,Britney Spears
+2011,,39,October 2,Pitbull(feat.Marc Anthony),[77],39,Pitbull,39
+2011,,40,October 9,Pitbull(feat.Marc Anthony),October 7,Maroon 5(feat.Christina Aguilera),Pitbull,Maroon 5
+2011,,41,October 16,Juan Magán(feat. Crossfire),[81],Maroon 5(feat.Christina Aguilera),Juan Magán,Maroon 5
+2011,,42,October 23,Pitbull(feat. Marc Anthony),[83],42,Pitbull,42
+2011,,43,October 30,Pitbull(feat. Marc Anthony),October 28,Maroon 5(feat. Christina Aguilera),Pitbull,Maroon 5
+2011,,44,November 6,Pitbull(feat. Marc Anthony),November 4,Maroon 5(feat. Christina Aguilera),Pitbull,Maroon 5
+2011,,45,November 13,Pablo Alborán(feat. Carminho),[89],Maroon 5(feat. Christina Aguilera),Pablo Alborán,Maroon 5
+2011,,46,November 20,Pablo Alborán(feat. Carminho),November 18,Maroon 5(feat. Christina Aguilera),Pablo Alborán,Maroon 5
+2011,,47,November 27,Michel Teló,[93],Maroon 5(feat. Christina Aguilera),Michel Teló,Maroon 5
+2011,,48,December 4,Michel Teló,December 2,Enrique Iglesias(feat. Pitbull andThe WAV.s),Michel Teló,Enrique Iglesias
+2011,,49,December 11,Michel Teló,December 9,Shakira,Michel Teló,Shakira
+2011,,50,December 18,Michel Teló,December 16,Maroon 5(feat. Christina Aguilera),Michel Teló,Maroon 5
+2011,,51,December 25,Michel Teló,December 23,Maroon 5(feat. Christina Aguilera),Michel Teló,Maroon 5
+2011,,52,January 1,Michel Teló,December 30,Maroon 5(feat. Christina Aguilera),Michel Teló,Maroon 5
+2012,,Issue date,Artist(s),Song,Issue date,Artist(s),Song,Artist
+2012,,1,January 8,Michel Teló,[1],1,Michel Teló,1
+2012,,2,January 15,Michel Teló,January 13,Maroon 5(feat.Christina Aguilera),Michel Teló,Maroon 5
+2012,,3,January 22,Michel Teló,January 20,Maroon 5(feat.Christina Aguilera),Michel Teló,Maroon 5
+2012,,4,January 29,Michel Teló,January 27,Maroon 5(feat.Christina Aguilera),Michel Teló,Maroon 5
+2012,,5,February 5,Michel Teló,February 3,Maroon 5(feat.Christina Aguilera),Michel Teló,Maroon 5
+2012,,6,February 12,Michel Teló,February 10,Maroon 5(feat.Christina Aguilera),Michel Teló,Maroon 5
+2012,,7,February 19,Michel Teló,February 17,Maroon 5(feat.Christina Aguilera),Michel Teló,Maroon 5
+2012,,8,February 26,Michel Teló,February 24,Adele,Michel Teló,Adele
+2012,,9,March 4,Michel Teló,March 2,Adele,Michel Teló,Adele
+2012,,10,March 11,Michel Teló,March 9,Adele,Michel Teló,Adele
+2012,,11,March 18,Cali y El Dandee,[21],Adele,Cali y El Dandee,Adele
+2012,,12,March 25,Cali y El Dandee,March 23,Adele,Cali y El Dandee,Adele
+2012,,13,April 1,Cali y El Dandee,March 30,Gym Class Heroes(feat.Adam Levine),Cali y El Dandee,Gym Class Heroes
+2012,,14,April 8,Cali y El Dandee,April 6,Gym Class Heroes(feat.Adam Levine),Cali y El Dandee,Gym Class Heroes
+2012,,15,April 15,Cali y El Dandee,April 13,Adele,Cali y El Dandee,Adele
+2012,,16,April 22,Cali y El Dandee,April 20,Gym Class Heroes(feat. Adam Levine),Cali y El Dandee,Gym Class Heroes
+2012,,17,April 29,Cali y El Dandee,April 27,Gym Class Heroes(feat. Adam Levine),Cali y El Dandee,Gym Class Heroes
+2012,,18,May 6,Cali y El Dandee,May 4,Juanes,Cali y El Dandee,Juanes
+2012,,19,May 13,Cali y El Dandee,May 11,Estopa,Cali y El Dandee,Estopa
+2012,,20,May 20,Cali y El Dandee,May 18,Estopa,Cali y El Dandee,Estopa
+2012,,21,May 27,Cali y El Dandee,May 25,Pablo Alborán,Cali y El Dandee,Pablo Alborán
+2012,,22,June 3,Cali y El Dandee,June 1,Pablo Alborán,Cali y El Dandee,Pablo Alborán
+2012,,23,June 10,Cali y El Dandee,June 8,Pablo Alborán,Cali y El Dandee,Pablo Alborán
+2012,,24,June 17,Cali y El Dandee(feat.David Bisbal),[47],Pablo Alborán,Cali y El Dandee,Pablo Alborán
+2012,,25,June 24,Cali y El Dandee,[49],Pablo Alborán,Cali y El Dandee,Pablo Alborán
+2012,,26,July 1,Alejandro Sanz,[51],Pablo Alborán,Alejandro Sanz,Pablo Alborán
+2012,,27,July 8,Cali & El Dandee(feat. David Bisbal),[53],Pablo Alborán,Cali & El Dandee,Pablo Alborán
+2012,,28,July 15,Tacabro,[55],Pablo Alborán,Tacabro,Pablo Alborán
+2012,,29,July 22,Tacabro,July 20,Maroon 5(feat.Wiz Khalifa),Tacabro,Maroon 5
+2012,,30,July 29,Tacabro,July 27,Pablo Alborán,Tacabro,Pablo Alborán
+2012,,31,August 5,Tacabro,August 3,Loreen,Tacabro,Loreen
+2012,,32,August 12,Tacabro,August 10,Pablo Alborán,Tacabro,Pablo Alborán
+2012,,33,August 19,Tacabro,August 17,Pablo Alborán,Tacabro,Pablo Alborán
+2012,,34,August 26,Tacabro,August 24,Loreen,Tacabro,Loreen
+2012,,35,September 2,Juan Magan(feat.Belinda),[69],Loreen,Juan Magan,Loreen
+2012,,36,September 9,Juan Magan(feat.Belinda),September 7,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,37,September 16,Juan Magan(feat.Belinda),September 14,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,38,September 23,Juan Magan(feat.Belinda),September 21,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,39,September 30,Juan Magan(feat.Belinda),September 28,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,40,October 7,Juan Magan(feat.Belinda),October 5,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,41,October 14,Juan Magan(feat.Belinda),October 12,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,42,October 21,Robert Ramírez,[83],Gotye(feat.Kimbra),Robert Ramírez,Gotye
+2012,,43,October 28,Juan Magan(feat. Belinda),[85],Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,44,November 4,Juan Magan(feat. Belinda),November 2,Gotye(feat.Kimbra),Juan Magan,Gotye
+2012,,45,November 11,Juan Magan(feat. Belinda),November 9,Pablo Alborán,Juan Magan,Pablo Alborán
+2012,,46,November 18,PSY,[91],46,PSY,46
+2012,,47,November 25,PSY,November 23,Pablo Alborán,PSY,Pablo Alborán
+2012,,48,December 2,PSY,November 30,Pablo Alborán,PSY,Pablo Alborán
+2012,,49,December 9,PSY,December 7,Pablo Alborán,PSY,Pablo Alborán
+2012,,50,December 16,PSY,December 14,Pablo Alborán,PSY,Pablo Alborán
+2012,,51,December 23,PSY,December 21,Alicia Keys,PSY,Alicia Keys
+2012,,52,December 30,PSY,December 28,Alicia Keys,PSY,Alicia Keys
+2013,,Issue date,Artist(s),Song,Issue date,Artist(s),Song,Artist
+2013,,1,January 6,PSY,[1],1,PSY,1
+2013,,2,January 13,PSY,January 11,[4],PSY,
+2013,,3,January 20,PSY,January 18,Alicia Keys,PSY,Alicia Keys
+2013,,4,January 27,PSY,January 25,Rihanna,PSY,Rihanna
+2013,,5,February 3,PSY,February 1,Rihanna,PSY,Rihanna
+2013,,6,February 10,Pablo Alborán,[11],6,Pablo Alborán,6
+2013,,7,February 17,Pablo Alborán,February 15,[14],Pablo Alborán,
+2013,,8,February 24,will.i.am(feat.Britney Spears),[15],8,will.i.am,8
+2013,,9,March 3,Malú(feat. Pablo Alborán),[17],9,Malú,9
+2013,,10,March 10,Yandar & Yostin(feat.Andy Rivera),[19],10,Yandar & Yostin,10
+2013,,11,March 17,Yandar & Yostin(feat.Andy Rivera),March 15,[22],Yandar & Yostin,
+2013,,12,March 24,Pink,[23],12,Pink,12
+2013,,13,March 31,Pink,March 29,[26],Pink,
+2013,,14,April 7,Pink,April 5,[28],Pink,
+2013,,15,April 14,Pitbull(feat.Christina Aguilera),[29],15,Pitbull,15
+2013,,16,April 21,Pitbull(feat.Christina Aguilera),April 19,[32],Pitbull,
+2013,,17,April 28,Pitbull(feat.Christina Aguilera),April 26,Bruno Mars,Pitbull,Bruno Mars
+2013,,18,May 5,Pitbull(feat.Christina Aguilera),May 3,Melendi,Pitbull,Melendi
+2013,,19,May 12,Pablo Alborán,[37],Melendi,Pablo Alborán,Melendi
+2013,,20,May 19,Daft Punk(feat.Pharrell Williams),[39],Melendi,Daft Punk,Melendi
+2013,,21,May 26,Daft Punk(feat.Pharrell Williams),May 24,Pink,Daft Punk,Pink
+2013,,22,June 2,Daft Punk(feat.Pharrell Williams),May 31,Pink,Daft Punk,Pink
+2013,,23,June 9,Dani Martín,[45],Pink,Dani Martín,Pink
+2013,,24,June 16,Dani Martín,June 14,Dani Martín,Dani Martín,Dani Martín
+2013,,25,June 23,Dani Martín,June 21,Dani Martín,Dani Martín,Dani Martín
+2013,,26,June 30,Dani Martín,June 28,Dani Martín,Dani Martín,Dani Martín
+2013,,27,July 7,Dani Martín,July 5,James Arthur,Dani Martín,James Arthur
+2013,,28,July 14,Dani Martín,July 12,Dani Martín,Dani Martín,Dani Martín
+2013,,29,July 21,Daft Punk(feat.Pharrell Williams),[57],Dani Martín,Daft Punk,Dani Martín
+2013,,30,July 28,Daft Punk(feat.Pharrell Williams),July 26,Dani Martín,Daft Punk,Dani Martín
+2013,,31,August 4,Daft Punk(feat.Pharrell Williams),August 2,Dani Martín,Daft Punk,Dani Martín
+2013,,32,August 11,Robin Thicke(feat.T.I.andPharrell),[63],Dani Martín,Robin Thicke,Dani Martín
+2013,,33,August 18,Lady Gaga,[65],Dani Martín,Lady Gaga,Dani Martín
+2013,,34,August 25,Avicii,[67],Dani Martín,Avicii,Dani Martín
+2013,,35,September 1,Avicii,August 30,Dani Martín,Avicii,Dani Martín
+2013,,36,September 8,Avicii,September 6,Icona Pop,Avicii,Icona Pop
+2013,,37,September 15,Avicii,September 13,Avicii,Avicii,Avicii
+2013,,38,September 22,Avicii,September 20,Avicii,Avicii,Avicii
+2013,,39,September 29,Avicii,September 27,Passenger,Avicii,Passenger
+2013,,40,October 6,Avicii,October 4,Avicii,Avicii,Avicii
+2013,,41,October 13,Avicii,October 11,Avicii,Avicii,Avicii
+2013,,42,October 20,Por Ellas,[83],Avicii,Por Ellas,Avicii
+2013,,43,October 27,Por Ellas,October 23,Avicii,Por Ellas,Avicii
+2013,,44,November 3,Lady Gaga,[87],Avicii,Lady Gaga,Avicii
+2013,,45,November 10,Lady Gaga,45,Avicii,Lady Gaga,Avicii
+2013,,46,November 17,Miley Cyrus,[91],Avicii,Miley Cyrus,Avicii
+2013,,47,November 24,One Direction,[93],47,One Direction,47
+2013,,48,December 1,Miley Cyrus,[95],48,Miley Cyrus,48
+2013,,49,December 8,Miley Cyrus,December 5,[98],Miley Cyrus,
+2013,,50,December 15,Miley Cyrus,December 12,Miley Cyrus,Miley Cyrus,Miley Cyrus
+2013,,51,December 22,Kiko Rivera,[101],Miley Cyrus,Kiko Rivera,Miley Cyrus
+2013,,52,December 29,One Direction,[103],Miley Cyrus,One Direction,Miley Cyrus
+2014,,Issue date,Artist(s),Song,Issue date,Artist(s),Song,Artist
+2014,,1,January 5,Avicii,[1],1,Avicii,1
+2014,,2,January 12,Avicii,January 10,Malú,Avicii,Malú
+2014,,3,January 19,Enrique Iglesiasfeat.Romeo Santos,[5],3,Enrique Iglesiasfeat.Romeo Santos,3
+2014,,4,January 26,David Bisbal,[7],4,David Bisbal,4
+2014,,5,February 2,David Bisbal,January 31,Antonio Orozco,David Bisbal,Antonio Orozco
+2014,,6,February 9,David Bisbal,February 7,Avicii,David Bisbal,Avicii
+2014,,7,February 16,David Bisbal,February 14,Avicii,David Bisbal,Avicii
+2014,,8,February 23,David Bisbal,February 21,Shakirafeat.Rihanna,David Bisbal,Shakirafeat.Rihanna
+2014,,9,March 2,David Bisbal,February 28,Shakirafeat.Rihanna,David Bisbal,Shakirafeat.Rihanna
+2014,,10,March 9,David Bisbal,March 7,Shakirafeat.Rihanna,David Bisbal,Shakirafeat.Rihanna
+2014,,11,March 16,David Bisbal,March 14,Pharrell Williams,David Bisbal,Pharrell Williams
+2014,,12,March 23,Pharrell Williams,[23],12,Pharrell Williams,12
+2014,,13,March 30,Shakira,[25],13,Shakira,13
+2014,,14,April 6,Pharrell Williams,[27],14,Pharrell Williams,14
+2014,,15,April 13,Pharrell Williams,April 11,[30],Pharrell Williams,
+2014,,16,April 20,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,[31],16,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,16
+2014,,17,April 27,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,April 25,[34],Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,
+2014,,18,May 4,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,May 2,[36],Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,
+2014,,19,May 11,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,May 9,[38],Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,
+2014,,20,May 18,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,May 16,[40],Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,
+2014,,21,May 25,Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,May 23,[42],Enrique Iglesiasfeat.Gente de ZonayDescemer Bueno,
+2014,,22,June 1,Real Madridfeat.Redone,[43],22,Real Madridfeat.Redone,22
+2014,,23,June 8,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,[45],23,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,23
+2014,,24,June 15,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,June 13,[48],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,25,June 22,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,June 20,[50],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,26,June 29,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,June 27,[52],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,27,July 6,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,July 4,[54],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,28,July 13,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,July 11,[56],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,29,July 20,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,July 18,[58],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,30,July 27,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,July 25,[60],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,31,August 3,Auryn,[61],31,Auryn,31
+2014,,32,August 10,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,[63],32,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,32
+2014,,33,August 17,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,August 15,[66],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,34,August 24,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,August 22,[68],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,35,August 31,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,August 29,[70],Enrique Iglesias feat. Gente de Zona y Descemer Bueno,
+2014,,36,September 7,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,September 5,Nico & Vinz,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,Nico & Vinz
+2014,,37,September 14,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,September 12,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,Enrique Iglesias feat. Gente de Zona y Descemer Bueno,Enrique Iglesias feat. Gente de Zona y Descemer Bueno
+2014,,38,September 21,Pablo Alborán,[75],38,Pablo Alborán,38
+2014,,39,September 28,Pablo Alborán,September 26,Lilly Wood & The PrickandRobin Schulz,Pablo Alborán,Lilly Wood & The PrickandRobin Schulz
+2014,,40,October 5,Lilly Wood & The Prick and Robin Schulz,[79],40,Lilly Wood & The Prick and Robin Schulz,40
+2014,,41,October 12,Pablo Alborán,[81],41,Pablo Alborán,41
+2014,,42,October 19,Pablo López,[83],42,Pablo López,42
+2014,,43,October 26,Juan Magánfeat.Belinda&Lapiz Conciente,[85],43,Juan Magánfeat.Belinda&Lapiz Conciente,43
+2014,,44,November 2,Juan Magánfeat.Belinda&Lapiz Conciente,October 31,Sia,Juan Magánfeat.Belinda&Lapiz Conciente,Sia
+2014,,45,November 9,Meghan Trainor,[89],Sia,Meghan Trainor,Sia
+2014,,46,November 16,Meghan Trainor,November 14,Sia,Meghan Trainor,Sia
+2014,,47,November 23,Band Aid 30,[93],Sia,Band Aid 30,Sia
+2014,,48,November 30,David Guettafeat.Sam Martin,[95],48,David Guettafeat.Sam Martin,48
+2014,,49,December 7,David Guettafeat.Sam Martin,December 5,[98],David Guettafeat.Sam Martin,
+2014,,50,December 14,Meghan Trainor,[99],50,Meghan Trainor,50
+2014,,51,December 21,David Guetta feat. Sam Martin,[101],51,David Guetta feat. Sam Martin,51
+2014,,52,December 28,Meghan Trainor,[103],52,Meghan Trainor,52
+2015,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2015,,1,January 4,David GuettafeaturingSam Martin,[2],Melendi,David GuettafeaturingSam Martin,Melendi
+2015,,2,January 11,David GuettafeaturingSam Martin,"""Stay with Me""",[5],David GuettafeaturingSam Martin,
+2015,,3,January 18,David GuettafeaturingSam Martin,"""Dangerous""",[7],David GuettafeaturingSam Martin,
+2015,,4,January 25,Mark RonsonfeaturingBruno Mars,[8],Melendi,Mark RonsonfeaturingBruno Mars,Melendi
+2015,,5,February 1,Mark RonsonfeaturingBruno Mars,"""Dangerous""",[11],Mark RonsonfeaturingBruno Mars,
+2015,,6,February 8,Mark RonsonfeaturingBruno Mars,"""Lips Are Movin""",[13],Mark RonsonfeaturingBruno Mars,
+2015,,7,February 15,Mark RonsonfeaturingBruno Mars,,,Mark RonsonfeaturingBruno Mars,
+2015,,8,February 22,Ellie Goulding,"""Lips Are Movin""",[17],Ellie Goulding,
+2015,,9,March 1,Ellie Goulding,"""Thinking Out Loud""",[19],Ellie Goulding,
+2015,,10,March 8,Nicky Jam&Enrique Iglesias,"""Thinking Out Loud""",[21],Nicky Jam&Enrique Iglesias,
+2015,,11,March 15,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,12,March 22,Nicky Jam&Enrique Iglesias,"""Lips Are Movin""",[25],Nicky Jam&Enrique Iglesias,
+2015,,13,March 29,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,14,April 5,Nicky Jam&Enrique Iglesias,"""Love Me like You Do""",[29],Nicky Jam&Enrique Iglesias,
+2015,,15,April 12,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,16,April 19,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,17,April 26,Nicky Jam&Enrique Iglesias,"""Love Me like You Do""",[35],Nicky Jam&Enrique Iglesias,
+2015,,18,May 3,Nicky Jam&Enrique Iglesias,"""Love Me like You Do""",[37],Nicky Jam&Enrique Iglesias,
+2015,,19,May 10,Nicky Jam&Enrique Iglesias,"""Mi Nuevo Vicio""",[39],Nicky Jam&Enrique Iglesias,
+2015,,20,May 17,Nicky Jam&Enrique Iglesias,"""Un Zombie a la Intemperie""",[41],Nicky Jam&Enrique Iglesias,
+2015,,21,May 24,Nicky Jam&Enrique Iglesias,"""Lean On""",[43],Nicky Jam&Enrique Iglesias,
+2015,,22,May 31,Nicky Jam&Enrique Iglesias,"""Are You with Me""",[45],Nicky Jam&Enrique Iglesias,
+2015,,23,June 7,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,24,June 14,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,25,June 21,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,26,June 28,Nicky Jam&Enrique Iglesias,,,Nicky Jam&Enrique Iglesias,
+2015,,27,July 5,Nicky Jam&Enrique Iglesias,"""Lean On""",[55],Nicky Jam&Enrique Iglesias,
+2015,,28,July 9,Gente de ZonafeaturingMarc Anthony,"""Lean On""",[57],Gente de ZonafeaturingMarc Anthony,
+2015,,29,July 16,Gente de ZonafeaturingMarc Anthony,"""Are You with Me""",[59],Gente de ZonafeaturingMarc Anthony,
+2015,,30,July 23,Gente de ZonafeaturingMarc Anthony,"""Cuando me siento bien""",[61],Gente de ZonafeaturingMarc Anthony,
+2015,,31,July 30,Gente de ZonafeaturingMarc Anthony,"""Are You with Me""",[63],Gente de ZonafeaturingMarc Anthony,
+2015,,32,August 6,Gente de ZonafeaturingMarc Anthony,,,Gente de ZonafeaturingMarc Anthony,
+2015,,33,August 13,Gente de ZonafeaturingMarc Anthony,"""Pastillas para dormir""",[67],Gente de ZonafeaturingMarc Anthony,
+2015,,34,August 20,Gente de ZonafeaturingMarc Anthony,,,Gente de ZonafeaturingMarc Anthony,
+2015,,35,August 27,Gente de ZonafeaturingMarc Anthony,,,Gente de ZonafeaturingMarc Anthony,
+2015,,36,September 3,Gente de ZonafeaturingMarc Anthony,"""Don't Worry""",[73],Gente de ZonafeaturingMarc Anthony,
+2015,,37,September 10,Gente de ZonafeaturingMarc Anthony,,,Gente de ZonafeaturingMarc Anthony,
+2015,,38,September 17,Gente de ZonafeaturingMarc Anthony,"""Stole the Show""",[77],Gente de ZonafeaturingMarc Anthony,
+2015,,39,September 24,J Balvin,"""Stole the Show""",[79],J Balvin,
+2015,,40,October 1,J Balvin,,,J Balvin,
+2015,,41,October 8,Cali y El Dandee,"""Stole the Show""",[83],Cali y El Dandee,
+2015,,42,October 15,Cali y El Dandee,,,Cali y El Dandee,
+2015,,43,October 22,Cali y El Dandee,"""Stole the Show""",[87],Cali y El Dandee,
+2015,,44,October 29,Adele,"""Stole the Show""",Álvaro SolerfeaturingJennifer Lopez,Adele,Álvaro SolerfeaturingJennifer Lopez
+2015,,45,November 5,Adele,"""Stole the Show""",[91],Adele,
+2015,,46,November 12,Adele,"""Ain’t Nobody (Loves Me Better)""",[93],Adele,
+2015,,47,November 19,Justin Bieber,"""Ain’t Nobody (Loves Me Better)""",[95],Justin Bieber,
+2015,,48,November 26,Justin Bieber,,,Justin Bieber,
+2015,,49,December 3,Justin Bieber,"""Hello""",[99],Justin Bieber,
+2015,,50,December 10,Justin Bieber,,,Justin Bieber,
+2015,,51,December 17,Justin Bieber,,,Justin Bieber,
+2015,,52,December 24,Justin Bieber,"""Tu enemigo""",[105],Justin Bieber,
+2015,,53,December 31,Justin Bieber,,,Justin Bieber,
+2016,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2016,,1,January 7,Justin Bieber,[1],Adele,Justin Bieber,Adele
+2016,,2,January 14,Justin Bieber,"""Tu enemigo""",[4],Justin Bieber,
+2016,,3,January 21,Justin Bieber,,,Justin Bieber,
+2016,,4,January 28,Justin Bieber,,,Justin Bieber,
+2016,,5,February 4,Justin Bieber,,,Justin Bieber,
+2016,,6,February 11,Justin Bieber,,,Justin Bieber,
+2016,,7,February 18,Justin Bieber,,,Justin Bieber,
+2016,,8,February 25,Justin Bieber,"""Tu enemigo""",[16],Justin Bieber,
+2016,,9,March 3,Justin Bieber,"""Tu enemigo""",[18],Justin Bieber,
+2016,,10,March 10,Justin Bieber,"""Faded""",[20],Justin Bieber,
+2016,,11,March 17,Alan Walker,"""Faded""",[22],Alan Walker,
+2016,,12,March 24,Alan Walker,,,Alan Walker,
+2016,,13,March 31,Alan Walker,"""Catch & Release"" (Deepend Remix)",[26],Alan Walker,
+2016,,14,April 7,Alan Walker,,,Alan Walker,
+2016,,15,April 14,Alan Walker,"""Catch & Release"" (Deepend Remix)",[30],Alan Walker,
+2016,,16,April 21,Sia,[31],Matt Simons,Sia,Matt Simons
+2016,,17,April 28,Enrique IglesiasfeaturingWisin,[33],Lukas Graham,Enrique IglesiasfeaturingWisin,Lukas Graham
+2016,,18,May 5,Enrique IglesiasfeaturingWisin,"""Faded""",[36],Enrique IglesiasfeaturingWisin,
+2016,,19,May 12,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,20,May 19,Enrique IglesiasfeaturingWisin,"""Duele el Corazón""",[40],Enrique IglesiasfeaturingWisin,
+2016,,21,May 26,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,22,June 2,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,23,June 9,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,24,June 16,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,25,June 23,Enrique IglesiasfeaturingWisin,"""Cómo te atreves""",[50],Enrique IglesiasfeaturingWisin,
+2016,,26,June 30,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,27,July 7,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,28,July 14,Enrique IglesiasfeaturingWisin,,,Enrique IglesiasfeaturingWisin,
+2016,,29,July 21,Carlos VivesandShakira,"""Cómo te atreves""",Jennifer Lopez,Carlos VivesandShakira,Jennifer Lopez
+2016,,30,July 28,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,31,August 4,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,32,August 11,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,33,August 18,Carlos VivesandShakira,"""Can't Stop the Feeling!""",Jennifer Lopez,Carlos VivesandShakira,Jennifer Lopez
+2016,,34,August 25,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,35,September 1,Carlos VivesandShakira,"""La Bicicleta""",Jennifer Lopez,Carlos VivesandShakira,Jennifer Lopez
+2016,,36,September 8,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,37,September 15,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,38,September 22,Carlos VivesandShakira,"""La Bicicleta""",Jennifer Lopez,Carlos VivesandShakira,Jennifer Lopez
+2016,,39,September 29,Carlos VivesandShakira,"""Perfect Strangers""",[78],Carlos VivesandShakira,
+2016,,40,October 6,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,41,October 13,Carlos VivesandShakira,,,Carlos VivesandShakira,
+2016,,42,October 20,"J BalvinfeaturingPharrell Williams,BIAand Sky","""Perfect Strangers""",DJ SnakefeaturingJustin Bieber,"J BalvinfeaturingPharrell Williams,BIAand Sky",DJ SnakefeaturingJustin Bieber
+2016,,43,October 27,"J BalvinfeaturingPharrell Williams,BIAand Sky",,,"J BalvinfeaturingPharrell Williams,BIAand Sky",
+2016,,44,November 3,"J BalvinfeaturingPharrell Williams,BIAand Sky","""Perfect Strangers""",DJ SnakefeaturingJustin Bieber,"J BalvinfeaturingPharrell Williams,BIAand Sky",DJ SnakefeaturingJustin Bieber
+2016,,45,November 10,ShakirafeaturingMaluma,[89],DJ Snake featuring Justin Bieber,ShakirafeaturingMaluma,DJ Snake featuring Justin Bieber
+2016,,46,November 17,Sebastián Yatra,[91],Bruno Mars,Sebastián Yatra,Bruno Mars
+2016,,47,November 24,Shakira featuring Maluma,[93],Bruno Mars,Shakira featuring Maluma,Bruno Mars
+2016,,48,December 1,Shakira featuring Maluma,"""Let Me Love You""",[96],Shakira featuring Maluma,
+2016,,49,December 8,Shakira featuring Maluma,,,Shakira featuring Maluma,
+2016,,50,December 15,Shakira featuring Maluma,"""Let Me Love You""",[100],Shakira featuring Maluma,
+2016,,51,December 22,Shakira featuring Maluma,"""Let Me Love You""",[102],Shakira featuring Maluma,
+2016,,52,December 29,Shakira featuring Maluma,"""Lost on You""",[104],Shakira featuring Maluma,
+2017,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2017,,1,January 5,ShakirafeaturingMaluma,[1],DJ SnakefeaturingJustin Bieber,ShakirafeaturingMaluma,DJ SnakefeaturingJustin Bieber
+2017,,2,January 12,ShakirafeaturingMaluma,"""Rockabye""",[4],ShakirafeaturingMaluma,
+2017,,3,January 19,Luis FonsifeaturingDaddy Yankee,"""Rockabye""",[6],Luis FonsifeaturingDaddy Yankee,
+2017,,4,January 26,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,5,February 2,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,6,February 9,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,7,February 16,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[14],Luis FonsifeaturingDaddy Yankee,
+2017,,8,February 23,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,9,March 2,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,10,March 9,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[20],Luis FonsifeaturingDaddy Yankee,
+2017,,11,March 16,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[22],Luis FonsifeaturingDaddy Yankee,
+2017,,12,March 23,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,13,March 30,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[26],Luis FonsifeaturingDaddy Yankee,
+2017,,14,April 6,Luis FonsifeaturingDaddy Yankee,"""Shape of You""",[28],Luis FonsifeaturingDaddy Yankee,
+2017,,15,April 13,Luis FonsifeaturingDaddy Yankee,"""Súbeme la radio""",[30],Luis FonsifeaturingDaddy Yankee,
+2017,,16,April 20,Luis FonsifeaturingDaddy Yankee,"""Chained to the Rhythm""",[32],Luis FonsifeaturingDaddy Yankee,
+2017,,17,April 27,Luis FonsifeaturingDaddy Yankee,"""Shape of You""",[34],Luis FonsifeaturingDaddy Yankee,
+2017,,18,May 4,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[36],Luis FonsifeaturingDaddy Yankee,
+2017,,19,May 11,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,20,May 18,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[40],Luis FonsifeaturingDaddy Yankee,
+2017,,21,May 25,Luis FonsifeaturingDaddy Yankee,"""Symphony""",[42],Luis FonsifeaturingDaddy Yankee,
+2017,,22,June 1,Luis FonsifeaturingDaddy Yankee,"""Despacito""",[44],Luis FonsifeaturingDaddy Yankee,
+2017,,23,June 8,Luis FonsifeaturingDaddy Yankee,"""Symphony""",[46],Luis FonsifeaturingDaddy Yankee,
+2017,,24,June 15,Luis FonsifeaturingDaddy Yankee,"""Way Down We Go""",[48],Luis FonsifeaturingDaddy Yankee,
+2017,,25,June 22,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,26,June 29,Luis FonsifeaturingDaddy Yankee,"""Attention""",[52],Luis FonsifeaturingDaddy Yankee,
+2017,,27,July 6,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,28,July 13,Luis FonsifeaturingDaddy Yankee,,,Luis FonsifeaturingDaddy Yankee,
+2017,,29,July 20,J BalvinandWilly William,"""Attention""",Julia Michaels,J BalvinandWilly William,Julia Michaels
+2017,,30,July 27,J BalvinandWilly William,"""Attention""",[60],J BalvinandWilly William,
+2017,,31,August 3,J BalvinandWilly William,,,J BalvinandWilly William,
+2017,,32,August 10,J BalvinandWilly William,"""Attention""",[64],J BalvinandWilly William,
+2017,,33,August 17,J BalvinandWilly William,"""Attention""",[66],J BalvinandWilly William,
+2017,,34,August 24,J BalvinandWilly William,"""Symphony""",[68],J BalvinandWilly William,
+2017,,35,August 31,J BalvinandWilly William,"""OK""",[70],J BalvinandWilly William,
+2017,,36,September 7,J BalvinandWilly William,,,J BalvinandWilly William,
+2017,,37,September 14,Becky Gfeaturing Bad Bunny,"""OK""",[74],Becky Gfeaturing Bad Bunny,
+2017,,38,September 21,Nacho,"""OK""",[76],Nacho,
+2017,,39,September 28,Nacho,,,Nacho,
+2017,,40,October 5,Nacho,,,Nacho,
+2017,,41,October 12,Nacho,,,Nacho,
+2017,,42,October 19,Nacho,"""OK""",[84],Nacho,
+2017,,43,October 26,Natti NatashafeaturingOzuna,"""OK""",Robin Schulz featuring James Blunt,Natti NatashafeaturingOzuna,Robin Schulz featuring James Blunt
+2017,,44,November 2,Natti NatashafeaturingOzuna,"""No Vaya a Ser""",[88],Natti NatashafeaturingOzuna,
+2017,,45,November 9,Natti NatashafeaturingOzuna,,,Natti NatashafeaturingOzuna,
+2017,,46,November 16,"Bad Bunny,Prince Royceand J Balvinfeaturing Mambo Kingz and DJ Luian","""No Vaya a Ser""",[92],"Bad Bunny,Prince Royceand J Balvinfeaturing Mambo Kingz and DJ Luian",
+2017,,47,November 23,"Bad Bunny,Prince Royceand J Balvinfeaturing Mambo Kingz and DJ Luian","""Feel It Still""",[94],"Bad Bunny,Prince Royceand J Balvinfeaturing Mambo Kingz and DJ Luian",
+2017,,48,November 30,Luis Fonsi featuringDemi Lovato,"""Feel It Still""",[96],Luis Fonsi featuringDemi Lovato,
+2017,,49,December 7,Luis Fonsi featuringDemi Lovato,"""Havana""",[98],Luis Fonsi featuringDemi Lovato,
+2017,,50,December 14,Luis Fonsi featuringDemi Lovato,"""Perfect Duet""",[100],Luis Fonsi featuringDemi Lovato,
+2017,,51,December 21,Luis Fonsi featuringDemi Lovato,,,Luis Fonsi featuringDemi Lovato,
+2017,,52,December 28,Luis Fonsi featuringDemi Lovato,"""Perfect Duet""",[104],Luis Fonsi featuringDemi Lovato,
+2018,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2018,,1,January 4,Luis FonsifeaturingDemi Lovato,[1],Camila CabellofeaturingYoung Thug,Luis FonsifeaturingDemi Lovato,Camila CabellofeaturingYoung Thug
+2018,,2,January 11,Luis FonsifeaturingDemi Lovato,"""Perfect""",[4],Luis FonsifeaturingDemi Lovato,
+2018,,3,January 18,Luis FonsifeaturingDemi Lovato,,,Luis FonsifeaturingDemi Lovato,
+2018,,4,January 25,Luis FonsifeaturingDemi Lovato,"""Perfect""",[8],Luis FonsifeaturingDemi Lovato,
+2018,,5,February 1,Luis FonsifeaturingDemi Lovato,"""Perfect""",[10],Luis FonsifeaturingDemi Lovato,
+2018,,6,February 8,AitanaandAna Guerra,[11],Morat andJuanes,AitanaandAna Guerra,Morat andJuanes
+2018,,7,February 15,Daddy Yankee,[13],Luis Fonsi featuring Demi Lovato,Daddy Yankee,Luis Fonsi featuring Demi Lovato
+2018,,8,February 22,Bad Bunny,[15],Luis Fonsi featuring Demi Lovato,Bad Bunny,Luis Fonsi featuring Demi Lovato
+2018,,9,March 1,Bad Bunny,,,Bad Bunny,
+2018,,10,March 8,Bad Bunny,,,Bad Bunny,
+2018,,11,March 15,Nicky JamandJ Balvin,[21],Ed Sheeran and Beyoncé,Nicky JamandJ Balvin,Ed Sheeran and Beyoncé
+2018,,12,March 22,Nicky JamandJ Balvin,,,Nicky JamandJ Balvin,
+2018,,13,March 29,Nicky JamandJ Balvin,"""How Long""",Ed Sheeran and Beyoncé,Nicky JamandJ Balvin,Ed Sheeran and Beyoncé
+2018,,14,April 5,Nicky JamandJ Balvin,"""Perfect""",[28],Nicky JamandJ Balvin,
+2018,,15,April 12,Aitana and Ana Guerra,"""Perfect""",[30],Aitana and Ana Guerra,
+2018,,16,April 19,Aitana and Ana Guerra,,,Aitana and Ana Guerra,
+2018,,17,April 26,Aitana and Ana Guerra,"""Perfect""",[34],Aitana and Ana Guerra,
+2018,,18,May 3,Aitana and Ana Guerra,"""Perfect""",[36],Aitana and Ana Guerra,
+2018,,19,May 10,"Nio Garcia, Darell and Casper Magico",[37],Selena GomezandMarshmello,"Nio Garcia, Darell and Casper Magico",Selena GomezandMarshmello
+2018,,20,May 17,"Nio Garcia, Darell and Casper Magico","""La Cintura""",[40],"Nio Garcia, Darell and Casper Magico",
+2018,,21,May 24,"Nio Garcia, Darell and Casper Magico",,,"Nio Garcia, Darell and Casper Magico",
+2018,,22,May 31,"Nio Garcia, Darell and Casper Magico","""La Cintura""",[44],"Nio Garcia, Darell and Casper Magico",
+2018,,23,June 7,Cepeda,[45],Selena Gomez and Marshmello,Cepeda,Selena Gomez and Marshmello
+2018,,24,June 14,Becky GandNatti Natasha,[47],Álvaro Soler,Becky GandNatti Natasha,Álvaro Soler
+2018,,25,June 21,Becky GandNatti Natasha,,,Becky GandNatti Natasha,
+2018,,26,June 28,Becky GandNatti Natasha,,,Becky GandNatti Natasha,
+2018,,27,July 5,Becky GandNatti Natasha,,,Becky GandNatti Natasha,
+2018,,28,July 12,Becky GandNatti Natasha,"""One Kiss""",Álvaro Soler,Becky GandNatti Natasha,Álvaro Soler
+2018,,29,July 19,Becky GandNatti Natasha,"""La Cintura""",Álvaro Soler,Becky GandNatti Natasha,Álvaro Soler
+2018,,30,July 26,Becky GandNatti Natasha,,,Becky GandNatti Natasha,
+2018,,31,August 2,Aitana,"""La Cintura""",Álvaro Soler,Aitana,Álvaro Soler
+2018,,32,August 9,Aitana,"""La Cintura""",[64],Aitana,
+2018,,33,August 16,Aitana,"""One Kiss""",[66],Aitana,
+2018,,34,August 23,Aitana,"""La Cintura""",[68],Aitana,
+2018,,35,August 30,Aitana,"""One Kiss""",[70],Aitana,
+2018,,36,September 6,Aitana,,,Aitana,
+2018,,37,September 13,OzunaandManuel Turizo,"""One Kiss""",MelendiwithAlejandro SanzandArkano,OzunaandManuel Turizo,MelendiwithAlejandro SanzandArkano
+2018,,38,September 20,OzunaandManuel Turizo,,,OzunaandManuel Turizo,
+2018,,39,September 27,OzunaandManuel Turizo,"""One Kiss""",MelendiwithAlejandro SanzandArkano,OzunaandManuel Turizo,MelendiwithAlejandro SanzandArkano
+2018,,40,October 4,6ix9inefeaturingAnuel AA,[79],Eleni Foureira,6ix9inefeaturingAnuel AA,Eleni Foureira
+2018,,41,October 11,"DJ SnakefeaturingSelena Gomez, Ozuna andCardi B",[81],Blas Cantó,"DJ SnakefeaturingSelena Gomez, Ozuna andCardi B",Blas Cantó
+2018,,42,October 18,Bad Bunny featuringDrake,[83],Eleni Foureira,Bad Bunny featuringDrake,Eleni Foureira
+2018,,43,October 25,Bad Bunny featuringDrake,"""Girls Like You""",[86],Bad Bunny featuringDrake,
+2018,,44,November 1,Bad Bunny featuringDrake,,,Bad Bunny featuringDrake,
+2018,,45,November 8,Rosalía,"""Girls Like You""",[90],Rosalía,
+2018,,46,November 15,Rosalía,,,Rosalía,
+2018,,47,November 22,Paulo Londra,"""Girls Like You""",[94],Paulo Londra,
+2018,,48,November 29,Paulo Londra,"""Girls Like You""",[96],Paulo Londra,
+2018,,49,December 6,Aitana,"""Girls Like You""",Maroon 5,Aitana,Maroon 5
+2018,,50,December 13,Paulo Londra,[99],Beret,Paulo Londra,Beret
+2018,,51,December 20,Paulo Londra,"""Girls Like You""",[102],Paulo Londra,
+2018,,52,December 27,Paulo Londra,"""Perdón""",[104],Paulo Londra,
+2019,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2019,,1,January 3,Paulo Londra,[1],Maroon 5,Paulo Londra,Maroon 5
+2019,,2,January 10,Paulo Londra,,,Paulo Londra,
+2019,,3,January 17,Paulo Londra,"""Lo siento""",Maroon 5,Paulo Londra,Maroon 5
+2019,,4,January 24,Anuel AAandKarol G,"""Lo siento""",[8],Anuel AAandKarol G,
+2019,,5,January 31,Anuel AAandKarol G,"""Love Someone""",[10],Anuel AAandKarol G,
+2019,,6,February 7,Anuel AAandKarol G,,,Anuel AAandKarol G,
+2019,,7,February 14,Daddy YankeefeaturingSnow,"""Love Someone""",[14],Daddy YankeefeaturingSnow,
+2019,,8,February 21,Daddy YankeefeaturingSnow,"""Love Someone""",[16],Daddy YankeefeaturingSnow,
+2019,,9,February 28,Daddy YankeefeaturingSnow,"""Love Someone""",[18],Daddy YankeefeaturingSnow,
+2019,,10,March 7,Daddy YankeefeaturingSnow,"""Sweet but Psycho""",[20],Daddy YankeefeaturingSnow,
+2019,,11,March 14,Don Patricio andCruz Cafuné,[21],Lukas Graham,Don Patricio andCruz Cafuné,Lukas Graham
+2019,,12,March 21,Don Patricio andCruz Cafuné,,,Don Patricio andCruz Cafuné,
+2019,,13,March 28,Don Patricio andCruz Cafuné,"""Sweet but Psycho""",Lukas Graham,Don Patricio andCruz Cafuné,Lukas Graham
+2019,,14,April 4,"Rosalía,J BalvinandEl Guincho",[27],Lukas Graham,"Rosalía,J BalvinandEl Guincho",Lukas Graham
+2019,,15,April 11,"Rosalía,J BalvinandEl Guincho","""Sweet but Psycho""",[30],"Rosalía,J BalvinandEl Guincho",
+2019,,16,April 18,"Rosalía,J BalvinandEl Guincho","""Love Someone""",[32],"Rosalía,J BalvinandEl Guincho",
+2019,,17,April 25,"Rosalía,J BalvinandEl Guincho",,,"Rosalía,J BalvinandEl Guincho",
+2019,,18,May 2,"Rosalía,J BalvinandEl Guincho",,,"Rosalía,J BalvinandEl Guincho",
+2019,,19,May 9,"Rosalía,J BalvinandEl Guincho","""Love Someone""",[38],"Rosalía,J BalvinandEl Guincho",
+2019,,20,May 16,"Lunay,Daddy YankeeandBad Bunny","""Love Someone""",Ava Max,"Lunay,Daddy YankeeandBad Bunny",Ava Max
+2019,,21,May 23,"Lunay,Daddy YankeeandBad Bunny","""Love Someone""",[42],"Lunay,Daddy YankeeandBad Bunny",
+2019,,22,May 30,SechandDarell,[43],Ed SheeranandJustin Bieber,SechandDarell,Ed SheeranandJustin Bieber
+2019,,23,June 6,Rosalía,[45],Ed SheeranandJustin Bieber,Rosalía,Ed SheeranandJustin Bieber
+2019,,24,June 13,Bad Bunny andTainy,[47],Lukas Graham,Bad Bunny andTainy,Lukas Graham
+2019,,25,June 20,Bad Bunny andTainy,"""Mi Persona Favorita""",[50],Bad Bunny andTainy,
+2019,,26,June 27,Bad Bunny andTainy,"""Sucker""",[52],Bad Bunny andTainy,
+2019,,27,July 4,Bad Bunny andTainy,"""Presiento""",[54],Bad Bunny andTainy,
+2019,,28,July 11,Rosalía,"""Presiento""",[56],Rosalía,
+2019,,29,July 18,Bad Bunny and Tainy,[57],DvicioandTaburete,Bad Bunny and Tainy,DvicioandTaburete
+2019,,30,July 25,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna",[59],Ed Sheeran and Justin Bieber,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna",Ed Sheeran and Justin Bieber
+2019,,31,August 1,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna","""Qué Bonito Es Querer""",[62],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna",
+2019,,32,August 8,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna","""Someone You Loved""",[64],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna",
+2019,,33,August 15,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna","""High Hopes""",[66],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna",
+2019,,34,August 22,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna","""Presiento""",[68],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin andOzuna",
+2019,,35,August 29,Rosalía and Ozuna,[69],Ed Sheeran and Justin Bieber,Rosalía and Ozuna,Ed Sheeran and Justin Bieber
+2019,,36,September 5,Rosalía and Ozuna,"""Señorita""",[72],Rosalía and Ozuna,
+2019,,37,September 12,Rosalía and Ozuna,,,Rosalía and Ozuna,
+2019,,38,September 19,Rosalía and Ozuna,,,Rosalía and Ozuna,
+2019,,39,September 26,Rosalía and Ozuna,,,Rosalía and Ozuna,
+2019,,40,October 3,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna","""Señorita""",[80],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna",
+2019,,41,October 10,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna","""Señorita""",[82],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna",
+2019,,42,October 17,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna","""Señorita""",[84],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna",
+2019,,43,October 24,"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna","""Señorita""",[86],"Anuel AA, Daddy Yankee and Karol Gfeaturing J Balvin and Ozuna",
+2019,,44,October 31,Omar MontesandBad Gyal,"""Señorita""",[88],Omar MontesandBad Gyal,
+2019,,45,November 7,Omar MontesandBad Gyal,"""Qué Bonito Es Querer""",[90],Omar MontesandBad Gyal,
+2019,,46,November 14,Omar MontesandBad Gyal,,,Omar MontesandBad Gyal,
+2019,,47,November 21,Omar MontesandBad Gyal,,,Omar MontesandBad Gyal,
+2019,,48,November 28,Omar MontesandBad Gyal,"""Dance Monkey""",[96],Omar MontesandBad Gyal,
+2019,,49,December 5,Karol G andNicki Minaj,"""Dance Monkey""",[98],Karol G andNicki Minaj,
+2019,,50,December 12,Karol G andNicki Minaj,"""Indios y vaqueros""",[100],Karol G andNicki Minaj,
+2019,,51,December 19,Karol G andNicki Minaj,"""A dónde vamos""",[102],Karol G andNicki Minaj,
+2019,,52,December 26,Karol G andNicki Minaj,"""Disparos""",[104],Karol G andNicki Minaj,
+2020,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2020,,1,January 2,Karol GandNicki Minaj,[1],Maroon 5,Karol GandNicki Minaj,Maroon 5
+2020,,2,January 9,Karol GandNicki Minaj,"""Si por mí fuera""",[4],Karol GandNicki Minaj,
+2020,,3,January 16,Karol GandNicki Minaj,"""Memories""",[6],Karol GandNicki Minaj,
+2020,,4,January 23,Karol GandNicki Minaj,,,Karol GandNicki Minaj,
+2020,,5,January 30,Karol GandNicki Minaj,"""Tabú""",[10],Karol GandNicki Minaj,
+2020,,6,February 6,Karol GandNicki Minaj,,,Karol GandNicki Minaj,
+2020,,7,February 13,Karol GandNicki Minaj,,,Karol GandNicki Minaj,
+2020,,8,February 20,Karol GandNicki Minaj,"""Memories""",[16],Karol GandNicki Minaj,
+2020,,9,February 27,Karol GandNicki Minaj,,,Karol GandNicki Minaj,
+2020,,10,March 5,Karol GandNicki Minaj,"""Una foto en blanco y negro""",[20],Karol GandNicki Minaj,
+2020,,11,March 12,Karol GandNicki Minaj,,,Karol GandNicki Minaj,
+2020,,12,March 19,Karol GandNicki Minaj,,,Karol GandNicki Minaj,
+2020,,13,March 26,J Balvin,"""Una foto en blanco y negro""",[26],J Balvin,
+2020,,14,April 2,Bad BunnyfeaturingJowell & RandyandÑengo Flow,"""Una foto en blanco y negro""",Nil Moliner featuringDani Fernández,Bad BunnyfeaturingJowell & RandyandÑengo Flow,Nil Moliner featuringDani Fernández
+2020,,15,April 9,Bad BunnyfeaturingJowell & RandyandÑengo Flow,"""Tusa""",[30],Bad BunnyfeaturingJowell & RandyandÑengo Flow,
+2020,,16,April 16,Bad BunnyfeaturingJowell & RandyandÑengo Flow,,,Bad BunnyfeaturingJowell & RandyandÑengo Flow,
+2020,,17,April 23,Bad BunnyfeaturingJowell & RandyandÑengo Flow,,,Bad BunnyfeaturingJowell & RandyandÑengo Flow,
+2020,,18,April 30,C. Tangana,"""Tusa""",Tones and I,C. Tangana,Tones and I
+2020,,19,May 7,C. Tangana,"""Tusa""",[38],C. Tangana,
+2020,,20,May 14,Bad Bunny andDon Omar,[39],Nea,Bad Bunny andDon Omar,Nea
+2020,,21,May 21,Bad Bunny andDon Omar,"""Blinding Lights""",[42],Bad Bunny andDon Omar,
+2020,,22,May 28,"Justin Quiles,Daddy YankeeandEl Alfa","""Blinding Lights""",[44],"Justin Quiles,Daddy YankeeandEl Alfa",
+2020,,23,June 4,RosalíaandTravis Scott,[45],Nea,RosalíaandTravis Scott,Nea
+2020,,24,June 11,Anuel AAand Bad Bunny,[47],The Weeknd,Anuel AAand Bad Bunny,The Weeknd
+2020,,25,June 18,"Nio Garcia, Anuel AA,Myke Towers, Juanka and Brray",[49],The Weeknd,"Nio Garcia, Anuel AA,Myke Towers, Juanka and Brray",The Weeknd
+2020,,26,June 25,Anuel AA,[51],The Weeknd,Anuel AA,The Weeknd
+2020,,27,July 2,Ozuna,[53],The Weeknd,Ozuna,The Weeknd
+2020,,28,July 9,Ozuna,,,Ozuna,
+2020,,29,July 16,Ozuna,"""Si tú la quieres""",The Weeknd,Ozuna,The Weeknd
+2020,,30,July 23,Ozuna,,,Ozuna,
+2020,,31,July 30,Tainyand J Balvin,"""Si tú la quieres""",Beret and Pablo Alborán,Tainyand J Balvin,Beret and Pablo Alborán
+2020,,32,August 6,"Trueno,Nicki Nicole,Bizarrap, Taiu and Tatool",[63],Beret and Pablo Alborán,"Trueno,Nicki Nicole,Bizarrap, Taiu and Tatool",Beret and Pablo Alborán
+2020,,33,August 13,"Trueno,Nicki Nicole,Bizarrap, Taiu and Tatool",,,"Trueno,Nicki Nicole,Bizarrap, Taiu and Tatool",
+2020,,34,August 20,"Trueno,Nicki Nicole,Bizarrap, Taiu and Tatool",,,"Trueno,Nicki Nicole,Bizarrap, Taiu and Tatool",
+2020,,35,August 27,Maluma,[69],Beret and Pablo Alborán,Maluma,Beret and Pablo Alborán
+2020,,36,September 3,Maluma,"""Kings & Queens""",Beret and Pablo Alborán,Maluma,Beret and Pablo Alborán
+2020,,37,September 10,Maluma,"""Sueño""",[74],Maluma,
+2020,,38,September 17,Maluma,"""Blinding Lights""",[76],Maluma,
+2020,,39,September 24,Maluma,,,Maluma,
+2020,,40,October 1,Maluma,"""Kings & Queens""",[80],Maluma,
+2020,,41,October 8,Maluma,,,Maluma,
+2020,,42,October 15,Maluma,,,Maluma,
+2020,,43,October 22,C. Tangana,"""Kings & Queens""",Dani MartínfeaturingJuanes,C. Tangana,Dani MartínfeaturingJuanes
+2020,,44,October 29,"Manuel Turizo,Rauw Alejandroand Myke Towers","""Kings & Queens""",Sidecars,"Manuel Turizo,Rauw Alejandroand Myke Towers",Sidecars
+2020,,45,November 5,Bad Bunny andJhay Cortez,[89],Ava Max,Bad Bunny andJhay Cortez,Ava Max
+2020,,46,November 12,C. Tangana featuring Niño de Elche andLa Húngara,[91],David GuettaandSia,C. Tangana featuring Niño de Elche andLa Húngara,David GuettaandSia
+2020,,47,November 19,C. Tangana featuring Niño de Elche andLa Húngara,"""Mi Religión""",[94],C. Tangana featuring Niño de Elche andLa Húngara,
+2020,,48,November 26,Bad Bunny and Jhay Cortez,[95],Ava Max,Bad Bunny and Jhay Cortez,Ava Max
+2020,,49,December 2,Bad Bunny featuring Rosalía,[97],Sidecars,Bad Bunny featuring Rosalía,Sidecars
+2020,,50,December 9,Bad Bunny and Jhay Cortez,[99],Ava Max,Bad Bunny and Jhay Cortez,Ava Max
+2020,,51,December 16,Bad Bunny and Jhay Cortez,"""Dynamite""",[102],Bad Bunny and Jhay Cortez,
+2020,,52,December 23,Bad Bunny and Jhay Cortez,,,Bad Bunny and Jhay Cortez,
+2020,,53,December 30,Bad Bunny and Jhay Cortez,,,Bad Bunny and Jhay Cortez,
+2021,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2021,,1,January 1,Bad BunnyandJhay Cortez,[1],BTS,Bad BunnyandJhay Cortez,BTS
+2021,,2,January 8,Bad BunnyandJhay Cortez,"""Mi Religión""",[4],Bad BunnyandJhay Cortez,
+2021,,3,January 15,Myke Towersand Juhn,[5],Dani Martín,Myke Towersand Juhn,Dani Martín
+2021,,4,January 22,Myke Towersand Juhn,"""A un paso de la luna""",[8],Myke Towersand Juhn,
+2021,,5,January 29,Myke Towersand Juhn,"""Mi Religión""",[10],Myke Towersand Juhn,
+2021,,6,February 5,Myke Towersand Juhn,,,Myke Towersand Juhn,
+2021,,7,February 12,"Rochy RD, Myke Towers andNicki Nicole","""Mi Religión""",Camilo,"Rochy RD, Myke Towers andNicki Nicole",Camilo
+2021,,8,February 19,"Rochy RD, Myke Towers andNicki Nicole","""Mi Religión""",[16],"Rochy RD, Myke Towers andNicki Nicole",
+2021,,9,February 26,C. TanganafeaturingGipsy Kings,[17],Ana Mena and Rocco Hunt,C. TanganafeaturingGipsy Kings,Ana Mena and Rocco Hunt
+2021,,10,March 5,"Rochy RD, Myke Towers and Nicki Nicole",[19],Camilo,"Rochy RD, Myke Towers and Nicki Nicole",Camilo
+2021,,11,March 12,"Rochy RD, Myke Towers and Nicki Nicole","""Hypnotized""",[22],"Rochy RD, Myke Towers and Nicki Nicole",
+2021,,12,March 19,"Rochy RD, Myke Towers and Nicki Nicole",,,"Rochy RD, Myke Towers and Nicki Nicole",
+2021,,13,March 26,"Rochy RD, Myke Towers and Nicki Nicole","""Hypnotized""",[26],"Rochy RD, Myke Towers and Nicki Nicole",
+2021,,14,April 2,"Los Legendarios,Wisinand Jhay Cortez",[27],BeretandMelendi,"Los Legendarios,Wisinand Jhay Cortez",BeretandMelendi
+2021,,15,April 9,"Los Legendarios,Wisinand Jhay Cortez","""Hypnotized""",[30],"Los Legendarios,Wisinand Jhay Cortez",
+2021,,16,April 16,"Los Legendarios,Wisinand Jhay Cortez","""Juramento eterno de sal""",[32],"Los Legendarios,Wisinand Jhay Cortez",
+2021,,17,April 23,Sebastián Yatrafeaturing Myke Towers,[33],Purple Disco Machine and Sophie and the Giants,Sebastián Yatrafeaturing Myke Towers,Purple Disco Machine and Sophie and the Giants
+2021,,18,April 30,Sebastián Yatrafeaturing Myke Towers,"""Juramento eterno de sal""",[36],Sebastián Yatrafeaturing Myke Towers,
+2021,,19,May 7,Sebastián Yatrafeaturing Myke Towers,,,Sebastián Yatrafeaturing Myke Towers,
+2021,,20,May 14,Sebastián Yatrafeaturing Myke Towers,,,Sebastián Yatrafeaturing Myke Towers,
+2021,,21,May 21,Rauw Alejandro,"""Juramento eterno de sal""",[42],Rauw Alejandro,
+2021,,22,May 28,Rauw Alejandro,,,Rauw Alejandro,
+2021,,23,June 5,Rauw Alejandro,,,Rauw Alejandro,
+2021,,24,June 12,Rauw Alejandro,,,Rauw Alejandro,
+2021,,25,June 19,Rauw Alejandro,,,Rauw Alejandro,
+2021,,26,June 26,Rauw Alejandro,"""Juramento eterno de sal""",[52],Rauw Alejandro,
+2021,,27,July 3,Rauw Alejandro,"""Juramento eterno de sal""",[54],Rauw Alejandro,
+2021,,28,July 10,Rauw Alejandro,"""Juramento eterno de sal""",[56],Rauw Alejandro,
+2021,,29,July 17,Rauw Alejandro,,,Rauw Alejandro,
+2021,,30,July 24,Farruko,"""Juramento eterno de sal""",Rauw Alejandro,Farruko,Rauw Alejandro
+2021,,31,July 31,Farruko,,,Farruko,
+2021,,32,August 7,Farruko,,,Farruko,
+2021,,33,August 14,Farruko,,,Farruko,
+2021,,34,August 21,Farruko,,,Farruko,
+2021,,35,August 28,Zzoilo andAitana,[69],Rauw Alejandro,Zzoilo andAitana,Rauw Alejandro
+2021,,36,September 4,Zzoilo andAitana,,,Zzoilo andAitana,
+2021,,37,September 11,Zzoilo andAitana,,,Zzoilo andAitana,
+2021,,38,September 18,Zzoilo andAitana,,,Zzoilo andAitana,
+2021,,39,September 25,Zzoilo andAitana,,,Zzoilo andAitana,
+2021,,40,October 2,Zzoilo andAitana,"""Beggin'""",Rauw Alejandro,Zzoilo andAitana,Rauw Alejandro
+2021,,41,October 9,C. Tangana andNathy Peluso,[81],Rauw Alejandro,C. Tangana andNathy Peluso,Rauw Alejandro
+2021,,42,October 16,C. Tangana andNathy Peluso,"""Libertad""",Rauw Alejandro,C. Tangana andNathy Peluso,Rauw Alejandro
+2021,,43,October 23,C. Tangana andNathy Peluso,,,C. Tangana andNathy Peluso,
+2021,,44,October 30,C. Tangana andNathy Peluso,,,C. Tangana andNathy Peluso,
+2021,,45,November 6,C. Tangana andNathy Peluso,,,C. Tangana andNathy Peluso,
+2021,,46,November 13,RosalíafeaturingThe Weeknd,"""Libertad""",Rauw Alejandro,RosalíafeaturingThe Weeknd,Rauw Alejandro
+2021,,47,November 20,RosalíafeaturingThe Weeknd,"""Libertad""",Rauw Alejandro,RosalíafeaturingThe Weeknd,Rauw Alejandro
+2021,,48,November 27,RosalíafeaturingThe Weeknd,"""Libertad""",Rauw Alejandro,RosalíafeaturingThe Weeknd,Rauw Alejandro
+2021,,49,December 3,Zzoilo and Aitana,[97],Rauw Alejandro,Zzoilo and Aitana,Rauw Alejandro
+2021,,50,December 10,BizarrapandMorad,[99],Adele,BizarrapandMorad,Adele
+2021,,51,December 17,BizarrapandMorad,,,BizarrapandMorad,
+2021,,52,December 24,Zzoilo and Aitana,[103],Adele,Zzoilo and Aitana,Adele
+2021,,1,December 31,Morad,[105],Adele,Morad,Adele
+2022,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2022,,1,December 31,Morad,[1],Adele,Morad,Adele
+2022,,2,January 7,Rauw AlejandroandChencho Corleone,[3],Sebastián Yatra,Rauw AlejandroandChencho Corleone,Sebastián Yatra
+2022,,3,January 14,Rauw AlejandroandChencho Corleone,,,Rauw AlejandroandChencho Corleone,
+2022,,4,January 21,Rauw AlejandroandChencho Corleone,,,Rauw AlejandroandChencho Corleone,
+2022,,5,January 28,Rigoberta Bandini,[9],Sebastián Yatra,Rigoberta Bandini,Sebastián Yatra
+2022,,6,February 4,"La Pantera,Quevedo, Juseph,Cruz Cafunéand Abhir Hathi",[11],Sebastián Yatra,"La Pantera,Quevedo, Juseph,Cruz Cafunéand Abhir Hathi",Sebastián Yatra
+2022,,7,February 11,"La Pantera,Quevedo, Juseph,Cruz Cafunéand Abhir Hathi",,,"La Pantera,Quevedo, Juseph,Cruz Cafunéand Abhir Hathi",
+2022,,8,February 18,Becky GandKarol G,[15],Sebastián Yatra,Becky GandKarol G,Sebastián Yatra
+2022,,9,February 25,"La Pantera, Quevedo, Juseph, Cruz Cafuné and Abhir Hathi",[17],Sebastián Yatra,"La Pantera, Quevedo, Juseph, Cruz Cafuné and Abhir Hathi",Sebastián Yatra
+2022,,10,March 4,"La Pantera, Quevedo, Juseph, Cruz Cafuné and Abhir Hathi",,,"La Pantera, Quevedo, Juseph, Cruz Cafuné and Abhir Hathi",
+2022,,11,March 11,"La Pantera, Quevedo, Juseph, Cruz Cafuné and Abhir Hathi",,,"La Pantera, Quevedo, Juseph, Cruz Cafuné and Abhir Hathi",
+2022,,12,March 18,Rosalía,[23],Ana Mena,Rosalía,Ana Mena
+2022,,13,March 25,Paulo Londra,[25],Ana Mena,Paulo Londra,Ana Mena
+2022,,14,April 2,"Alejo,Feidand ROBI",[27],Sebastián Yatra,"Alejo,Feidand ROBI",Sebastián Yatra
+2022,,15,April 9,"Alejo,Feidand ROBI","""Música Ligera""",[30],"Alejo,Feidand ROBI",
+2022,,16,April 16,"Alejo,Feidand ROBI",,,"Alejo,Feidand ROBI",
+2022,,17,April 23,Paulo Londra andBizarrap,"""Música Ligera""",[34],Paulo Londra andBizarrap,
+2022,,18,April 30,Paulo Londra andBizarrap,"""Música Ligera""",[36],Paulo Londra andBizarrap,
+2022,,19,May 6,Bad Bunny,[37],Sebastián Yatra,Bad Bunny,Sebastián Yatra
+2022,,20,May 13,Chanel,[39],Camila CabellofeaturingEd Sheeran,Chanel,Camila CabellofeaturingEd Sheeran
+2022,,21,May 20,Bad Bunny,[41],Sebastián Yatra,Bad Bunny,Sebastián Yatra
+2022,,22,May 27,Bad Bunny,"""As It Was""",[44],Bad Bunny,
+2022,,23,June 3,Bad Bunny,,,Bad Bunny,
+2022,,24,June 10,Bad Bunny,"""Bam Bam""",[48],Bad Bunny,
+2022,,25,June 17,Bad Bunny,,,Bad Bunny,
+2022,,26,June 24,Bad Bunny,"""Bam Bam""",[52],Bad Bunny,
+2022,,27,July 1,Bad Bunny,"""As It Was""",[54],Bad Bunny,
+2022,,28,July 8,Bizarrap and Quevedo,[55],Dani Fernández,Bizarrap and Quevedo,Dani Fernández
+2022,,29,July 15,Bizarrap and Quevedo,"""Te Felicito""",[58],Bizarrap and Quevedo,
+2022,,30,July 22,Bizarrap and Quevedo,"""As It Was""",[60],Bizarrap and Quevedo,
+2022,,31,July 29,Rosalía,[61],Shakira and Rauw Alejandro,Rosalía,Shakira and Rauw Alejandro
+2022,,32,August 5,Bizarrap and Quevedo,[63],Camila Cabello featuring Ed Sheeran,Bizarrap and Quevedo,Camila Cabello featuring Ed Sheeran
+2022,,33,August 12,Rosalía,[65],Shakira and Rauw Alejandro,Rosalía,Shakira and Rauw Alejandro
+2022,,34,August 19,Bizarrap and Quevedo,[67],Camila Cabello featuring Ed Sheeran,Bizarrap and Quevedo,Camila Cabello featuring Ed Sheeran
+2022,,35,August 26,Bizarrap and Quevedo,"""As It Was""",[70],Bizarrap and Quevedo,
+2022,,36,September 2,Bizarrap and Quevedo,"""Bam Bam""",[72],Bizarrap and Quevedo,
+2022,,37,September 9,Bizarrap and Quevedo,,,Bizarrap and Quevedo,
+2022,,38,September 16,Bizarrap and Quevedo,"""Despechá""",[76],Bizarrap and Quevedo,
+2022,,39,September 23,Bizarrap and Quevedo,,,Bizarrap and Quevedo,
+2022,,40,September 30,Bizarrap and Quevedo,"""Mariposas""",[80],Bizarrap and Quevedo,
+2022,,41,October 7,Bizarrap and Quevedo,,,Bizarrap and Quevedo,
+2022,,42,October 14,Bizarrap and Quevedo,"""Despechá""",[84],Bizarrap and Quevedo,
+2022,,43,October 21,Manuel Turizo,"""Despechá""",[86],Manuel Turizo,
+2022,,44,October 28,Manuel Turizo,"""Mariposas""",[88],Manuel Turizo,
+2022,,45,November 4,Mora and Quevedo,"""Mariposas""",[90],Mora and Quevedo,
+2022,,46,November 11,Manuel Turizo,"""Mariposas""",[92],Manuel Turizo,
+2022,,47,November 18,Bizarrap andDuki,[93],David GuettaandBebe Rexha,Bizarrap andDuki,David GuettaandBebe Rexha
+2022,,48,November 25,Manuel Turizo,[95],Sangiovanni and Aitiana,Manuel Turizo,Sangiovanni and Aitiana
+2022,,49,December 2,Arcángeland Bad Bunny,[97],Manuel Turizo,Arcángeland Bad Bunny,Manuel Turizo
+2022,,50,December 9,Arcángeland Bad Bunny,,,Arcángeland Bad Bunny,
+2022,,51,December 16,Quevedo and Myke Towers,[101],Manuel Turizo,Quevedo and Myke Towers,Manuel Turizo
+2022,,52,December 23,Arcángel and Bad Bunny,[103],Manuel Turizo,Arcángel and Bad Bunny,Manuel Turizo
+2023,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2023,,1,December 30,Manuel Turizo,[1],Manuel Turizo,Manuel Turizo,Manuel Turizo
+2023,,2,January 6,BizarrapandShakira,[3],Manuel Turizo,BizarrapandShakira,Manuel Turizo
+2023,,3,January 13,BizarrapandShakira,,,BizarrapandShakira,
+2023,,4,January 20,BizarrapandShakira,"""Shakira: Bzrp Music Sessions, Vol. 53""",Manuel Turizo,BizarrapandShakira,Manuel Turizo
+2023,,5,January 27,BizarrapandShakira,,,BizarrapandShakira,
+2023,,6,February 3,BizarrapandShakira,,,BizarrapandShakira,
+2023,,7,February 10,BizarrapandShakira,,,BizarrapandShakira,
+2023,,8,February 17,BizarrapandShakira,,,BizarrapandShakira,
+2023,,9,February 24,Karol Gand Shakira,"""Shakira: Bzrp Music Sessions, Vol. 53""",[18],Karol Gand Shakira,
+2023,,10,March 3,Karol Gand Shakira,,,Karol Gand Shakira,
+2023,,11,March 10,Karol Gand Shakira,"""Flowers""",[22],Karol Gand Shakira,
+2023,,12,March 17,Karol Gand Shakira,,,Karol Gand Shakira,
+2023,,13,March 24,RosalíaandRauw Alejandro,"""Flowers""",[26],RosalíaandRauw Alejandro,
+2023,,14,March 31,RosalíaandRauw Alejandro,"""Flowers""",[28],RosalíaandRauw Alejandro,
+2023,,15,April 7,RosalíaandRauw Alejandro,"""Flowers""",[30],RosalíaandRauw Alejandro,
+2023,,16,April 14,Lola ÍndigofeaturingQuevedo,"""Flowers""",[32],Lola ÍndigofeaturingQuevedo,
+2023,,17,April 21,Lola ÍndigofeaturingQuevedo,,,Lola ÍndigofeaturingQuevedo,
+2023,,18,April 28,Saiko,"""Flowers""",Vicco,Saiko,Vicco
+2023,,19,May 5,Lola Índigo featuring Quevedo,[37],Miley Cyrus,Lola Índigo featuring Quevedo,Miley Cyrus
+2023,,20,May 12,Lola Índigo featuring Quevedo,"""Nochentera""",[40],Lola Índigo featuring Quevedo,
+2023,,21,May 19,Shakira,"""Nochentera""",[42],Shakira,
+2023,,22,May 26,Bad Bunny,"""Nochentera""",[44],Bad Bunny,
+2023,,23,June 2,Bad Bunny,"""El Merengue""",[46],Bad Bunny,
+2023,,24,June 9,"Saiko,Feid, Quevedo and Mora",[47],Miley Cyrus,"Saiko,Feid, Quevedo and Mora",Miley Cyrus
+2023,,25,June 16,"Saiko,Feid, Quevedo and Mora","""Nochentera""",[50],"Saiko,Feid, Quevedo and Mora",
+2023,,26,June 23,Bizarrap and Rauw Alejandro,[51],ChanelandAbraham Mateo,Bizarrap and Rauw Alejandro,ChanelandAbraham Mateo
+2023,,27,June 30,Myke Towers,[53],"David Guetta,Anne-MarieandCoi Leray",Myke Towers,"David Guetta,Anne-MarieandCoi Leray"
+2023,,28,July 7,Quevedo,[55],Manuel Turizo featuring Marshmello,Quevedo,Manuel Turizo featuring Marshmello
+2023,,29,July 14,Quevedo,,,Quevedo,
+2023,,30,July 21,Quevedo,,,Quevedo,
+2023,,31,July 28,Quevedo,,,Quevedo,
+2023,,32,August 4,Quevedo,,,Quevedo,
+2023,,33,August 11,Quevedo,"""Vagabundo""",Manuel Turizo featuring Marshmello,Quevedo,Manuel Turizo featuring Marshmello
+2023,,34,August 18,Quevedo,,,Quevedo,
+2023,,35,August 25,Quevedo,"""Vagabundo""",Manuel Turizo featuring Marshmello,Quevedo,Manuel Turizo featuring Marshmello
+2023,,36,September 1,Mora and Saiko,[71],Manuel Turizo featuring Marshmello,Mora and Saiko,Manuel Turizo featuring Marshmello
+2023,,37,September 8,Mora and Saiko,"""El Merengue""",Manuel Turizo featuring Marshmello,Mora and Saiko,Manuel Turizo featuring Marshmello
+2023,,38,September 15,Mora and Saiko,"""Vagabundo""",[76],Mora and Saiko,
+2023,,39,September 22,Quevedo and Saiko,"""Vagabundo""",[78],Quevedo and Saiko,
+2023,,40,September 29,Iñigo Quintero,"""Vagabundo""",[80],Iñigo Quintero,
+2023,,41,October 6,Iñigo Quintero,"""El Merengue""",[82],Iñigo Quintero,
+2023,,42,October 13,Bad Bunny,"""El Merengue""",[84],Bad Bunny,
+2023,,43,October 20,Iñigo Quintero,[85],"Sebastián Yatra, Manuel Turizo and Beéle",Iñigo Quintero,"Sebastián Yatra, Manuel Turizo and Beéle"
+2023,,44,October 27,Iñigo Quintero,,,Iñigo Quintero,
+2023,,45,November 3,Iñigo Quintero,"""Dance the Night""","Sebastián Yatra, Manuel Turizo and Beéle",Iñigo Quintero,"Sebastián Yatra, Manuel Turizo and Beéle"
+2023,,46,November 10,Iñigo Quintero,"""El Merengue""",[92],Iñigo Quintero,
+2023,,47,November 17,Iñigo Quintero,"""Madrid City""",[94],Iñigo Quintero,
+2023,,48,November 24,Iñigo Quintero,,,Iñigo Quintero,
+2023,,49,December 1,Dellafuente/Morad,"""Madrid City""",[98],Dellafuente/Morad,
+2023,,50,December 8,Dellafuente/Morad,,,Dellafuente/Morad,
+2023,,51,December 15,Dellafuente/Morad,"""Madrid City""",[102],Dellafuente/Morad,
+2023,,52,December 22,Dellafuente/Morad,"""Madrid City""",[104],Dellafuente/Morad,
+2023,,1,December 29,Dellafuente/Morad,,,Dellafuente/Morad,
+2024,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2024,,1,December 29,Dellafuente andMorad,[1],Ana Mena,Dellafuente andMorad,Ana Mena
+2024,,2,January 5,Dellafuente andMorad,,,Dellafuente andMorad,
+2024,,3,January 12,BizarrapandYoung Miko,[5],Ana Mena,BizarrapandYoung Miko,Ana Mena
+2024,,4,January 19,BizarrapandYoung Miko,"""Madrid City""",[8],BizarrapandYoung Miko,
+2024,,5,January 26,BizarrapandYoung Miko,,,BizarrapandYoung Miko,
+2024,,6,February 2,Quevedo,"""Madrid City""",[12],Quevedo,
+2024,,7,February 9,Quevedo,,,Quevedo,
+2024,,8,February 16,FeidandATL Jacob,"""Madrid City""",Dua Lipa,FeidandATL Jacob,Dua Lipa
+2024,,9,February 23,JC Reyes andDe la Ghetto,"""Madrid City""",Ana Mena,JC Reyes andDe la Ghetto,Ana Mena
+2024,,10,March 1,Gonzy,[19],Ana Mena,Gonzy,Ana Mena
+2024,,11,March 8,Gonzy,,,Gonzy,
+2024,,12,March 15,Gonzy,"""Todo Cambia""",Ana Mena,Gonzy,Ana Mena
+2024,,13,March 22,Gonzy,"""Madrid City""",[26],Gonzy,
+2024,,14,March 29,Gonzy,"""Luna""",[28],Gonzy,
+2024,,15,April 5,Gonzy,"""Madrid City""",[30],Gonzy,
+2024,,16,April 12,El Bobe andOmar Montes,[31],Benson Boone,El Bobe andOmar Montes,Benson Boone
+2024,,17,April 19,"Rvssian,Rauw AlejandroandAyra Starr",[33],Feid and ATL Jacob,"Rvssian,Rauw AlejandroandAyra Starr",Feid and ATL Jacob
+2024,,18,April 26,"Rvssian,Rauw AlejandroandAyra Starr","""Beautiful Things""",[36],"Rvssian,Rauw AlejandroandAyra Starr",
+2024,,19,May 3,"Saiko, JC Reyes andDei V",[37],Teddy Swims,"Saiko, JC Reyes andDei V",Teddy Swims
+2024,,20,May 10,"Saiko, JC Reyes andDei V","""Beautiful Things""",[40],"Saiko, JC Reyes andDei V",
+2024,,21,May 17,"Saiko, JC Reyes andDei V",,,"Saiko, JC Reyes andDei V",
+2024,,22,May 24,"Saiko, JC Reyes andDei V","""La Falda""",[44],"Saiko, JC Reyes andDei V",
+2024,,23,May 31,"Saiko, JC Reyes andDei V",,,"Saiko, JC Reyes andDei V",
+2024,,24,June 7,"Saiko, JC Reyes andDei V","""Beautiful Things""",[48],"Saiko, JC Reyes andDei V",
+2024,,25,June 14,Trueno,"""Beautiful Things""",[50],Trueno,
+2024,,26,June 21,Trueno,,,Trueno,
+2024,,27,June 28,Karol G,"""Beautiful Things""",Teddy Swims,Karol G,Teddy Swims
+2024,,28,July 5,Karol G,"""Beautiful Things""",[56],Karol G,
+2024,,29,July 12,Isabel Aaiún,[57],Teddy Swims,Isabel Aaiún,Teddy Swims
+2024,,30,July 19,Karol G,[59],Teddy Swims,Karol G,Teddy Swims
+2024,,31,July 26,Karol G,"""Beautiful Things""",[62],Karol G,
+2024,,32,August 2,Karol G,,,Karol G,
+2024,,33,August 9,Karol G,"""Beautiful Things""",[66],Karol G,
+2024,,34,August 16,Karol G,"""Si Antes Te Hubiera Conocido""",[68],Karol G,
+2024,,35,August 23,Karol G,,,Karol G,
+2024,,36,August 30,Karol G,,,Karol G,
+2024,,37,September 6,Karol G,,,Karol G,
+2024,,38,September 13,Karol G,,,Karol G,
+2024,,39,September 20,Karol G,,,Karol G,
+2024,,40,September 27,Karol G,,,Karol G,
+2024,,41,October 4,Karol G,"""Si Antes Te Hubiera Conocido""",[82],Karol G,
+2024,,42,October 11,Karol G,"""Si Antes Te Hubiera Conocido""",[84],Karol G,
+2024,,43,October 18,Karol G,,,Karol G,
+2024,,44,October 25,Myke Towers andBenny Blanco,"""Si Antes Te Hubiera Conocido""",[88],Myke Towers andBenny Blanco,
+2024,,45,November 1,Myke Towers andBenny Blanco,"""Si Antes Te Hubiera Conocido""",[90],Myke Towers andBenny Blanco,
+2024,,46,November 8,Clarent,[91],Karol G,Clarent,Karol G
+2024,,47,November 15,Rauw Alejandro andBad Bunny,[93],Karol G,Rauw Alejandro andBad Bunny,Karol G
+2024,,48,November 22,Quevedo andAitana,[95],Shakira,Quevedo andAitana,Shakira
+2024,,49,November 29,Quevedo andAitana,,,Quevedo andAitana,
+2024,,50,December 6,Quevedo andAitana,,,Quevedo andAitana,
+2024,,51,December 13,Yorghaki / Alleh,[101],Shakira,Yorghaki / Alleh,Shakira
+2024,,52,December 20,Yorghaki / Alleh,"""Soltera""",Shakira,Yorghaki / Alleh,Shakira
+2024,,1,December 27,Yorghaki / Alleh,"""Me Has Invitado a Bailar""",[106],Yorghaki / Alleh,
+2025,,Artist(s),Song,Ref.,Song,Ref.,Ref.,Ref.
+2025,,1,December 27,Yorghaki / Alleh,[1],Dani Fernández,Yorghaki / Alleh,Dani Fernández
+2025,,2,January 3,Yorghaki / Alleh,,,Yorghaki / Alleh,
+2025,,3,January 10,Bad Bunny,[5],Dani Fernández,Bad Bunny,Dani Fernández
+2025,,4,January 17,Bad Bunny,"""Die with a Smile""",[8],Bad Bunny,
+2025,,5,January 24,"""Nuevayol""",Dani Fernández,"""Me Has Invitado a Bailar""",Nuevayol,Me Has Invitado a Bailar
+2025,,6,January 31,"""Nuevayol""","""Belong Together""",[12],Nuevayol,
+2025,,7,February 7,Yorghaki / Alleh,"""Belong Together""",[14],Yorghaki / Alleh,
+2025,,8,February 14,Yorghaki / Alleh,"""Me Has Invitado a Bailar""",[16],Yorghaki / Alleh,
+2025,,9,February 21,Yorghaki / Alleh,,,Yorghaki / Alleh,
+2025,,10,February 28,Yorghaki / Alleh,,,Yorghaki / Alleh,
+2025,,11,March 7,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[22],W Sound/Beéle/Ovy on the Drums,
+2025,,12,March 14,W Sound/Beéle/Ovy on the Drums,,,W Sound/Beéle/Ovy on the Drums,
+2025,,13,March 21,"Delaossa,Quevedoand Bigla The Kid","""Me Has Invitado a Bailar""",[26],"Delaossa,Quevedoand Bigla The Kid",
+2025,,14,March 28,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",Lady Gaga and Bruno Mars,W Sound/Beéle/Ovy on the Drums,Lady Gaga and Bruno Mars
+2025,,15,April 4,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[30],W Sound/Beéle/Ovy on the Drums,
+2025,,16,April 11,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[32],W Sound/Beéle/Ovy on the Drums,
+2025,,17,April 18,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[34],W Sound/Beéle/Ovy on the Drums,
+2025,,18,April 25,W Sound/Beéle/Ovy on the Drums,,,W Sound/Beéle/Ovy on the Drums,
+2025,,19,May 2,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[38],W Sound/Beéle/Ovy on the Drums,
+2025,,20,May 9,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[40],W Sound/Beéle/Ovy on the Drums,
+2025,,21,May 16,W Sound/Beéle/Ovy on the Drums,,,W Sound/Beéle/Ovy on the Drums,
+2025,,22,May 23,MoraandC. Tangana,"""Me Has Invitado a Bailar""",Rosé and Bruno Mars,MoraandC. Tangana,Rosé and Bruno Mars
+2025,,23,May 30,Beéle,[45],Dani Fernández,Beéle,Dani Fernández
+2025,,24,June 6,Beéle,"""Ordinary""",[48],Beéle,
+2025,,25,June 13,Beéle,"""Me Has Invitado a Bailar""",[50],Beéle,
+2025,,26,June 20,Beéle,"""Ordinary""",[52],Beéle,
+2025,,27,June 27,W Sound/Beéle/Ovy on the Drums,"""Ordinary""",[54],W Sound/Beéle/Ovy on the Drums,
+2025,,28,July 4,W Sound/Beéle/Ovy on the Drums,"""Me Has Invitado a Bailar""",[56],W Sound/Beéle/Ovy on the Drums,
+2025,,29,July 11,Quevedo,[57],Alex Warren,Quevedo,Alex Warren
+2025,,30,July 18,W Sound/Beéle/Ovy on the Drums,[59],Alex Warren,W Sound/Beéle/Ovy on the Drums,Alex Warren
+2025,,31,July 25,W Sound/Beéle/Ovy on the Drums,,,W Sound/Beéle/Ovy on the Drums,
+2025,,32,August 1,Rels B,[63],Alex Warren,Rels B,Alex Warren
+2025,,33,August 8,Rels B,"""Anxiety""",Alex Warren,Rels B,Alex Warren
+2025,,34,August 15,Rels B,"""Ordinary""",[68],Rels B,
+2025,,35,August 22,Rels B,,,Rels B,
+2025,,36,August 29,Kidd Voodoo/JC Reyes,"""Ordinary""",Aitana,Kidd Voodoo/JC Reyes,Aitana
+2025,,37,September 5,Rels B,[73],Alex Warren,Rels B,Alex Warren
+2025,,38,September 12,Kidd Voodoo/JC Reyes,[75],Doechii,Kidd Voodoo/JC Reyes,Doechii
+2025,,39,September 19,Kidd Voodoo/JC Reyes,"""Messy""",[78],Kidd Voodoo/JC Reyes,
+2025,,40,September 26,Kidd Voodoo/JC Reyes,"""Ordinary""",[80],Kidd Voodoo/JC Reyes,
+2025,,41,October 3,Taylor Swift,"""Ordinary""",[82],Taylor Swift,
+2025,,42,October 10,Huntr/x,"""Ordinary""",[84],Huntr/x,
+2025,,43,October 17,Huntr/x,"""Golden""",[86],Huntr/x,
