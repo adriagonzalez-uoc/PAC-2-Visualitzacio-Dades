@@ -177,9 +177,9 @@ Això crea una visualització multidimensional que mostra simultàniament: **on*
 
 ### Enllaç a la visualització
 
-**URL de la visualització publicada:** [Enllaç al Mapa de Símbols Proporcionals](URL_AQUI)
+**URL de la visualització publicada:** [Enllaç al Mapa de Símbols Proporcionals](https://adriagonzalez-uoc.github.io/PAC-2-Visualitzacio-Dades/)
 
-**Visualització interactiva:**
+**Visualització Generades:**
 - [Mapa complet de Catalunya](proportional%20symbol%20map/proportional_symbol_map_catalonia.html)
 - [Top 50 municipis](proportional%20symbol%20map/proportional_symbol_map_catalonia_top50.html)
 
