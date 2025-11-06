@@ -1,4 +1,4 @@
-# Treball Final - Tècniques de Visualització de Dades
+# PAC 2 - Visualització de Dades
 
 Aquest document proporciona una explicació detallada de les tres tècniques de visualització implementades per al treball final: **Tag Cloud / Word Cloud**, **Proportional Symbol Map** i **Rose Chart**. S'inclouen definicions generals, tipus i estructures de dades adequades, descripcions de les pràctiques realitzades i comentaris breus sobre cada visualització.
 
